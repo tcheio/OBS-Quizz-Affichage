@@ -1,4 +1,22 @@
 [
-  { "id": 1, "texte": "Première question genéral" },
-  { "id": 2, "texte": "Deuxième question !" }
+  {
+    "texte": "Quelle est la capitale de l'Allemagne ?",
+    "propositions": [
+      "Berlin",
+      "Munich",
+      "Hambourg",
+      "Francfort"
+    ],
+    "bonneReponse": 0 
+  },
+  {
+    "texte": "Quel est le plus grand océan du monde ?",
+    "propositions": [
+      "Atlantique",
+      "Arctique",
+      "Pacifique",
+      "Indien"
+    ],
+    "bonneReponse": 2
+  }
 ]

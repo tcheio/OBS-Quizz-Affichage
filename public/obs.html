@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Source OBS</title>
+  <title>OBS - Affichage Question</title>
   <style>
     body {
       background-color: transparent;
@@ -13,19 +13,104 @@
       font-family: Arial, sans-serif;
       text-shadow: 2px 2px 4px #000;
     }
+    #propositions {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      font-size: 36px;
+    }
+    .proposition {
+      padding: 10px 30px;
+      border-radius: 15px;
+      background: #222c;
+      color: #fff;
+      min-width: 350px;
+      transition: background 0.3s, color 0.3s;
+      border: 2px solid transparent;
+    }
+    .proposition.bonne {
+      background: #2ecc40 !important;
+      color: #222 !important;
+      border-color: #27ae60;
+    }
   </style>
 </head>
 <body>
-  <div id="display">En attente du texte...</div>
-
+  <div id="question"></div>
+  <div id="propositions"></div>
   <script src="script.js"></script>
   <script>
-    receiveText((message) => {
-      document.getElementById('display').textContent = message;
-      // Pour debug : affiche aussi dans la console le type de message
-      console.log('Message reçu sur OBS :', message, 'Type:', typeof message);
+    let currentQuestion = null;
+    let propositionsAffichees = false;
+    let validationFaite = false;
+
+    receiveText((msg) => {
+      // Si le message est une chaîne vide : reset
+      if (!msg || msg.trim() === "") {
+        document.getElementById('question').textContent = "";
+        document.getElementById('propositions').innerHTML = "";
+        currentQuestion = null;
+        propositionsAffichees = false;
+        validationFaite = false;
+        return;
+      }
+
+      // On essaye de parser le message
+      let data;
+      try {
+        data = JSON.parse(msg);
+      } catch (e) {
+        // Message texte simple : question non générale
+        document.getElementById('question').textContent = msg;
+        document.getElementById('propositions').innerHTML = "";
+        currentQuestion = null;
+        return;
+      }
+
+      // Si c'est une question générale avec propositions
+      if (data.texte && Array.isArray(data.propositions)) {
+        currentQuestion = data;
+        propositionsAffichees = false;
+        validationFaite = false;
+        document.getElementById('question').textContent = data.texte;
+        document.getElementById('propositions').innerHTML = "";
+      }
+
+      // Affichage des propositions
+      if (data.action === 'showPropositions' && currentQuestion) {
+        afficherPropositions(currentQuestion);
+        propositionsAffichees = true;
+        validationFaite = false;
+      }
+
+      // Validation
+      if (data.action === 'valider' && currentQuestion && propositionsAffichees) {
+        validerPropositions(currentQuestion);
+        validationFaite = true;
+      }
     });
+
+    function afficherPropositions(question) {
+      const propDiv = document.getElementById('propositions');
+      propDiv.innerHTML = "";
+      question.propositions.forEach((p, idx) => {
+        const el = document.createElement('div');
+        el.className = "proposition";
+        el.textContent = p;
+        propDiv.appendChild(el);
+      });
+    }
+
+    function validerPropositions(question) {
+      const propDiv = document.getElementById('propositions');
+      [...propDiv.children].forEach((el, idx) => {
+        if (idx === question.bonneReponse) {
+          el.classList.add('bonne');
+        }
+      });
+    }
   </script>
 </body>
 </html>
-  

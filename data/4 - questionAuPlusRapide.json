@@ -1,4 +1,7 @@
 [
-  { "id": 1, "texte": "Première question rapide?" },
-  { "id": 2, "texte": "Deuxième question !" }
+  {
+    "texte": "Quel est le plus lent ?",
+    "propositions": ["Guépard", "Tortue", "Aigle", "Serpent"],
+    "bonneReponse": 2
+  }
 ]

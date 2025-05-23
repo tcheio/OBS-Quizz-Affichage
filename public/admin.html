@@ -39,12 +39,39 @@
       transition: background 0.2s;
     }
     #reset-display:hover { background: #a93226; }
+    #general-controls {
+      text-align: center;
+      margin-top: 25px;
+      display: none;
+    }
+    #show-propositions, #validate {
+      margin: 10px;
+      padding: 12px 28px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 8px #0008;
+      background: #27ae60;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    #show-propositions:hover, #validate:hover { background: #145a32; }
+    #validate {
+      background: #f1c40f;
+      color: #222;
+    }
+    #validate:hover { background: #b7950b; }
   </style>
 </head>
 <body>
   <h2 style="text-align:center;">Envoyer une question (par catégorie) sur OBS</h2>
   <div id="categories"></div>
   <div id="question-preview"></div>
+  <div id="general-controls">
+    <button id="show-propositions">Afficher les propositions</button>
+    <button id="validate">Valider</button>
+  </div>
   <button id="reset-display">Reset affichage OBS</button>
   <script src="script.js"></script>
   <script>
@@ -58,12 +85,23 @@
       '7 - questionAuPlusLoin',
       '8 - questionFinale'
     ];
+    // Ici, on liste les catégories qui ont des propositions à afficher
+    const categoriesAvecPropositions = [
+      "1 - question5Questions",
+      "2 - questionGenerale",
+      "4 - questionAuPlusRapide"
+    ];
+
     const container = document.getElementById('categories');
     const preview = document.getElementById('question-preview');
+    const generalControls = document.getElementById('general-controls');
+    const btnShowProps = document.getElementById('show-propositions');
+    const btnValidate = document.getElementById('validate');
+    let lastQuestionData = null;
+    let lastCategory = null;
 
     categories.forEach(cat => {
       const btn = document.createElement('button');
-      // Mise en forme du nom pour affichage plus lisible
       btn.textContent = cat.replace(/^.*?- /, '').replace('question', '').replace(/([A-Z])/g, ' $1').trim();
       btn.className = "cat-btn";
       btn.onclick = () => {
@@ -73,18 +111,50 @@
             if (data.finished) {
               preview.textContent = "Plus de question disponible dans cette catégorie !";
               sendText("Plus de question disponible dans cette catégorie !");
+              generalControls.style.display = "none";
+              lastQuestionData = null;
             } else if (data && data.question && data.question.texte) {
-              sendText(data.question.texte);
               preview.textContent = data.question.texte;
+              // Cas des catégories avec propositions
+              if (
+                categoriesAvecPropositions.includes(cat) &&
+                Array.isArray(data.question.propositions) &&
+                typeof data.question.bonneReponse === "number"
+              ) {
+                lastQuestionData = data.question;
+                lastCategory = cat;
+                sendText(JSON.stringify(data.question)); // On envoie tout le JSON
+                generalControls.style.display = "block";
+              } else {
+                sendText(data.question.texte);
+                generalControls.style.display = "none";
+                lastQuestionData = null;
+                lastCategory = null;
+              }
             }
           });
       };
       container.appendChild(btn);
     });
 
+    btnShowProps.onclick = () => {
+      if (lastQuestionData) {
+        sendText(JSON.stringify({ action: 'showPropositions' }));
+      }
+    };
+
+    btnValidate.onclick = () => {
+      if (lastQuestionData) {
+        sendText(JSON.stringify({ action: 'valider' }));
+      }
+    };
+
     document.getElementById('reset-display').onclick = () => {
-      sendText("");         // Vide l'affichage OBS
-      preview.textContent = "";  // Vide l'affichage admin
+      sendText("");
+      preview.textContent = "";
+      generalControls.style.display = "none";
+      lastQuestionData = null;
+      lastCategory = null;
     };
   </script>
 </body>
