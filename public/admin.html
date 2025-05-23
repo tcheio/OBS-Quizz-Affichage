@@ -2,58 +2,90 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Admin - Envoi texte OBS</title>
+  <title>Admin - Choix Catégorie Question</title>
   <style>
     body { font-family: Arial, sans-serif; background: #222; color: #eee; }
-    button {
-      display: block;
-      margin: 30px auto;
+    .cat-btn {
+      margin: 10px;
       padding: 15px 32px;
-      font-size: 20px;
+      font-size: 1.1em;
       background: #3366ff;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 1px 1px 8px #0008;
+      transition: background 0.2s;
     }
-    button:hover { background: #1c41aa; }
+    .cat-btn:hover { background: #1c41aa; }
     #question-preview {
       text-align: center;
       margin-top: 30px;
-      font-size: 1.4em;
-      min-height: 2em;
+      font-size: 1.3em;
       color: #98ffb1;
+      min-height: 2em;
     }
+    #reset-display {
+      margin: 30px auto 0 auto;
+      padding: 15px 32px;
+      display: block;
+      font-size: 1.1em;
+      background: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 8px #0008;
+      transition: background 0.2s;
+    }
+    #reset-display:hover { background: #a93226; }
   </style>
 </head>
 <body>
-  <h2 style="text-align:center;">Administrateur – Envoyer une question aléatoire sur OBS</h2>
-  <button id="send-random">Afficher une question aléatoire sur OBS</button>
+  <h2 style="text-align:center;">Envoyer une question (par catégorie) sur OBS</h2>
+  <div id="categories"></div>
   <div id="question-preview"></div>
-
+  <button id="reset-display">Reset affichage OBS</button>
   <script src="script.js"></script>
   <script>
-    const btn = document.getElementById('send-random');
+    const categories = [
+      '1 - question5Questions',
+      '2 - questionGenerale',
+      '3 - questionThématique',
+      '4 - questionAuPlusRapide',
+      '5 - questionIdentification',
+      '6 - questionClassement',
+      '7 - questionAuPlusLoin',
+      '8 - questionFinale'
+    ];
+    const container = document.getElementById('categories');
     const preview = document.getElementById('question-preview');
 
-    btn.addEventListener('click', () => {
-    fetch('/api/question/next')
-      .then(response => response.json())
-      .then(data => {
-        if (data.finished) {
-          preview.textContent = "Plus de question disponible !";
-          sendText("Plus de question disponible !");
-        } else if (data && data.question && data.question.texte) {
-          sendText(data.question.texte);
-          preview.textContent = data.question.texte;
-        }
-      })
-      .catch(err => {
-        preview.textContent = "Erreur lors de la récupération.";
-        console.error(err);
-      });
-  });
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      // Mise en forme du nom pour affichage plus lisible
+      btn.textContent = cat.replace(/^.*?- /, '').replace('question', '').replace(/([A-Z])/g, ' $1').trim();
+      btn.className = "cat-btn";
+      btn.onclick = () => {
+        fetch('/api/question/next/' + encodeURIComponent(cat))
+          .then(r => r.json())
+          .then(data => {
+            if (data.finished) {
+              preview.textContent = "Plus de question disponible dans cette catégorie !";
+              sendText("Plus de question disponible dans cette catégorie !");
+            } else if (data && data.question && data.question.texte) {
+              sendText(data.question.texte);
+              preview.textContent = data.question.texte;
+            }
+          });
+      };
+      container.appendChild(btn);
+    });
+
+    document.getElementById('reset-display').onclick = () => {
+      sendText("");         // Vide l'affichage OBS
+      preview.textContent = "";  // Vide l'affichage admin
+    };
   </script>
 </body>
 </html>
