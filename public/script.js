@@ -22,15 +22,24 @@ function sendText(text) {
 
 function receiveText(callback) {
   socket.addEventListener('message', (event) => {
-    // Si c'est un Blob, on le transforme en texte
     if (event.data instanceof Blob) {
+      // Cas très rare mais possible (si serveur envoie du binaire)
       event.data.text().then(txt => {
         callback(txt);
-        console.log('Blob transformé en texte :', txt);
+        console.log('Message WebSocket (Blob transformé):', txt);
       });
-    } else {
+    } else if (typeof event.data === 'string') {
       callback(event.data);
-      console.log('Message reçu sur OBS :', event.data, 'Type:', typeof event.data);
+      console.log('Message WebSocket (texte):', event.data);
+    } else {
+      // Sécurité ultime (exemple: ArrayBuffer etc)
+      try {
+        const str = String(event.data);
+        callback(str);
+        console.log('Message WebSocket (converted):', str);
+      } catch(e) {
+        console.error('Type de data WebSocket inattendu:', event.data);
+      }
     }
   });
 }
