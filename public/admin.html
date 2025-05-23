@@ -38,13 +38,22 @@
     const preview = document.getElementById('question-preview');
 
     btn.addEventListener('click', () => {
-      fetch('/api/question/random')
+    fetch('/api/question/next')
       .then(response => response.json())
       .then(data => {
-      sendText(data.question.texte); // C'est bien du texte pur
-      preview.textContent = data.question.texte;
+        if (data.finished) {
+          preview.textContent = "Plus de question disponible !";
+          sendText("Plus de question disponible !");
+        } else if (data && data.question && data.question.texte) {
+          sendText(data.question.texte);
+          preview.textContent = data.question.texte;
+        }
+      })
+      .catch(err => {
+        preview.textContent = "Erreur lors de la récupération.";
+        console.error(err);
       });
-    });
+  });
   </script>
 </body>
 </html>
