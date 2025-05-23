@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Source OBS</title>
+  <style>
+    body {
+      background-color: transparent;
+      color: #fff;
+      font-size: 48px;
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+      text-shadow: 2px 2px 4px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="display">En attente du texte...</div>
+
+  <script src="script.js"></script>
+  <script>
+    receiveText((message) => {
+      document.getElementById('display').textContent = message;
+      // Pour debug : affiche aussi dans la console le type de message
+      console.log('Message reçu sur OBS :', message, 'Type:', typeof message);
+    });
+  </script>
+</body>
+</html>
+  

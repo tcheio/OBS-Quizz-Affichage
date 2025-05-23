@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Envoi texte OBS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #222; color: #eee; }
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 15px 32px;
+      font-size: 20px;
+      background: #3366ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 8px #0008;
+    }
+    button:hover { background: #1c41aa; }
+    #question-preview {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.4em;
+      min-height: 2em;
+      color: #98ffb1;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Administrateur – Envoyer une question aléatoire sur OBS</h2>
+  <button id="send-random">Afficher une question aléatoire sur OBS</button>
+  <div id="question-preview"></div>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('send-random');
+    const preview = document.getElementById('question-preview');
+
+    btn.addEventListener('click', () => {
+      fetch('/api/question/random')
+      .then(response => response.json())
+      .then(data => {
+      sendText(data.question.texte); // C'est bien du texte pur
+      preview.textContent = data.question.texte;
+      });
+    });
+  </script>
+</body>
+</html>
