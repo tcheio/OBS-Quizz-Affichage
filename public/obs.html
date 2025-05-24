@@ -176,10 +176,6 @@
   </div>
   <script>
     const socket = new WebSocket('ws://localhost:3000');
-    socket.addEventListener('open', () => {
-      // Connexion WebSocket ouverte
-    });
-
     const quizzContainer = document.getElementById('quizz-container');
     const questionBox = document.getElementById('question-box');
     const answersRow = document.getElementById('answers-row');
@@ -188,6 +184,7 @@
     let currentQuestion = null;
     let thematiqueMode = null;
     let thematiqueIndexes = null;
+    let modeFinale = false;
 
     function resetDisplay() {
       quizzContainer.classList.remove("visible");
@@ -200,6 +197,7 @@
       bonneSeule.style.opacity = 0;
       thematiqueMode = null;
       thematiqueIndexes = null;
+      modeFinale = false;
     }
 
     function receiveText(callback) {
@@ -268,7 +266,27 @@
         return;
       }
 
-      // Affichage question avec propositions
+      // --- 1. Questions finales (question + réponse unique)
+      if (data.texte && data.reponse && !data.propositions) {
+        currentQuestion = data;
+        modeFinale = true;
+        thematiqueMode = null;
+        thematiqueIndexes = null;
+        questionBox.textContent = data.texte;
+        quizzContainer.classList.add("visible");
+        setTimeout(() => questionBox.classList.add("visible"), 70);
+        answersRow.innerHTML = "";
+        answersRow.className = "dynamic-1";
+        bonneSeule.textContent = "";
+        bonneSeule.className = "";
+        bonneSeule.style.visibility = "hidden";
+        bonneSeule.style.opacity = 0;
+        return;
+      } else {
+        modeFinale = false;
+      }
+
+      // --- 2. Affichage question avec propositions
       if (data.texte && Array.isArray(data.propositions)) {
         currentQuestion = data;
         thematiqueMode = null;
@@ -290,7 +308,7 @@
         bonneSeule.style.opacity = 0;
       }
 
-      // --- Mode thématique : Rond (2 choix dont la bonne)
+      // --- 3. Mode thématique : Rond (2 choix dont la bonne)
       if (data.action === 'showRond' && currentQuestion) {
         thematiqueMode = 'rond';
         const idxs = [currentQuestion.bonneReponse];
@@ -300,26 +318,32 @@
         renderPropositions(currentQuestion.propositions, thematiqueIndexes);
         answersRow.className = "dynamic-2";
       }
-
-      // --- Mode thématique : Carré (4 choix)
+      // --- 4. Mode thématique : Carré (4 choix)
       if (data.action === 'showCarre' && currentQuestion) {
         thematiqueMode = 'carre';
         thematiqueIndexes = [0,1,2,3];
         renderPropositions(currentQuestion.propositions, thematiqueIndexes);
         answersRow.className = "dynamic-4";
       }
-
-      // --- Affichage standard des propositions (autres quizz)
+      // --- 5. Affichage standard des propositions (autres quizz)
       if (data.action === 'showPropositions' && currentQuestion && !thematiqueMode) {
         thematiqueIndexes = [0,1,2,3];
         renderPropositions(currentQuestion.propositions, thematiqueIndexes);
         answersRow.className = "dynamic-4";
       }
-
-      // --- Validation
+      // --- 6. Validation
       if (data.action === 'valider' && currentQuestion) {
-        // Mode thématique ou question à choix : aucune proposition affichée
-        if (thematiqueMode === null && answersRow.querySelectorAll('.answer-block.visible').length === 0) {
+        // 6a. Question finale : affiche la réponse seule, verte et centrée
+        if (modeFinale && currentQuestion.reponse) {
+          answersRow.innerHTML = "";
+          answersRow.className = "dynamic-1";
+          bonneSeule.textContent = currentQuestion.reponse;
+          bonneSeule.className = "visible";
+          bonneSeule.style.visibility = "visible";
+          bonneSeule.style.opacity = 1;
+        }
+        // 6b. Mode thématique ou question à choix : aucune proposition affichée
+        else if (thematiqueMode === null && answersRow.querySelectorAll('.answer-block.visible').length === 0 && currentQuestion.propositions) {
           answersRow.innerHTML = "";
           answersRow.className = "dynamic-1";
           bonneSeule.textContent = currentQuestion.propositions[currentQuestion.bonneReponse];
@@ -327,15 +351,15 @@
           bonneSeule.style.visibility = "visible";
           bonneSeule.style.opacity = 1;
         }
-        // Mode classique (propositions affichées), on colorie la bonne parmi 4
-        else if (!thematiqueMode) {
+        // 6c. Mode classique (propositions affichées), on colorie la bonne parmi 4
+        else if (!thematiqueMode && currentQuestion.propositions) {
           const blocks = answersRow.querySelectorAll('.answer-block');
           blocks.forEach((block, idx) => {
             block.classList.toggle('bonne', idx === currentQuestion.bonneReponse);
           });
         }
-        // Mode carré/rond
-        else if (thematiqueMode === 'carre' || thematiqueMode === 'rond') {
+        // 6d. Mode carré/rond
+        else if ((thematiqueMode === 'carre' || thematiqueMode === 'rond') && currentQuestion.propositions) {
           const blocks = answersRow.querySelectorAll('.answer-block');
           thematiqueIndexes.forEach((qi, pos) => {
             blocks[pos].classList.toggle('bonne', qi === currentQuestion.bonneReponse);

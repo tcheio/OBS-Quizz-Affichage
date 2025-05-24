@@ -41,7 +41,6 @@ function receiveText(callback) {
 }
 
 // ----------------------------------------------------------------
-// Met ici tout ton code spécifique à l'admin ci-dessous, par exemple :
 
 document.addEventListener('DOMContentLoaded', () => {
   const categories = [
@@ -60,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "4 - questionAuPlusRapide"
   ];
   const thematiqueCategory = "3 - questionThématique";
+  const finaleCategory = "8 - questionFinale";
 
   const container = document.getElementById('categories');
   const preview = document.getElementById('question-preview');
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lastQuestionData = null;
           } else if (data && data.question && data.question.texte) {
             preview.textContent = data.question.texte;
+            // Quiz à propositions classiques
             if (
               categoriesAvecPropositions.includes(cat) &&
               Array.isArray(data.question.propositions) &&
@@ -99,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
               generalControls.style.display = "block";
               thematiqueControls.style.display = "none";
             }
+            // Quiz thématique (affiche les boutons spéciaux)
             else if (cat === thematiqueCategory &&
                   Array.isArray(data.question.propositions) &&
                   typeof data.question.bonneReponse === "number") {
@@ -107,7 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
               sendText(JSON.stringify(data.question));
               generalControls.style.display = "block";
               thematiqueControls.style.display = "block";
-            } else {
+            }
+            // Quiz finale : juste question + réponse (valider)
+            else if (cat === finaleCategory && data.question && data.question.reponse) {
+              lastQuestionData = data.question;
+              lastCategory = cat;
+              sendText(JSON.stringify(data.question));
+              generalControls.style.display = "block";
+              thematiqueControls.style.display = "none";
+            }
+            // Sinon, question simple sans option
+            else {
               sendText(data.question.texte);
               generalControls.style.display = "none";
               thematiqueControls.style.display = "none";
