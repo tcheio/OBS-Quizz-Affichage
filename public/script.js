@@ -56,7 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoriesAvecPropositions = [
     "1 - question5Questions",
     "2 - questionGenerale",
-    "4 - questionAuPlusRapide"
+    "4 - questionAuPlusRapide",
+    "6 - questionClassement",
+    "7 - questionAuPlusLoin"
+
   ];
   const thematiqueCategory = "3 - questionThématique";
   const finaleCategory = "8 - questionFinale";

@@ -1,10 +1,27 @@
 [
   {
-  "texte": "Quel est le plus grand désert du monde ?",
-  "reponse": "L’Antarctique"
+    "texte": "Quel pays a inventé les sushis ?",
+    "propositions": ["Japon", "Chine", "Corée du Sud", "Thaïlande"],
+    "bonneReponse": 1
   },
   {
-  "texte": "Quel est le plus grand désert du monde2 ?",
-  "reponse": "L’Antarctique"
+    "texte": "Quelle est la couleur du rubis ?",
+    "propositions": ["Vert", "Rouge", "Bleu", "Jaune"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Qui a peint La Joconde ?",
+    "propositions": ["Léonard de Vinci", "Michel-Ange", "Raphaël", "Picasso"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle planète est la plus proche du soleil ?",
+    "propositions": ["Vénus", "Mercure", "Terre", "Mars"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le plus grand océan du monde ?",
+    "propositions": ["Océan Atlantique", "Océan Indien", "Océan Pacifique", "Océan Arctique"],
+    "bonneReponse": 2
   }
 ]
