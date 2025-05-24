@@ -21,9 +21,17 @@
       display: none;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 100px;
       z-index: 10;
       pointer-events: none;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s cubic-bezier(.46,1.48,.46,1), transform 0.7s cubic-bezier(.46,1.48,.46,1);
+    }
+    #quizz-container.visible {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
     }
     #question-box {
       width: 1680px;
@@ -43,22 +51,32 @@
       box-sizing: border-box;
       overflow: hidden;
       word-break: break-word;
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+      transition: opacity 0.7s cubic-bezier(.46,1.48,.46,1), transform 0.8s cubic-bezier(.46,1.48,.46,1);
+    }
+    #question-box.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 0.10s;
     }
     #answers-row {
       width: 100%;
-      display: flex;           /* Toujours en flex */
+      display: flex;
       justify-content: center;
       gap: 38px;
-      min-height: 88px;        /* Réserve l'espace, même caché */
+      min-height: 88px;
       transition: min-height 0.3s;
+      align-items: flex-start;
+      position: relative;
     }
     .answer-block {
       width: 380px;
+      max-width: 480px;
       height: 76px;
       background: #21042b;
       border: 5px solid #d500f9;
       border-radius: 12px;
-      margin-bottom: 0;
       display: flex;
       align-items: center;
       font-size: 1.5em;
@@ -66,16 +84,21 @@
       color: #fff;
       position: relative;
       box-sizing: border-box;
-      transition: background 0.3s, color 0.3s, border 0.3s;
+      transition:
+        background 0.3s, color 0.3s, border 0.3s,
+        opacity 0.6s cubic-bezier(.46,1.48,.46,1),
+        transform 0.7s cubic-bezier(.46,1.48,.46,1),
+        visibility 0.3s;
       text-shadow: 2px 2px 6px #000, 0 0 6px #d0f;
       justify-content: flex-start;
-      visibility: hidden; /* <-- Invisible tant qu'on n'affiche pas les propositions */
-      opacity: 0.15;      /* Juste pour effet, tu peux mettre 0 si tu veux totalement transparent */
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
     }
     .answer-block.visible {
       visibility: visible;
       opacity: 1;
-      transition: opacity 0.3s, visibility 0s;
+      transform: translateY(0) scale(1);
     }
     .answer-block.bonne {
       background: #2ecc40 !important;
@@ -102,41 +125,81 @@
       text-align: left;
       padding-right: 10px;
     }
+    /* Centrage dynamique si 2 ou 4 réponses */
+    #answers-row.dynamic-2 { justify-content: center; gap: 120px;}
+    #answers-row.dynamic-4 { justify-content: center; gap: 38px;}
+    /* Bonne réponse seule : centrée dans la row */
+    #bonne-seule {
+      min-width: 380px;
+      max-width: 640px;
+      height: 80px;
+      background: #2ecc40;
+      color: #222;
+      border: 6px solid #27ae60;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0f0c;
+      text-align: center;
+      text-shadow: none;
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, 0) scale(0.98);
+      visibility: hidden;
+      opacity: 0;
+      z-index: 3;
+      transition: opacity 0.7s cubic-bezier(.46,1.48,.46,1), visibility 0.6s, transform 0.7s cubic-bezier(.46,1.48,.46,1);
+    }
+    #bonne-seule.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0) scale(1.01);
+    }
     @media (max-width: 1800px) {
       #quizz-container, #answers-row, #question-box {
         width: 96vw;
         min-width: 600px;
       }
-      .answer-block { width: 46vw; min-width: 200px; }
+      .answer-block { width: 40vw; min-width: 180px; }
     }
   </style>
 </head>
 <body>
   <div id="quizz-container">
     <div id="question-box"></div>
-    <div id="answers-row">
-      <div class="answer-block" id="answerA"><span class="answer-label">A.</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="answerC"><span class="answer-label">C.</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="answerB"><span class="answer-label">B.</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="answerD"><span class="answer-label">D.</span><span class="answer-text"></span></div>
-    </div>
+    <div id="answers-row"></div>
+    <div id="bonne-seule"></div>
   </div>
   <script>
     const socket = new WebSocket('ws://localhost:3000');
+    socket.addEventListener('open', () => {
+      // Connexion WebSocket ouverte
+    });
+
     const quizzContainer = document.getElementById('quizz-container');
     const questionBox = document.getElementById('question-box');
     const answersRow = document.getElementById('answers-row');
-    const answerOrder = ["A", "B", "C", "D"];
+    const bonneSeule = document.getElementById('bonne-seule');
+    const letters = ["A", "B", "C", "D"];
     let currentQuestion = null;
+    let thematiqueMode = null;
+    let thematiqueIndexes = null;
 
     function resetDisplay() {
-      quizzContainer.style.display = "none";
+      quizzContainer.classList.remove("visible");
       questionBox.textContent = "";
-      answerOrder.forEach(letter => {
-        const block = document.getElementById('answer' + letter);
-        block.classList.remove('bonne', 'visible');
-        block.querySelector('.answer-text').textContent = "";
-      });
+      questionBox.classList.remove("visible");
+      answersRow.innerHTML = "";
+      bonneSeule.textContent = "";
+      bonneSeule.className = "";
+      bonneSeule.style.visibility = "hidden";
+      bonneSeule.style.opacity = 0;
+      thematiqueMode = null;
+      thematiqueIndexes = null;
     }
 
     function receiveText(callback) {
@@ -155,6 +218,41 @@
       });
     }
 
+    function shuffle(array) {
+      let arr = array.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function renderPropositions(propositions, indexes, bonneIndex) {
+      answersRow.innerHTML = "";
+      answersRow.className = "dynamic-" + indexes.length;
+      bonneSeule.textContent = "";
+      bonneSeule.className = "";
+      bonneSeule.style.visibility = "hidden";
+      bonneSeule.style.opacity = 0;
+      indexes.forEach((i, idx) => {
+        const block = document.createElement('div');
+        block.className = "answer-block";
+        if (typeof bonneIndex === "number" && i === bonneIndex && thematiqueMode !== null) {
+          block.classList.add('bonne');
+        }
+        const label = document.createElement('span');
+        label.className = "answer-label";
+        label.textContent = letters[idx] + ".";
+        const txt = document.createElement('span');
+        txt.className = "answer-text";
+        txt.textContent = propositions[i];
+        block.appendChild(label);
+        block.appendChild(txt);
+        answersRow.appendChild(block);
+        setTimeout(() => { block.classList.add('visible'); }, 90 * idx + 100);
+      });
+    }
+
     receiveText((msg) => {
       if (!msg || msg.trim() === "") {
         resetDisplay();
@@ -165,41 +263,84 @@
       try { data = JSON.parse(msg); }
       catch (e) {
         questionBox.textContent = msg;
-        quizzContainer.style.display = msg.trim() !== "" ? "flex" : "none";
-        answerOrder.forEach(letter => {
-          const block = document.getElementById('answer' + letter);
-          block.classList.remove('bonne', 'visible');
-          block.querySelector('.answer-text').textContent = "";
-        });
-        currentQuestion = null;
+        quizzContainer.classList[msg.trim() !== "" ? "add" : "remove"]("visible");
+        resetDisplay();
         return;
       }
-      // Quand une question avec propositions arrive : affiche la question, mais cache les réponses
+
+      // Affichage question avec propositions
       if (data.texte && Array.isArray(data.propositions)) {
         currentQuestion = data;
+        thematiqueMode = null;
+        thematiqueIndexes = null;
         questionBox.textContent = data.texte;
-        quizzContainer.style.display = "flex";
-        answerOrder.forEach(letter => {
-          const block = document.getElementById('answer' + letter);
-          block.classList.remove('bonne', 'visible');
-          block.querySelector('.answer-text').textContent = "";
-        });
+        quizzContainer.classList.add("visible");
+        setTimeout(() => questionBox.classList.add("visible"), 70);
+        answersRow.innerHTML = "";
+        answersRow.className = "dynamic-4";
+        for (let i = 0; i < 4; i++) {
+          const block = document.createElement('div');
+          block.className = "answer-block";
+          block.innerHTML = `<span class="answer-label">${letters[i]}.</span><span class="answer-text"></span>`;
+          answersRow.appendChild(block);
+        }
+        bonneSeule.textContent = "";
+        bonneSeule.className = "";
+        bonneSeule.style.visibility = "hidden";
+        bonneSeule.style.opacity = 0;
       }
-      // Afficher les propositions sur bouton côté admin
-      if (data.action === 'showPropositions' && currentQuestion) {
-        answerOrder.forEach((letter, idx) => {
-          const block = document.getElementById('answer' + letter);
-          const txt = currentQuestion.propositions[idx] ?? "";
-          block.querySelector('.answer-text').textContent = txt;
-          block.classList.add('visible');
-        });
+
+      // --- Mode thématique : Rond (2 choix dont la bonne)
+      if (data.action === 'showRond' && currentQuestion) {
+        thematiqueMode = 'rond';
+        const idxs = [currentQuestion.bonneReponse];
+        const bads = shuffle([0,1,2,3].filter(i => i !== currentQuestion.bonneReponse));
+        idxs.push(bads[0]);
+        thematiqueIndexes = shuffle(idxs);
+        renderPropositions(currentQuestion.propositions, thematiqueIndexes);
+        answersRow.className = "dynamic-2";
       }
-      // Validation
-      if (data.action === 'valider' && currentQuestion && Array.isArray(currentQuestion.propositions)) {
-        answerOrder.forEach((letter, idx) => {
-          const block = document.getElementById('answer' + letter);
-          block.classList.toggle('bonne', idx === currentQuestion.bonneReponse);
-        });
+
+      // --- Mode thématique : Carré (4 choix)
+      if (data.action === 'showCarre' && currentQuestion) {
+        thematiqueMode = 'carre';
+        thematiqueIndexes = [0,1,2,3];
+        renderPropositions(currentQuestion.propositions, thematiqueIndexes);
+        answersRow.className = "dynamic-4";
+      }
+
+      // --- Affichage standard des propositions (autres quizz)
+      if (data.action === 'showPropositions' && currentQuestion && !thematiqueMode) {
+        thematiqueIndexes = [0,1,2,3];
+        renderPropositions(currentQuestion.propositions, thematiqueIndexes);
+        answersRow.className = "dynamic-4";
+      }
+
+      // --- Validation
+      if (data.action === 'valider' && currentQuestion) {
+        // Mode thématique ou question à choix : aucune proposition affichée
+        if (thematiqueMode === null && answersRow.querySelectorAll('.answer-block.visible').length === 0) {
+          answersRow.innerHTML = "";
+          answersRow.className = "dynamic-1";
+          bonneSeule.textContent = currentQuestion.propositions[currentQuestion.bonneReponse];
+          bonneSeule.className = "visible";
+          bonneSeule.style.visibility = "visible";
+          bonneSeule.style.opacity = 1;
+        }
+        // Mode classique (propositions affichées), on colorie la bonne parmi 4
+        else if (!thematiqueMode) {
+          const blocks = answersRow.querySelectorAll('.answer-block');
+          blocks.forEach((block, idx) => {
+            block.classList.toggle('bonne', idx === currentQuestion.bonneReponse);
+          });
+        }
+        // Mode carré/rond
+        else if (thematiqueMode === 'carre' || thematiqueMode === 'rond') {
+          const blocks = answersRow.querySelectorAll('.answer-block');
+          thematiqueIndexes.forEach((qi, pos) => {
+            blocks[pos].classList.toggle('bonne', qi === currentQuestion.bonneReponse);
+          });
+        }
       }
     });
   </script>
