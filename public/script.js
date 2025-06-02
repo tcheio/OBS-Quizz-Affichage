@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "2 - questionGenerale",
     "4 - questionAuPlusRapide",
     "6 - questionClassement",
-    "7 - questionAuPlusLoin"
+    "7 - questionAuPlusLoin",
+    "8 - questionFinale",
 
   ];
   const thematiqueCategory = "3 - questionThématique";

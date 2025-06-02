@@ -1,22 +1,77 @@
 [
   {
-    "texte": "Quelle est la capitale de l'Allemagne ?",
-    "propositions": [
-      "Berlin",
-      "Munich",
-      "Hambourg",
-      "Francfort"
-    ],
-    "bonneReponse": 0 
+    "texte": "Quel jeu sorti cette année, met en scène un groupe qui part en expédition afin de conjurer la malédiction d’un monolithe faisant disparaître une catégorie de personnes chaque année ?",
+    "propositions": ["Dynasty Warrior Origins", "Clair Obscur", "Ender Magnolia", "Inazuma Eleven Victory Road"],
+    "bonneReponse": 1
   },
   {
-    "texte": "Quel est le plus grand océan du monde ?",
-    "propositions": [
-      "Atlantique",
-      "Arctique",
-      "Pacifique",
-      "Indien"
-    ],
+    "texte": "De quel anime Capsule Monster est-il un dérivé ?",
+    "propositions": ["Pokémon", "Bakugan", "Yu-Gi-Oh!", "Digimon"],
     "bonneReponse": 2
+  },
+  {
+    "texte": "Quel roi de France a été guillotiné pendant la Révolution française ?",
+    "propositions": ["Louis XIII", "Louis XIV", "Louis XV", "Louis XVI"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel dramaturge a écrit Le Cid ?",
+    "propositions": ["Molière", "Victor Hugo", "Pierre Corneille", "Jean Racine"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Lequel de ces artistes n’a jamais remporté de Victoire de la musique ?",
+    "propositions": ["Angèle", "Jul", "Christine and the Queens", "Orelsan"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel studio a réalisé les animés Your Name et Suzume ?",
+    "propositions": ["Toei Animation", "CoMix Wave Films", "MAPPA", "Kyoto Animation"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle équipe a remporté la Coupe du Monde de football féminin 2019 ?",
+    "propositions": ["États-Unis", "Pays-Bas", "Allemagne", "France"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Lors de la cérémonie des César 2023, quel duo de comédiens a été interrompu par une activiste de la lutte contre le réchauffement climatique lors de leur passage sur scène ?",
+    "propositions": ["Jérôme Commandeur et Valérie Lemercier", "Virginie Efira et Brad Pitt", "Ahmed Sylla et Léa Drucker", "Jamel Debbouze et Monica Bellucci"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Lequel de ses jeux est bien sorti sur Nintendo Switch à l’origine ?",
+    "propositions": ["Ys VIII: Lacrimosa of Dana", "Megaton Musashi W: Wired", "The Great Ace Attorney Chronicles", "Tokyo Mirage Sessions FE Encore"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Parmi ses films, lequel a le moins de suite ?",
+    "propositions": ["Twilight", "Mission Impossible", "Pirates des Caraïbes", "Matrix"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Lequel de ces personnages de manga, ne maîtrise pas le feu comme pouvoir ?",
+    "propositions": ["Akainu", "Roy Mustang", "Kyojuro", "Natsu"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle série a le plus d’épisodes diffusés à la date du 19 mai 2025 ?",
+    "propositions": [
+      "Plus belle la vie",
+      "Les feux de l’amour",
+      "Amour Gloire et Beauté",
+      "Haine et Passions/Les Vertiges de la Passion"
+    ],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Parmi ces acteurs lequel N’A PAS interprété Wolverine toute adaptation confondue?",
+    "propositions": ["Steven Blum", "Mark Hamil", "Troye Sivan", "Russel Crowe"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel créateur de contenu YouTube a été le premier à représenter un pays à l'Eurovision ?",
+    "propositions": ["Lorren (Suède)", "Bilal Hassani (France)", "Daði Freyr (Islande)", "Stefania (Grèce)"],
+    "bonneReponse": 1
   }
 ]
