@@ -1,7 +1,77 @@
 [
   {
-    "texte": "Quel est le plus rapide ?",
-    "propositions": ["Guépard", "Tortue", "Aigle", "Serpent"],
+    "texte": "Quel événement a déclenché la Première Guerre mondiale en 1914 ?",
+    "propositions": ["Le traité de Versailles", "L’attaque de Pearl Harbor", "L’invasion de la Belgique", "L’assassinat de l’archiduc François-Ferdinand"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom du royaume fictif où se déroule la série Game of Thrones ?",
+    "propositions": ["Valyria", "Westeros", "Mordor", "Camelot"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel langage de programmation est souvent utilisé pour créer des pages web interactives côté client ?",
+    "propositions": ["Python", "PHP", "JavaScript", "C++"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel film a remporté l’Oscar du meilleur film en 2020 ?",
+    "propositions": ["Joker", "1917", "Parasite", "Once Upon a Time in Hollywood"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel ministre a été à l’origine de la réforme du lycée qui a notamment introduit Parcoursup en 2018?",
+    "propositions": ["Elizabeth Borne", "Jean Michel Blanquer", "Gabriel Attal", "Amélie Oudéa-Castéra"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Parmi ces jeux, lequel est sorti en dernier ?",
+    "propositions": ["God of War: Ragnarök – 9 novembre 2022", "Call of Duty: Modern Warfare II – 28 octobre 2022", "Bayonetta 3 – 28 octobre 2022", "Sonic Frontiers – 8 novembre 2022"],
     "bonneReponse": 0
+  },
+  {
+    "texte": "Quel pays a organisé les Jeux Olympique d’été en 2004 ?",
+    "propositions": ["Etats Unis", "Italie", "Grèce", "Chine"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pays a été le premier a autorisé le mariage gay ?",
+    "propositions": ["France", "Espagne", "Pays Bas", "Angleterre"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle équipe d’esport était d’abord connue sous le nom SBG ?",
+    "propositions": ["Vitality", "Gentle Mates", "Aegis", "Team BDS"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Lequel de ces dessins animés a été réalisé par une société française ?",
+    "propositions": ["Les aventures de Tintin", "Lolirock", "Martin Mystère", "Franklin"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Parmi ses types, lequel est celui qui a le moins de faiblesse ?",
+    "propositions": ["Tenêbre", "Psy", "Fée", "Vol"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans laquelle de ses œuvres, Ellen Pompeo qui joue Meredith Grey dans la série Grey's Anatomy, n’a t-elle pas joué ?",
+    "propositions": ["Daredevill 2003", "Good American Family", "Friends", "The resident"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Lequel de ses hommes politiques a été le 5ème président de la 5ème république ?",
+    "propositions": ["Jacque Chirac", "Nicola Sarkozy", "Valéry Giscard d'Estaing", "François Mitterang"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel serveur Minecraft a fermé ses portes en premier ?",
+    "propositions": ["Golden UHC", "Funcraft", "OneCube", "Erisium"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Laquelle de ses associations n’a jamais été bénéficiaire du Zevent ?",
+    "propositions": ["LPO", "Medecins Sans frontière", "Zéro Waste France", "Cop1"],
+    "bonneReponse": 2
   }
 ]

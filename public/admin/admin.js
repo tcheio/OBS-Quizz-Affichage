@@ -3,7 +3,6 @@ const socket = new WebSocket('ws://localhost:3000');
 socket.addEventListener('open', () => {
   console.log('Connecté au serveur WebSocket');
 });
-
 socket.addEventListener('error', (error) => {
   console.error('Erreur WebSocket:', error);
 });
@@ -21,18 +20,12 @@ function sendText(text) {
 function receiveText(callback) {
   socket.addEventListener('message', (event) => {
     if (event.data instanceof Blob) {
-      event.data.text().then(txt => {
-        callback(txt);
-        console.log('Message WebSocket (Blob transformé):', txt);
-      });
+      event.data.text().then(txt => callback(txt));
     } else if (typeof event.data === 'string') {
       callback(event.data);
-      console.log('Message WebSocket (texte):', event.data);
     } else {
       try {
-        const str = String(event.data);
-        callback(str);
-        console.log('Message WebSocket (converted):', str);
+        callback(String(event.data));
       } catch(e) {
         console.error('Type de data WebSocket inattendu:', event.data);
       }
@@ -58,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "2 - questionGenerale",
     "4 - questionAuPlusRapide",
     "6 - questionClassement",
-    "7 - questionAuPlusLoin"
-
+    "7 - questionAuPlusLoin",
+    "8 - questionFinale"
   ];
   const thematiqueCategory = "3 - questionThématique";
   const finaleCategory = "8 - questionFinale";
@@ -75,6 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastQuestionData = null;
   let lastCategory = null;
 
+  function updateControlsDisplay(cat) {
+    if (cat === thematiqueCategory) {
+      generalControls.style.display = "block";
+      thematiqueControls.style.display = "block";
+      btnShowProps.style.display = "none";
+    }
+    else if (categoriesAvecPropositions.includes(cat)) {
+      generalControls.style.display = "block";
+      thematiqueControls.style.display = "none";
+      btnShowProps.style.display = "inline-block";
+    }
+    else if (cat === finaleCategory) {
+      generalControls.style.display = "block";
+      thematiqueControls.style.display = "none";
+      btnShowProps.style.display = "none";
+    }
+    else {
+      generalControls.style.display = "none";
+      thematiqueControls.style.display = "none";
+      btnShowProps.style.display = "none";
+    }
+  }
+
   categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.textContent = cat.replace(/^.*?- /, '').replace('question', '').replace(/([A-Z])/g, ' $1').trim();
@@ -86,49 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.finished) {
             preview.textContent = "Plus de question disponible dans cette catégorie !";
             sendText("Plus de question disponible dans cette catégorie !");
-            generalControls.style.display = "none";
-            thematiqueControls.style.display = "none";
+            updateControlsDisplay(null);
             lastQuestionData = null;
           } else if (data && data.question && data.question.texte) {
             preview.textContent = data.question.texte;
-            // Quiz à propositions classiques
-            if (
-              categoriesAvecPropositions.includes(cat) &&
-              Array.isArray(data.question.propositions) &&
-              typeof data.question.bonneReponse === "number"
-            ) {
-              lastQuestionData = data.question;
-              lastCategory = cat;
-              sendText(JSON.stringify(data.question));
-              generalControls.style.display = "block";
-              thematiqueControls.style.display = "none";
-            }
-            // Quiz thématique (affiche les boutons spéciaux)
-            else if (cat === thematiqueCategory &&
-                  Array.isArray(data.question.propositions) &&
-                  typeof data.question.bonneReponse === "number") {
-              lastQuestionData = data.question;
-              lastCategory = cat;
-              sendText(JSON.stringify(data.question));
-              generalControls.style.display = "block";
-              thematiqueControls.style.display = "block";
-            }
-            // Quiz finale : juste question + réponse (valider)
-            else if (cat === finaleCategory && data.question && data.question.reponse) {
-              lastQuestionData = data.question;
-              lastCategory = cat;
-              sendText(JSON.stringify(data.question));
-              generalControls.style.display = "block";
-              thematiqueControls.style.display = "none";
-            }
-            // Sinon, question simple sans option
-            else {
-              sendText(data.question.texte);
-              generalControls.style.display = "none";
-              thematiqueControls.style.display = "none";
-              lastQuestionData = null;
-              lastCategory = null;
-            }
+            lastQuestionData = data.question;
+            lastCategory = cat;
+            sendText(JSON.stringify(data.question));
+            updateControlsDisplay(cat);
           }
         });
     };
@@ -159,9 +140,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnReset) btnReset.onclick = () => {
     sendText("");
     preview.textContent = "";
-    generalControls.style.display = "none";
-    if (thematiqueControls) thematiqueControls.style.display = "none";
+    updateControlsDisplay(null);
     lastQuestionData = null;
     lastCategory = null;
+  };
+
+  // Gestion des liens en bas de page
+  const obsUrl = `${location.origin}/obs/obs.html`;
+  document.getElementById('copy-obs-link').onclick = function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(obsUrl).then(() => {
+      this.textContent = "Lien copié !";
+      setTimeout(() => this.textContent = "Copier le lien OBS", 1300);
+    });
   };
 });

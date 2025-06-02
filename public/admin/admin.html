@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Choix Catégorie Question</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <h2 style="text-align:center;">Envoyer une question (par catégorie) sur OBS</h2>
+  <div id="categories"></div>
+  <div id="question-preview"></div>
+  <div id="general-controls">
+    <button id="show-propositions">Afficher les propositions</button>
+    <button id="validate">Valider</button>
+  </div>
+  <div id="thematique-controls">
+    <button id="show-rond">Rond (2 choix)</button>
+    <button id="show-carre">Carré (4 choix)</button>
+  </div>
+  <button id="reset-display">Reset affichage OBS</button>
+  <div id="bottom-links">
+    <a href="/obs/obs.html" target="_blank">Ouvrir OBS Overlay</a>
+    <a href="#" id="copy-obs-link">Copier le lien OBS</a>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

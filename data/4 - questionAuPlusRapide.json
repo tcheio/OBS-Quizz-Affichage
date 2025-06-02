@@ -1,7 +1,72 @@
 [
   {
-    "texte": "Quel est le plus lent ?",
-    "propositions": ["Guépard", "Tortue", "Aigle", "Serpent"],
+    "texte": "Quel est l’orthographe exact du mot C#########",
+    "propositions": ["Chariaut", "Charriot", "Chariot", "Charriau"],
     "bonneReponse": 2
+  },
+  {
+    "texte": "Quel YouTubeur a récemment sorti un jeu de société qui a fait l’objet d’un rappel produit au vu d’un problème de classification (=problème d’âge mini)",
+    "propositions": ["Squeezie", "Michou", "Cyprien", "Amine"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Lequel de ses réseaux sociaux n’appartient pas au groupe Meta, la société mère de Facebook",
+    "propositions": ["Snapchat", "Whatsapp", "Instagram", "Threads"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "En quelle année, le premier Macintosh est-il sorti",
+    "propositions": ["1983", "1984", "1985", "1986"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Pour lequel de ses animé, la chanteuse EVE n’a t’elle jamais interprété d’opening",
+    "propositions": ["MHA", "JJK", "Bubble", "Trigun Stampede"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Lequel de ses jeux vidéos a remporté le plus de récompense au Game Award en une édition",
+    "propositions": ["Astrobot", "God of War: Ragnarock", "The Last Of Us", "Death Stranding"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "De quel mouvement artistique, Claude Monet était-il un artiste clés",
+    "propositions": ["Impressionnisme", "Cubisme", "Romantisme", "Réalisme"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Laquelle de ses séries DC ne fait pas partie de L’arrowverse (Univers de toutes les séries créer par la CW)",
+    "propositions": ["Black Lightning", "Legend of Tomorrow", "Peacemaker", "Supergirl"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel était le temps moyen d’écran des 18-24 ans en 2024",
+    "propositions": ["4H10", "4H40", "5H", "5H17"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Lequel de ses joueurs de foot qui avait annoncé sa retraite à la fin de la saison 2024, est le gardien titulaire actuel du FC Barcelone",
+    "propositions": ["Wojciech Szczęsny", "Marc-André Ter Stegen", "Diego Kochen", "Iñaki Peña"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Laquelle de ses séries dérivés des Expert, n’existe pas",
+    "propositions": ["Les Experts : Miami", "Les Experts : Manhattan", "Les Experts : Cyber", "Les Experts : Los Angeles"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Donner le nombre de musiques sortie sur Spotify par Pouka à la date du 20 mai 2025 (Album et EP Seulement)",
+    "propositions": ["78", "89", "100", "112"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Parmi ces propositions, laquelle correspond à La danse des cavaliers",
+    "propositions": ["Une manoeuvre aux Echecs", "Un rite de passage au Moyen Age", "Une jeu pour enfant", "Un pas de danse"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel a été la première limite de caractères sur un post X anciennement Twitter",
+    "propositions": ["120", "140", "200", "280"],
+    "bonneReponse": 1
   }
 ]

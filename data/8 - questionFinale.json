@@ -1,10 +1,402 @@
 [
   {
-  "texte": "Quel est le plus grand désert du monde ?",
-  "reponse": "L’Antarctique"
+    "texte": "Quel est le 28ème état membre de l’UE ?",
+    "propositions": ["", "", "Croatie", ""],
+    "bonneReponse": 2
   },
   {
-  "texte": "Quel est le plus grand désert du monde2 ?",
-  "reponse": "L’Antarctique"
+    "texte": "Quel réalisateur est connu pour ses films 'Kill Bill' et 'Pulp Fiction' ?",
+    "propositions": ["", "", "Quentin Tarantino", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel groupe a chanté 'Bohemian Rhapsody' ?",
+    "propositions": ["Queen", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle est la spécialité culinaire préférée de Naruto ?",
+    "propositions": ["", "", "", "Rāmen"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel langage est utilisé pour interroger une base de données relationnelle ?",
+    "propositions": ["", "SQL", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel anime met en scène les aventures d'un détective rajeuni physiquement ?",
+    "propositions": ["Détective Conan", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle franchise de jeux vidéo d'horreur met en scène la société Umbrella Corporation ?",
+    "propositions": ["Resident Evil", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel président français a introduit le quinquennat par référendum ?",
+    "propositions": ["Jacques Chirac", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans 'Star Wars', qui est le père de Luke Skywalker ?",
+    "propositions": ["", "", "Dark Vador", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel jeu vidéo combat-on des créatures nommées 'Creepers' ?",
+    "propositions": ["", "Minecraft", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans quel jeu vidéo incarne-t-on Link, héros sauvant la princesse Zelda ?",
+    "propositions": ["The Legend of Zelda", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le nom de famille de Light, le protagoniste de 'Death Note' ?",
+    "propositions": ["", "", "", "Yagami"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quelle est la capitale de l'Australie ?",
+    "propositions": ["", "Canberra", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le nom du monde virtuel dans 'Sword Art Online' ?",
+    "propositions": ["", "", "", "Aincrad"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le plus grand océan du monde ?",
+    "propositions": ["", "", "Océan Pacifique", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le nom du dragon principal de Daenerys dans 'Game of Thrones' ?",
+    "propositions": ["Drogon", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le prénom du personnage principal du film 'Retour vers le futur' ?",
+    "propositions": ["Marty", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel film met en scène des dinosaures ramenés à la vie dans un parc ?",
+    "propositions": ["", "Jurassic Park", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel personnage Marvel possède un bouclier en vibranium ?",
+    "propositions": ["", "", "Captain America", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel continent abrite le plus grand nombre de pays reconnus internationalement ?",
+    "propositions": ["Afrique", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est l'organe principal du système circulatoire ?",
+    "propositions": ["", "", "", "Cœur"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Qui a réalisé le film 'Titanic' ?",
+    "propositions": ["", "James Cameron", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel jeu en ligne oppose deux équipes sur une carte nommée 'Faille de l'invocateur' ?",
+    "propositions": ["League of Legends", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel acteur interprète Indiana Jones ?",
+    "propositions": ["", "Harrison Ford", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel série iconique du minecraft français réuni la coopteam sur une map minecraft à l'effigie de la Lune ?",
+    "propositions": ["Objectif Lune", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans 'My Hero Academia', quel est l'Alter du héros Izuku Midoriya ?",
+    "propositions": ["", "One For All", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Pokémon, qui est l'éternel rival de Sacha Ketchum ?",
+    "propositions": ["", "", "Régis", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans 'SNK', comment appelle-t-on les créatures géantes ?",
+    "propositions": ["Titans", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel acteur incarne John Wick au cinéma ?",
+    "propositions": ["", "", "", "Keanu Reeves"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom de la ville fictive principale de la série GTA V ?",
+    "propositions": ["Los Santos", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle série Netflix adaptation de manga sortie en 2020 présente 2 jeunes téléportés dans un Japon dystopique où ils doivent jouer à des jeux de vie ou de mort ?",
+    "propositions": ["", "", "Alice in Bordeland", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle actrice joue Hermione Granger dans 'Harry Potter' ?",
+    "propositions": ["Emma Watson", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans 'Naruto', quel est le nom du démon-renard scellé en Naruto ?",
+    "propositions": ["", "Kurama", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Qui est l'auteur du manga 'Dragon Ball' ?",
+    "propositions": ["", "", "Akira Toriyama", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel super-héros est originaire de Krypton ?",
+    "propositions": ["Superman", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel pirate au chapeau de paille cherche le One Piece ?",
+    "propositions": ["", "", "Monkey D. Luffy", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel personnage principal est joué par Benedict Cumberbatch dans une série britannique ?",
+    "propositions": ["Sherlock Holmes", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle est la formule chimique de l'eau ?",
+    "propositions": ["", "H₂O", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Combien de planètes composent le système solaire ?",
+    "propositions": ["", "", "", "8"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel désert est le plus grand du monde ?",
+    "propositions": ["", "", "Antarctique", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel film a remporté l'Oscar du meilleur film en 1994 ?",
+    "propositions": ["", "", "", "Forrest Gump"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom du processus par lequel les cellules se divisent ?",
+    "propositions": ["Mitose", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel type de câble est devenu la norme en Europe depuis décembre 2024 ?",
+    "propositions": ["USB Type C", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans quelle série, on suit l’agent John Nolan qui rejoint la police de Los Angeles en tant que plus vieille nouvelle recrue ?",
+    "propositions": ["", "", "The Rookie", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel service de streaming est à l’origine un service de location de DVD ?",
+    "propositions": ["", "", "", "Netflix"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom du créateur original du Loup Garou UHC ?",
+    "propositions": ["Setrox", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel duo iconique jouait les services après-vente des émissions de la chaîne CANAL+ entre 2005 et 2012 ?",
+    "propositions": ["", "Omar Sy et Fred Testot", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Au tennis, quel type de jeu se joue lorsque le score d’un set est de 6 partout ?",
+    "propositions": ["", "", "Tie break ou Jeu décisif", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle partie du corps est observée par un ophtalmologue ?",
+    "propositions": ["Les yeux", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel titre de la saga Mario Kart est sorti le 29 mai 2014 ?",
+    "propositions": ["", "MK 8", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Au Monopoly, on a la gare de Lyon, Montparnasse et du Nord, quelle est la dernière ?",
+    "propositions": ["", "", "Saint Lazare", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Par qui était initialement présentée l’émission 'Qui veut gagner des millions' ?",
+    "propositions": ["", "Jean Pierre Foucault", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Pokémon, comment s’appelle généralement le chemin qui mène à la Ligue Pokémon ?",
+    "propositions": ["Route Victoire", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle entité est en charge des résidences universitaires ?",
+    "propositions": ["", "", "", "CROUS ou CNOUS"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quelle application de communication a fermé ses portes ce mois-ci ?",
+    "propositions": ["", "", "SKYPE", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le nom de l’entreprise de chemin de fer française ?",
+    "propositions": ["", "SNCF", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Lorsque l’on joue au jeu de carte du président, quelle carte est la plus forte ?",
+    "propositions": ["", "", "Le 2", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qu’est-ce que la RGPD ?",
+    "propositions": ["", "Réglementation générale sur la protection des données perso", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel président est à l’origine de la construction d’un mur entre les États-Unis et le Mexique ?",
+    "propositions": ["Trump", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle émission de télévision est une adaptation de Survivor ?",
+    "propositions": ["Koh-Lanta", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le nom du présentateur historique du JT de 13 heures de TF1, ayant pris sa retraite en 2020 ?",
+    "propositions": ["", "", "", "Jean-Pierre Pernaut"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom de la série diffusée sur TF1, se déroulant à Sète ?",
+    "propositions": ["", "", "Demain nous appartient", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel footballeur français a remporté le Ballon d'or en 2022 ?",
+    "propositions": ["Karim Benzema", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel tournoi de tennis se déroule chaque année à Paris sur terre battue ?",
+    "propositions": ["", "Roland-Garros", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "En rugby, quel est le surnom de l'équipe nationale néo-zélandaise ?",
+    "propositions": ["", "", "All Blacks", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel jeu est considéré comme une fusion d’Ark et Pokémon ?",
+    "propositions": ["Pallword", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle série non épisodique nous montre à chaque épisode des prédictions sur les dérives de la technologie ?",
+    "propositions": ["", "", "", "Black Mirror"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Selon l’OMS, quel est le temps minimum d’activité physique par jour ?",
+    "propositions": ["", "", "30 min", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel médicament français a récemment été racheté par un fond américain ?",
+    "propositions": ["", "", "", "Doliprane"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel service de streaming fondé en 2022 s’appuie sur la monétisation plus avantageuse afin de concurrencer Twitch ?",
+    "propositions": ["Kick", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans quelle ville se trouve le Stade de France ?",
+    "propositions": ["", "Saint Denis", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle est la console la plus vendue de Sega ?",
+    "propositions": ["", "", "", "Mega Drive"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le leader de l'hébergeur Cloud dans le monde ?",
+    "propositions": ["", "", "AWS", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel YouTubeur a effectué une préparation d’un an afin de monter l’Everest ?",
+    "propositions": ["", "", "", "Inoxtag"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Qui est le propriétaire du groupe Canal ?",
+    "propositions": ["", "Vincent Bolloré", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "En quelle année YouTube a été racheté par Google ?",
+    "propositions": ["", "", "2006", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quelle ville se situe la banque centrale française ?",
+    "propositions": ["Paris", "", "", ""],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Lorsque l’on compose le 15, on entre en contact avec ?",
+    "propositions": ["", "", "", "SAMU"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel YouTubeur est notamment connu pour ses tournois où il met en confrontation différentes œuvres ?",
+    "propositions": ["", "", "Sofyan", ""],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Sous quel nom la chaîne YouTube de Mcfly et Carlito a initialement été créée ?",
+    "propositions": ["Le Fat Show", "", "", ""],
+    "bonneReponse": 0
   }
 ]

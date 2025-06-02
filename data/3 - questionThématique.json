@@ -1,27 +1,352 @@
 [
   {
-    "texte": "Quel pays a inventé les sushis ?",
-    "propositions": ["Japon", "Chine", "Corée du Sud", "Thaïlande"],
+    "texte": "Persilflow - LA F1",
+    "propositions": ["", "", "", ""],
     "bonneReponse": 1
   },
   {
-    "texte": "Quelle est la couleur du rubis ?",
-    "propositions": ["Vert", "Rouge", "Bleu", "Jaune"],
+    "texte": "Quel pilote britannique a remporté 7 titres de champion du monde en Formule 1 ?",
+    "propositions": ["Michael Schumacher", "Lewis Hamilton", "Sebastian Vettel", "Fernando Alonso"],
     "bonneReponse": 1
   },
   {
-    "texte": "Qui a peint La Joconde ?",
-    "propositions": ["Léonard de Vinci", "Michel-Ange", "Raphaël", "Picasso"],
+    "texte": "Quelle écurie italienne détient le record du plus grand nombre de titres constructeurs en Formule 1 ?",
+    "propositions": ["McLaren", "Red Bull Racing", "Ferrari", "Mercedes"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Combien de types de pneus \"secs\" sont disponibles pour les équipes lors d’un week-end de Grand Prix de Formule 1 (hors pneus pluie/intermédiaires) ?",
+    "propositions": ["3", "4", "5", "2"],
     "bonneReponse": 0
   },
   {
-    "texte": "Quelle planète est la plus proche du soleil ?",
-    "propositions": ["Vénus", "Mercure", "Terre", "Mars"],
+    "texte": "Sur quel circuit de Formule 1 se déroule traditionnellement le Grand Prix de Belgique ?",
+    "propositions": ["Circuit de Silverstone", "Circuit Gilles-Villeneuve", "Circuit de Spa-Francorchamps", "Circuit de Suzuka"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pilote français a remporté sa seule et unique victoire en Formule 1 lors du Grand Prix de Monaco en 1996, sous la pluie, après être parti 14ème ?",
+    "propositions": ["Jean Alesi", "Alain Prost", "Olivier Panis", "Romain Grosjean"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pilote de Formule 1 des années 50 a remporté un championnat du monde à titre posthume après son accident mortel en course ?",
+    "propositions": ["Ayrton Senna", "Jim Clark", "Jochen Rindt", "Gilles Villeneuve"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Roden - Le Jeu vidéo",
+    "propositions": ["", "", "", ""],
     "bonneReponse": 1
   },
   {
-    "texte": "Quel est le plus grand océan du monde ?",
-    "propositions": ["Océan Atlantique", "Océan Indien", "Océan Pacifique", "Océan Arctique"],
+    "texte": "Quel jeu vidéo a popularisé la formule du Battle Royal avant l’arrivée de Fortnite ?",
+    "propositions": ["H1Z1", "APEX LEGEND", "PUBG", "Les Hunger Games"],
     "bonneReponse": 2
+  },
+  {
+    "texte": "Quel jeu PC, sorti en 1993, a été l’un des premiers FPS à proposer du multijoueur local en réseau ?",
+    "propositions": ["Wolfenstein 3D", "DOOM", "Quake", "Duke Nukem 3D"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans The Legend of Zelda: Ocarina of Time, comment s'appelle le peuple vivant dans le village du désert ?",
+    "propositions": ["Sheikah", "Zoras", "Gerudos", "Kokiris"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le premier jeu vidéo de l’histoire considéré comme ayant eu un succès commercial ?",
+    "propositions": ["PONG", "Space Invader", "Pac-Man", "Asteroids"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le premier jeu vidéo développé par FromSoftware, le studio à l'origine d’Elden Ring ?",
+    "propositions": ["Armored Core", "Tenchu: Stealth Assassins", "King's Field", "Demon's Souls"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le vrai nom du créateur de la série Metal Gear ?",
+    "propositions": ["Shinji Mikami", "Hideki Kamiya", "Tetsuya Nomura", "Hideo Kojima"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Verisure - La Géographie",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle est la capitale de L’Estonie ?",
+    "propositions": ["Tallinn", "Narva", "Tartu", "Maardu"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le plus long fleuve d’Afrique ?",
+    "propositions": ["Congo", "Limpopo", "Nil", "Niger"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pays partage une frontière avec la Chine, le Vietnam et la Thaïlande ?",
+    "propositions": ["Cambodge", "Laos", "Malaisie", "Bangladesh"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le pays le plus petit d’Amérique du Sud en superficie ?",
+    "propositions": ["Uruguay", "Guyana", "Équateur", "Suriname"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Lequel de ces pays n’a aucune frontière terrestre ?",
+    "propositions": ["Brunei", "Bahreïn", "Timor oriental", "Qatar"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le point terrestre le plus éloigné de toute mer ou océan (point d’inaccessibilité continental) ?",
+    "propositions": ["Plateau du Tibet", "Désert de Gobi", "Pôle d'inaccessibilité eurasiatique", "Désert du Taklamakan"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Nash - Hoyoverse",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Genshin Impact, quel est le nom du dieu de l’anemo (vent) à Mondstadt ?",
+    "propositions": ["Morax", "Raiden", "Barbatos", "Nahida"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le nom du train utilisé dans Honkai: Star Rail pour voyager entre les mondes ?",
+    "propositions": ["Astral Train", "Stellaron Express", "Voidliner", "Honkai Cruiser"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Honkai Impact 3rd, quel est le véritable nom de Kiana Kaslana lorsqu’elle est possédée par la volonté de la Honkai ?",
+    "propositions": ["Mei Raiden", "Herrscher of the Void", "Seele Vollerei", "Bronya Zaychik"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Combien de nations sont prévues dans Genshin Impact, selon le lore de Teyvat ?",
+    "propositions": ["5", "7", "6", "8"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Honkai: Star Rail, quel personnage est membre de l’Ordre de l’Équilibre de Xianzhou Luofu ?",
+    "propositions": ["Tingyun", "Jing Yuan", "Bailu", "Fu Xuan"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Dans Genshin Impact, quel est le nom complet de l’organisation mystérieuse liée aux Fatui et aux Harbingers ?",
+    "propositions": ["Visione", "Solstice", "Tsaritsa's Hand", "Fatui Harbingers of Snezhnaya"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Euphorie - Resident Evil",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le nom du virus à l’origine de l’épidémie dans Resident Evil ?",
+    "propositions": ["X-Virus", "Nemesis", "T-Virus", "Progenitor"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le prénom du personnage principal de Resident Evil 4 ?",
+    "propositions": ["Chris", "Leon", "Wesker", "Ethan"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le nom de la société responsable de la création du T-Virus ?",
+    "propositions": ["TriCell", "Neo-Umbrella", "Umbrella Corporation", "H.C.F"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans Resident Evil 7, comment s'appelle la famille infectée vivant dans le bayou ?",
+    "propositions": ["les Ashford", "les Valentine", "les Redfield", "les Baker"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel virus est responsable de la mutation de William Birkin dans Resident Evil 2 ?",
+    "propositions": ["T-Virus", "C-Virus", "G-Virus", "Las Plagas"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans Resident Evil Revelations, quel est le nom de l’organisation terroriste à l’origine de l’attaque du Queen Zenobia ?",
+    "propositions": ["Hound Wolf Squad", "Blue Umbrella", "Veltro", "The Connections"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Intengno - La série littéraire 'Les Gardiens des cités perdus'",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le prénom de l'héroïne principale dans Les Gardiens des Cités Perdues ?",
+    "propositions": ["Sophie", "Biana", "Tam", "Linh"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel est le lien de parenté entre Biana et Fitz Vacker ?",
+    "propositions": ["Cousins", "Jumeaux", "Amis d’enfance", "Frère et sœur"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le nom de l’académie où Sophie suit ses cours ?",
+    "propositions": ["Everglen", "Foxfire", "Gildenshine", "Aldalina"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le talent spécial de Tam Song ?",
+    "propositions": ["Empathe", "Télépathe", "Ombremage", "Téléporteur"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le nom de l’organisation secrète opposée au Conseil ?",
+    "propositions": ["Les Invisibles", "L’Énigme", "Le Cygne Noir", "La Garde Obscure"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel personnage secondaire a longtemps été suspecté de faire partie du Cygne Noir avant d’être officiellement confirmé ?",
+    "propositions": ["Wylie Endal", "Mr. Forkle", "Keefe Sencen", "Alvar Vacker"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Pandamiix - League Of Legend (Ce puant)",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel est le nom du champion emblématique qui crie souvent “Demacia !” ?",
+    "propositions": ["Garen", "Darius", "Jarvan IV", "Xin Zhao"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel champion est connu pour son contrôle du vent et ses tornades ?",
+    "propositions": ["Yasuo", "Janna", "Zed", "Kennen"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel duo de champions est littéralement constitué de deux entités en un seul gameplay ?",
+    "propositions": ["Xayah et Rakan", "Yuumi et son allié", "Kayn et Rhaast", "Kindred"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel est le véritable nom de Lissandra, la sorcière de glace dans le lore ?",
+    "propositions": ["Skadi", "Avarosa", "Lissandra", "Son nom véritable n’a jamais été révélé"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel champion de Zaun est lié au clan Duncannon et utilise des toxines dans son gameplay ?",
+    "propositions": ["Twitch", "Singed", "Viktor", "Warwick"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Avant d’être un champion jouable, dans quelle autre fonction a-t-on pu voir Bard dans le lore ?",
+    "propositions": ["Maître de musique d’Ionia", "Gardien d’artéfacts célestes", "Ancien Yordle", "Avatar du Néant"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Maten - Les Heros Shooters",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Overwatch, quel personnage utilise un marteau et peut construire une tourelle ?",
+    "propositions": ["Winston", "Torbjörn", "Reinhardt", "Brigitte"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel agent de Valorant peut placer des murs et soigner ses alliés ?",
+    "propositions": ["Viper", "Sage", "Skye", "Phoenix"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Apex Legends, quel est le rôle de Caustic ?",
+    "propositions": ["Tireur d’élite", "Traqueur", "Contrôleur de zone avec gaz toxique", "Tank soigneur"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel héros de Paladins peut geler ses ennemis et créer des murs de glace ?",
+    "propositions": ["Furia", "Evie", "Seris", "Inara"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Overwatch 2, quel héros possède l'ultime nommé “Rampage” ?",
+    "propositions": ["Sojourn", "Junker Queen", "Ramattra", "Echo"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel hero shooter de courte durée a été développé par Gearbox Software et s’est fait écraser par Overwatch à sa sortie en 2016 ?",
+    "propositions": ["LawBreakers", "Battleborn", "Dirty Bomb", "Bleeding Edge"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Goloup - Les jeux de stratégie",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel jeu de société classique se joue à deux joueurs et consiste à capturer le roi adverse ?",
+    "propositions": ["Risk", "Monopoly", "Échecs", "Puissance 4"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel jeu de stratégie mondial oppose plusieurs puissances pendant la Première Guerre mondiale et se joue sur une grande carte de l’Europe ?",
+    "propositions": ["Diplomacy", "Axis & Allies", "Stratego", "Twilight Struggle"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans quel jeu de société moderne construit-on des villes, des routes et des armées pour obtenir des points de victoire sur une île ?",
+    "propositions": ["Agricola", "Carcassonne", "Catan", "Terraforming Mars"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans Risk, quel continent rapporte le plus de renforts s’il est contrôlé en entier ?",
+    "propositions": ["Asie", "Europe", "Amérique du Nord", "Afrique"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans le jeu de société Twilight Struggle, quel conflit géopolitique sert de cadre principal ?",
+    "propositions": ["La Seconde Guerre mondiale", "La Guerre de Corée", "La Guerre froide", "La guerre du Golfe"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel jeu de plateau 4X utilise des races asymétriques et une mécanique de votes galactiques, et peut durer plus de 6 heures ?",
+    "propositions": ["Eclipse", "Twilight Imperium", "Scythe", "Gaia Project"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Zaiidens - Le Cinéma",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel film réalisé par James Cameron est sorti en 2009 et se déroule sur la planète Pandora ?",
+    "propositions": ["Interstellar", "Avatar", "Gravity", "Star Wars: The Force Awakens"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel film de la saga Le Seigneur des Anneaux a remporté 11 Oscars ?",
+    "propositions": ["La Communauté de l’Anneau", "Les Deux Tours", "Le Retour du Roi", "Twilight Struggle"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a composé la bande originale de nombreux films de Christopher Nolan, comme Inception ou Interstellar ?",
+    "propositions": ["John Williams", "Danny Elfman", "Hans Zimmer", "Howard Shore"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel terme désigne un film qui aborde des sujets réalistes avec un ton souvent grave ou social, sans effets spectaculaires ?",
+    "propositions": ["Film noir", "Comédie dramatique", "Drame psychologique", "Film d’auteur"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel film muet allemand de 1927 est considéré comme un chef-d’œuvre du cinéma expressionniste et de science-fiction ?",
+    "propositions": ["Nosferatu", "Le Cabinet du Dr Caligari", "Metropolis", "L’Ange bleu"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel réalisateur a tourné un seul et unique film (La Nuit du Chasseur, 1955), aujourd’hui considéré comme un chef-d’œuvre ?",
+    "propositions": ["Orson Welles", "Charles Laughton", "Billy Wilder", "Elia Kazan"],
+    "bonneReponse": 1
   }
 ]

@@ -1,27 +1,22 @@
 [
   {
-    "texte": "Quel pays a inventé les sushis ?",
-    "propositions": ["Japon", "Chine", "Corée du Sud", "Thaïlande"],
+    "texte": "Citer le plus de protagoniste d’anime",
+    "propositions": ["", "", "", ""],
     "bonneReponse": 1
   },
   {
-    "texte": "Quelle est la couleur du rubis ?",
-    "propositions": ["Vert", "Rouge", "Bleu", "Jaune"],
+    "texte": "Citer le plus de série Française",
+    "propositions": ["", "", "", ""],
     "bonneReponse": 1
   },
   {
-    "texte": "Qui a peint La Joconde ?",
-    "propositions": ["Léonard de Vinci", "Michel-Ange", "Raphaël", "Picasso"],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle planète est la plus proche du soleil ?",
-    "propositions": ["Vénus", "Mercure", "Terre", "Mars"],
+    "texte": "Cite le plus d'acteurs français",
+    "propositions": ["", "", "", ""],
     "bonneReponse": 1
   },
   {
-    "texte": "Quel est le plus grand océan du monde ?",
-    "propositions": ["Océan Atlantique", "Océan Indien", "Océan Pacifique", "Océan Arctique"],
-    "bonneReponse": 2
+    "texte": "Cite le plus métier commençant par la lettre C",
+    "propositions": ["", "", "", ""],
+    "bonneReponse": 1
   }
 ]
