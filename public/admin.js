@@ -18,30 +18,6 @@ function sendText(text) {
   }
 }
 
-function receiveText(callback) {
-  socket.addEventListener('message', (event) => {
-    if (event.data instanceof Blob) {
-      event.data.text().then(txt => {
-        callback(txt);
-        console.log('Message WebSocket (Blob transformé):', txt);
-      });
-    } else if (typeof event.data === 'string') {
-      callback(event.data);
-      console.log('Message WebSocket (texte):', event.data);
-    } else {
-      try {
-        const str = String(event.data);
-        callback(str);
-        console.log('Message WebSocket (converted):', str);
-      } catch(e) {
-        console.error('Type de data WebSocket inattendu:', event.data);
-      }
-    }
-  });
-}
-
-// ----------------------------------------------------------------
-
 document.addEventListener('DOMContentLoaded', () => {
   const categories = [
     '1 - question5Questions',
@@ -59,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "4 - questionAuPlusRapide",
     "6 - questionClassement",
     "7 - questionAuPlusLoin",
-    "8 - questionFinale",
-
+    "8 - questionFinale"
   ];
   const thematiqueCategory = "3 - questionThématique";
   const finaleCategory = "8 - questionFinale";
@@ -92,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lastQuestionData = null;
           } else if (data && data.question && data.question.texte) {
             preview.textContent = data.question.texte;
-            // Quiz à propositions classiques
+            // Quiz à propositions classiques et classement
             if (
               categoriesAvecPropositions.includes(cat) &&
               Array.isArray(data.question.propositions) &&
