@@ -140,4 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
     lastQuestionData = null;
     lastCategory = null;
   };
+
+  document.getElementById('copy-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  const obsUrl = `${window.location.origin}/obs/obs.html`;
+  navigator.clipboard.writeText(obsUrl)
+    .then(() => {
+      this.textContent = 'Lien copié !';
+      setTimeout(() => { this.textContent = 'Copier le lien OBS'; }, 1200);
+    });
+});
+
 });

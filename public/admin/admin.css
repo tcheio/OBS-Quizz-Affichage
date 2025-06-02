@@ -76,3 +76,29 @@ body { font-family: Arial, sans-serif; background: #222; color: #eee; }
 #show-carre { background:#27aeb7;}
 #show-rond:hover { background:#481987;}
 #show-carre:hover { background:#14616b;}
+
+#bottom-links {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  z-index: 999;
+  font-size: 1.05em;
+}
+#bottom-links a {
+  color: #b1f;
+  background: #180036cc;
+  border-radius: 8px;
+  padding: 6px 20px;
+  text-decoration: none;
+  border: 1.2px solid #b1f;
+  transition: background 0.2s, color 0.2s;
+}
+#bottom-links a:hover {
+  color: #fff;
+  background: #b1f;
+}

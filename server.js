@@ -35,6 +35,11 @@ categories.forEach(cat => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.redirect('/admin/admin.html');
+});
+app.use(express.static('public'));
+
 // Route API générique : question suivante dans la catégorie
 app.get('/api/question/next/:cat', (req, res) => {
   const cat = req.params.cat;
