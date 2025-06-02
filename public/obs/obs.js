@@ -3,14 +3,16 @@ const quizzContainer = document.getElementById('quizz-container');
 const questionBox = document.getElementById('question-box');
 const answersRow = document.getElementById('answers-row');
 const bonneSeule = document.getElementById('bonne-seule');
-const letters = ["A", "B", "C", "D", "E"];
+const letters = ["A", "B", "C", "D"];
 let currentQuestion = null;
 let thematiqueMode = null;
 let thematiqueIndexes = null;
 let modeFinale = false;
+let hideTimeout = null;
+let fadeoutTimeout = null;
 
 function resetDisplay() {
-  quizzContainer.classList.remove("visible");
+  quizzContainer.classList.remove("visible", "fadeout");
   questionBox.textContent = "";
   questionBox.classList.remove("visible");
   answersRow.innerHTML = "";
@@ -21,6 +23,20 @@ function resetDisplay() {
   thematiqueMode = null;
   thematiqueIndexes = null;
   modeFinale = false;
+}
+
+function hideQuizContainer(smooth = true) {
+  clearTimeout(fadeoutTimeout);
+  if (smooth) {
+    quizzContainer.classList.remove("visible");
+    quizzContainer.classList.add("fadeout");
+    fadeoutTimeout = setTimeout(() => {
+      quizzContainer.classList.remove("fadeout");
+      resetDisplay();
+    }, 800); // Durée identique à la transition CSS
+  } else {
+    resetDisplay();
+  }
 }
 
 function receiveText(callback) {
@@ -75,8 +91,10 @@ function renderPropositions(propositions, indexes, bonneIndex) {
 }
 
 receiveText((msg) => {
+  clearTimeout(hideTimeout);
+
   if (!msg || msg.trim() === "") {
-    resetDisplay();
+    hideQuizContainer(true);
     currentQuestion = null;
     return;
   }
@@ -97,6 +115,7 @@ receiveText((msg) => {
     thematiqueIndexes = null;
     questionBox.textContent = data.texte;
     quizzContainer.classList.add("visible");
+    quizzContainer.classList.remove("fadeout");
     setTimeout(() => questionBox.classList.add("visible"), 70);
     answersRow.innerHTML = "";
     answersRow.className = "dynamic-1";
@@ -109,17 +128,18 @@ receiveText((msg) => {
     modeFinale = false;
   }
 
-  // --- 2. Affichage question avec propositions (3 à 5 propositions gérées dynamiquement)
+  // --- 2. Affichage question avec propositions
   if (data.texte && Array.isArray(data.propositions)) {
     currentQuestion = data;
     thematiqueMode = null;
     thematiqueIndexes = null;
     questionBox.textContent = data.texte;
     quizzContainer.classList.add("visible");
+    quizzContainer.classList.remove("fadeout");
     setTimeout(() => questionBox.classList.add("visible"), 70);
     answersRow.innerHTML = "";
-    answersRow.className = "dynamic-" + data.propositions.length;
-    for (let i = 0; i < data.propositions.length; i++) {
+    answersRow.className = "dynamic-4";
+    for (let i = 0; i < 4; i++) {
       const block = document.createElement('div');
       block.className = "answer-block";
       block.innerHTML = `<span class="answer-label">${letters[i]}.</span><span class="answer-text"></span>`;
@@ -150,9 +170,9 @@ receiveText((msg) => {
   }
   // --- 5. Affichage standard des propositions (autres quizz)
   if (data.action === 'showPropositions' && currentQuestion && !thematiqueMode) {
-    thematiqueIndexes = Array.from({length: currentQuestion.propositions.length}, (_, i) => i);
+    thematiqueIndexes = [0,1,2,3];
     renderPropositions(currentQuestion.propositions, thematiqueIndexes);
-    answersRow.className = "dynamic-" + currentQuestion.propositions.length;
+    answersRow.className = "dynamic-4";
   }
   // --- 6. Validation
   if (data.action === 'valider' && currentQuestion) {
@@ -174,7 +194,7 @@ receiveText((msg) => {
       bonneSeule.style.visibility = "visible";
       bonneSeule.style.opacity = 1;
     }
-    // 6c. Mode classique (propositions affichées), on colorie la bonne parmi N
+    // 6c. Mode classique (propositions affichées), on colorie la bonne parmi 4
     else if (!thematiqueMode && currentQuestion.propositions) {
       const blocks = answersRow.querySelectorAll('.answer-block');
       blocks.forEach((block, idx) => {
@@ -187,6 +207,15 @@ receiveText((msg) => {
       thematiqueIndexes.forEach((qi, pos) => {
         blocks[pos].classList.toggle('bonne', qi === currentQuestion.bonneReponse);
       });
+    }
+
+    // --- Animation de disparition après 10s pour carré/rond (questions thematiques)
+    if (thematiqueMode === 'carre' || thematiqueMode === 'rond') {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        hideQuizContainer(true);
+        currentQuestion = null;
+      }, 10000);
     }
   }
 });

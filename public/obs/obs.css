@@ -20,13 +20,25 @@ body {
   pointer-events: none;
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.6s cubic-bezier(.46,1.48,.46,1), transform 0.7s cubic-bezier(.46,1.48,.46,1);
+  transition:
+    opacity 0.7s cubic-bezier(.46,1.48,.46,1),
+    transform 0.8s cubic-bezier(.46,1.48,.46,1);
 }
 #quizz-container.visible {
   display: flex;
   opacity: 1;
   transform: translateY(0);
+  pointer-events: none;
 }
+
+#quizz-container.fadeout {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition:
+    opacity 0.7s cubic-bezier(.46,1.48,.46,1),
+    transform 0.7s cubic-bezier(.46,1.48,.46,1);
+}
+
 #question-box {
   width: 1680px;
   height: 130px;
