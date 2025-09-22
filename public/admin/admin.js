@@ -1,3 +1,4 @@
+// ==================== WebSocket ====================
 const socket = new WebSocket('ws://localhost:3000');
 
 socket.addEventListener('open', () => {
@@ -26,132 +27,167 @@ function receiveText(callback) {
     } else {
       try {
         callback(String(event.data));
-      } catch(e) {
+      } catch (e) {
         console.error('Type de data WebSocket inattendu:', event.data);
       }
     }
   });
 }
 
-// ----------------------------------------------------------------
+// ==================== Imports des types ====================
+// IMPORTANT: ce fichier doit être chargé en <script type="module">
+import { withPropositions } from './quizz/withPropositions.js';
+import { thematique }       from './quizz/thematique.js';
+import { finale }           from './quizz/finale.js';
 
+// ==================== App ====================
 document.addEventListener('DOMContentLoaded', () => {
+  // Catégories telles que dans /data
   const categories = [
     '1 - question5Questions',
     '2 - questionGenerale',
     '3 - questionThématique',
     '4 - questionAuPlusRapide',
-    '5 - questionIdentification',
     '6 - questionClassement',
     '7 - questionAuPlusLoin',
     '8 - questionFinale'
   ];
-  const categoriesAvecPropositions = [
-    "1 - question5Questions",
-    "2 - questionGenerale",
-    "4 - questionAuPlusRapide",
-    "6 - questionClassement",
-    "7 - questionAuPlusLoin",
-    "8 - questionFinale"
-  ];
-  const thematiqueCategory = "3 - questionThématique";
-  const finaleCategory = "8 - questionFinale";
 
-  const container = document.getElementById('categories');
-  const preview = document.getElementById('question-preview');
-  const generalControls = document.getElementById('general-controls');
+  // Mapping "catégorie -> type de quiz"
+  const registry = {
+    '1 - question5Questions': withPropositions,
+    '2 - questionGenerale':   withPropositions,
+    '3 - questionThématique': thematique,
+    '4 - questionAuPlusRapide': withPropositions,
+    '6 - questionClassement': withPropositions,
+    '7 - questionAuPlusLoin': withPropositions,
+    '8 - questionFinale':     finale,
+  };
+
+  // Références DOM
+  const container          = document.getElementById('categories');
+  const preview            = document.getElementById('question-preview');
+  const generalControls    = document.getElementById('general-controls');
   const thematiqueControls = document.getElementById('thematique-controls');
-  const btnShowProps = document.getElementById('show-propositions');
-  const btnValidate = document.getElementById('validate');
-  const btnRond = document.getElementById('show-rond');
-  const btnCarre = document.getElementById('show-carre');
-  let lastQuestionData = null;
-  let lastCategory = null;
+  const btnShowProps       = document.getElementById('show-propositions');
+  const btnValidate        = document.getElementById('validate');
+  const btnRond            = document.getElementById('show-rond');
+  const btnCarre           = document.getElementById('show-carre');
+  const btnReset           = document.getElementById('reset-display');
 
-  function updateControlsDisplay(cat) {
-    if (cat === thematiqueCategory) {
-      generalControls.style.display = "block";
-      thematiqueControls.style.display = "block";
-      btnShowProps.style.display = "none";
+  // État courant
+  let lastQuestionData = null;
+  let lastCategory     = null;
+  let currentHandler   = null; // handler du type actif
+
+  // Contexte partagé pour les handlers
+  const handlerContext = { sendText };
+
+  function applyControlsDisplay(controls) {
+    // Sécurise si module ne précise rien
+    const c = controls || { general: false, thematique: false, showProps: false };
+
+    generalControls.style.display    = c.general    ? 'block'       : 'none';
+    thematiqueControls.style.display = c.thematique ? 'block'       : 'none';
+    btnShowProps.style.display       = c.showProps  ? 'inline-block': 'none';
+  }
+
+  function setButtonsBindings() {
+    // Nettoie les anciens écouteurs en écrasant directement onclick
+    btnShowProps.onclick = null;
+    btnValidate.onclick  = null;
+    if (btnRond)  btnRond.onclick  = null;
+    if (btnCarre) btnCarre.onclick = null;
+
+    if (!currentHandler) return;
+
+    // Bind uniquement si la méthode existe
+    if (currentHandler.showProps) {
+      btnShowProps.onclick = () => { if (lastQuestionData) currentHandler.showProps(); };
     }
-    else if (categoriesAvecPropositions.includes(cat)) {
-      generalControls.style.display = "block";
-      thematiqueControls.style.display = "none";
-      btnShowProps.style.display = "inline-block";
+    if (currentHandler.validate) {
+      btnValidate.onclick = () => { if (lastQuestionData) currentHandler.validate(); };
     }
-    else if (cat === finaleCategory) {
-      generalControls.style.display = "block";
-      thematiqueControls.style.display = "none";
-      btnShowProps.style.display = "none";
+    if (btnRond && currentHandler.rond) {
+      btnRond.onclick = () => { if (lastQuestionData) currentHandler.rond(); };
     }
-    else {
-      generalControls.style.display = "none";
-      thematiqueControls.style.display = "none";
-      btnShowProps.style.display = "none";
+    if (btnCarre && currentHandler.carre) {
+      btnCarre.onclick = () => { if (lastQuestionData) currentHandler.carre(); };
     }
   }
 
+  // Création des boutons catégorie
   categories.forEach(cat => {
     const btn = document.createElement('button');
-    btn.textContent = cat.replace(/^.*?- /, '').replace('question', '').replace(/([A-Z])/g, ' $1').trim();
-    btn.className = "cat-btn";
+    btn.textContent = cat.replace(/^.*?- /, '')
+                         .replace('question', '')
+                         .replace(/([A-Z])/g, ' $1')
+                         .trim();
+    btn.className = 'cat-btn';
+
     btn.onclick = () => {
       fetch('/api/question/next/' + encodeURIComponent(cat))
         .then(r => r.json())
         .then(data => {
           if (data.finished) {
-            preview.textContent = "Plus de question disponible dans cette catégorie !";
-            sendText("Plus de question disponible dans cette catégorie !");
-            updateControlsDisplay(null);
+            preview.textContent = 'Plus de question disponible dans cette catégorie !';
+            sendText('Plus de question disponible dans cette catégorie !');
             lastQuestionData = null;
-          } else if (data && data.question && data.question.texte) {
+            lastCategory = null;
+            currentHandler = null;
+            applyControlsDisplay(); // tout masque
+            setButtonsBindings();
+            return;
+          }
+
+          if (data && data.question && data.question.texte) {
             preview.textContent = data.question.texte;
             lastQuestionData = data.question;
             lastCategory = cat;
+
+            // Envoie la question brute vers OBS
             sendText(JSON.stringify(data.question));
-            updateControlsDisplay(cat);
+
+            // Instancie le handler correspondant
+            const factory = registry[cat] || noControls;
+            currentHandler = factory(handlerContext);
+
+            // Affiche/Masque l'UI selon le type
+            applyControlsDisplay(currentHandler.controls);
+            setButtonsBindings();
           }
+        })
+        .catch(err => {
+          console.error('Erreur fetch question:', err);
         });
     };
+
     container.appendChild(btn);
   });
 
-  btnShowProps.onclick = () => {
-    if (lastQuestionData) {
-      sendText(JSON.stringify({ action: 'showPropositions' }));
-    }
-  };
-  btnValidate.onclick = () => {
-    if (lastQuestionData) {
-      sendText(JSON.stringify({ action: 'valider' }));
-    }
-  };
-  if (btnRond) btnRond.onclick = () => {
-    if (lastQuestionData) {
-      sendText(JSON.stringify({ action: 'showRond' }));
-    }
-  };
-  if (btnCarre) btnCarre.onclick = () => {
-    if (lastQuestionData) {
-      sendText(JSON.stringify({ action: 'showCarre' }));
-    }
-  };
-  const btnReset = document.getElementById('reset-display');
-  if (btnReset) btnReset.onclick = () => {
-    sendText("");
-    preview.textContent = "";
-    updateControlsDisplay(null);
-    lastQuestionData = null;
-    lastCategory = null;
-  };
+  // Bouton reset affichage
+  if (btnReset) {
+    btnReset.onclick = () => {
+      sendText('');
+      preview.textContent = '';
+      lastQuestionData = null;
+      lastCategory = null;
+      currentHandler = null;
+      applyControlsDisplay(); // masque tout
+      setButtonsBindings();
+    };
+  }
 
-  // Gestion des liens en bas de page
+  // Lien OBS (copie presse-papier)
   const obsUrl = `${location.origin}/obs/obs.html`;
-  document.getElementById('copy-obs-link').onclick = function(e) {
-    e.preventDefault();
-    navigator.clipboard.writeText(obsUrl).then(() => {
-      this.textContent = "Lien copié !";
-      setTimeout(() => this.textContent = "Copier le lien OBS", 1300);
-    });
-  };
+  const copyObsLink = document.getElementById('copy-obs-link');
+  if (copyObsLink) {
+    copyObsLink.onclick = function (e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(obsUrl).then(() => {
+        this.textContent = 'Lien copié !';
+        setTimeout(() => (this.textContent = 'Copier le lien OBS'), 1300);
+      });
+    };
+  }
 });
