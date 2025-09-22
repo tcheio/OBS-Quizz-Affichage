@@ -11,6 +11,19 @@ let modeFinale = false;
 let hideTimeout = null;
 let fadeoutTimeout = null;
 
+// --- AJOUT : fonction utilitaire pour changer de thème CSS ---
+function applyTheme(themeName) {
+  const link = document.getElementById('theme-css');
+  if (!link) {
+    console.warn('[OBS] <link id="theme-css"> introuvable dans obs.html');
+    return;
+  }
+  const safe = (themeName === 'orange') ? 'orange' : 'violet';
+  // cache-buster pour forcer OBS à recharger le fichier
+  const href = `./themes/obs-${safe}.css?v=${Date.now()}`;
+  link.setAttribute('href', href);
+}
+
 function resetDisplay() {
   quizzContainer.classList.remove("visible", "fadeout");
   questionBox.textContent = "";
@@ -98,6 +111,7 @@ receiveText((msg) => {
     currentQuestion = null;
     return;
   }
+
   let data;
   try { data = JSON.parse(msg); }
   catch (e) {
@@ -105,6 +119,12 @@ receiveText((msg) => {
     quizzContainer.classList[msg.trim() !== "" ? "add" : "remove"]("visible");
     resetDisplay();
     return;
+  }
+
+  // --- AJOUT : gestion prioritaire du changement de thème ---
+  if (data && data.action === 'setTheme') {
+    applyTheme(data.theme);
+    return; // ne pas traiter comme une question
   }
 
   // --- 1. Questions finales (question + réponse unique)

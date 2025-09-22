@@ -1,0 +1,12 @@
+:root {
+  --c-bg-card: #2b0f04;   /* fond brun-orangée profond */
+  --c-border:  #ff7a00;   /* orange vif */
+  --c-text:    #ffffff;
+  --c-neon:    #ffb166;   /* glow orangé doux */
+  --c-shadow:  #000000;
+
+  /* on garde le vert “bonne réponse” très lisible */
+  --c-good-bg:     #2ecc40;
+  --c-good-border: #27ae60;
+  --c-good-text:   #222222;
+}

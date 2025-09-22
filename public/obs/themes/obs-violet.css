@@ -1,0 +1,11 @@
+:root {
+  --c-bg-card: #21042b;
+  --c-border:  #d500f9;
+  --c-text:    #ffffff;
+  --c-neon:    #dd00ff;
+  --c-shadow:  #000000;
+
+  --c-good-bg:     #2ecc40;
+  --c-good-border: #27ae60;
+  --c-good-text:   #222222;
+}

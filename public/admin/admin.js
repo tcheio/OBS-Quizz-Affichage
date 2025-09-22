@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mapping "catégorie -> type de quiz"
   const registry = {
-    '1 - question5Questions': withPropositions,
-    '2 - questionGenerale':   withPropositions,
-    '3 - questionThématique': thematique,
+    '1 - question5Questions':   withPropositions,
+    '2 - questionGenerale':     withPropositions,
+    '3 - questionThématique':   thematique,
     '4 - questionAuPlusRapide': withPropositions,
-    '6 - questionClassement': withPropositions,
-    '7 - questionAuPlusLoin': withPropositions,
-    '8 - questionFinale':     finale,
+    '6 - questionClassement':   withPropositions,
+    '7 - questionAuPlusLoin':   withPropositions,
+    '8 - questionFinale':       finale,
   };
 
   // Références DOM
@@ -74,6 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRond            = document.getElementById('show-rond');
   const btnCarre           = document.getElementById('show-carre');
   const btnReset           = document.getElementById('reset-display');
+
+  // ⚠️ Ajout minimal : liste déroulante de thème (optionnelle)
+  const themeSelect = document.getElementById('theme-select');
+  if (themeSelect) {
+    themeSelect.addEventListener('change', () => {
+      const theme = themeSelect.value; // ex: 'violet' | 'orange'
+      sendText({ action: 'setTheme', theme });
+    });
+  }
 
   // État courant
   let lastQuestionData = null;

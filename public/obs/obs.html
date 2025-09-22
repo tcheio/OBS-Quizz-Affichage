@@ -1,16 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>OBS - Affichage Question</title>
-  <link rel="stylesheet" href="obs.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OBS – Quizz</title>
+
+  <!-- CSS base (structure + variables) -->
+  <link rel="stylesheet" href="./obs.css" />
+  <link id="theme-css" rel="stylesheet" href="./themes/obs-violet.css" />
+
 </head>
 <body>
   <div id="quizz-container">
     <div id="question-box"></div>
-    <div id="answers-row"></div>
-    <div id="bonne-seule"></div>
+
+    <div id="answers-row" class="dynamic-4">
+      <div class="answer-block" id="ans-0"><span class="answer-label">A</span><span class="answer-text"></span></div>
+      <div class="answer-block" id="ans-1"><span class="answer-label">B</span><span class="answer-text"></span></div>
+      <div class="answer-block" id="ans-2"><span class="answer-label">C</span><span class="answer-text"></span></div>
+      <div class="answer-block" id="ans-3"><span class="answer-label">D</span><span class="answer-text"></span></div>
+      <div id="bonne-seule"></div>
+    </div>
   </div>
-  <script src="obs.js"></script>
+
+  <script src="./obs.js"></script>
 </body>
 </html>
