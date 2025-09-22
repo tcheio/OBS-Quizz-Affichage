@@ -44,12 +44,10 @@ import { finale }           from './quizz/finale.js';
 document.addEventListener('DOMContentLoaded', () => {
   // Catégories telles que dans /data
   const categories = [
-    '1 - question5Questions',
-    '2 - questionGenerale',
+    '1 - questionsBasiques',
+    '2 - questionsThemeX',
     '3 - questionThématique',
     '4 - questionAuPlusRapide',
-    '6 - questionClassement',
-    '7 - questionAuPlusLoin',
     '8 - questionFinale'
   ];
 
