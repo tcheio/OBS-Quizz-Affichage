@@ -43,23 +43,23 @@ import { finale }           from './quizz/finale.js';
 // ==================== App ====================
 document.addEventListener('DOMContentLoaded', () => {
   // Catégories telles que dans /data
-  const categories = [
-    '1 - questionsBasiques',
-    '2 - questionsThemeX',
-    '3 - questionThématique',
-    '4 - questionAuPlusRapide',
-    '8 - questionFinale'
-  ];
+const categories = [
+  '1 - question5Questions',
+  '2.1 - questionsThemeX',
+  '2.2 - questionsThemeY',
+  '3.1 - QuizzQuiveutGagnerM',
+  '4 - questionAuPlusRapide',
+  '5 - questionFinale'
+];
 
   // Mapping "catégorie -> type de quiz"
   const registry = {
-    '1 - question5Questions':   withPropositions,
-    '2 - questionGenerale':     withPropositions,
-    '3 - questionThématique':   thematique,
+    '1 - questionsBasiques':   withPropositions,
+    '2.1 - questionsThemeX':     thematique,
+    '2.2 - questionsThemeY':     thematique,
+    '3.1 - QuizzQuiveutGagnerM': withPropositions,
     '4 - questionAuPlusRapide': withPropositions,
-    '6 - questionClassement':   withPropositions,
-    '7 - questionAuPlusLoin':   withPropositions,
-    '8 - questionFinale':       finale,
+    '5 - questionFinale':       finale,
   };
 
   // Références DOM
