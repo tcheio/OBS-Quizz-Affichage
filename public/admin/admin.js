@@ -73,17 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCarre           = document.getElementById('show-carre');
   const btnReset           = document.getElementById('reset-display');
 
-  // Boutons de sélection A/B/C/D (déjà présents dans ton HTML)
+  // Boutons de sélection A/B/C/D (déjà dans ton HTML)
   const selectionButtons   = document.getElementById('selection-buttons');
   const btnA = document.getElementById('a');
   const btnB = document.getElementById('b');
   const btnC = document.getElementById('c');
   const btnD = document.getElementById('d');
 
+  // 🔸 Liens du bas : toujours visibles
+  const bottomLinks = document.getElementById('bottom-links');
+  if (bottomLinks) bottomLinks.style.display = 'flex';
+
   // Caché au départ
   if (selectionButtons) selectionButtons.style.display = 'none';
 
-  // ⚠️ Ajout minimal : liste déroulante de thème (optionnelle)
+  // ⚠️ liste déroulante de thème (optionnelle)
   const themeSelect = document.getElementById('theme-select');
   if (themeSelect) {
     themeSelect.addEventListener('change', () => {
@@ -100,6 +104,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Contexte partagé pour les handlers
   const handlerContext = { sendText };
 
+  // Helpers d’affichage des boutons de sélection
+  function showSelection(count) {
+    if (!selectionButtons) return;
+    selectionButtons.style.display = 'block';
+    // A & B toujours visibles
+    if (btnA) btnA.style.display = 'inline-block';
+    if (btnB) btnB.style.display = 'inline-block';
+    // C & D selon count
+    if (btnC) btnC.style.display = count >= 3 ? 'inline-block' : 'none';
+    if (btnD) btnD.style.display = count >= 4 ? 'inline-block' : 'none';
+  }
+  function hideSelection() {
+    if (selectionButtons) selectionButtons.style.display = 'none';
+  }
+
   function applyControlsDisplay(controls) {
     // Sécurise si module ne précise rien
     const c = controls || { general: false, thematique: false, showProps: false };
@@ -109,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnShowProps.style.display       = c.showProps  ? 'inline-block': 'none';
 
     // Re-cache la sélection à chaque changement d'état/chargement de question
-    if (selectionButtons) selectionButtons.style.display = 'none';
+    hideSelection();
   }
 
   function setButtonsBindings() {
@@ -121,30 +140,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!currentHandler) return;
 
-    // Affichage des propositions
+    // Affichage des propositions (mode standard)
     if (currentHandler.showProps) {
       btnShowProps.onclick = () => {
         if (lastQuestionData) currentHandler.showProps();
-        // ➜ Affiche les boutons A/B/C/D uniquement quand on montre les propositions
-        if (selectionButtons) selectionButtons.style.display = 'block';
+        // ➜ 4 choix visibles
+        showSelection(4);
       };
     }
     if (currentHandler.validate) {
       btnValidate.onclick = () => { if (lastQuestionData) currentHandler.validate(); };
     }
     if (btnRond && currentHandler.rond) {
-      btnRond.onclick = () => { if (lastQuestionData) currentHandler.rond(); };
+      btnRond.onclick = () => {
+        if (!lastQuestionData) return;
+        currentHandler.rond();
+        // ➜ ROND = 2 choix visibles (A/B)
+        showSelection(2);
+      };
     }
     if (btnCarre && currentHandler.carre) {
-      btnCarre.onclick = () => { if (lastQuestionData) currentHandler.carre(); };
+      btnCarre.onclick = () => {
+        if (!lastQuestionData) return;
+        currentHandler.carre();
+        // ➜ CARRÉ = 4 choix visibles (A/B/C/D)
+        showSelection(4);
+      };
     }
   }
 
-  // ➜ Envoi de la sélection A/B/C/D (A→0, B→1, C→2, D→3)
+  // Envoi de la sélection A/B/C/D (A→0, B→1, C→2, D→3)
   const sendSelection = (pos) => {
-    // On s'assure qu'une question avec propositions est chargée
     if (!lastQuestionData || !Array.isArray(lastQuestionData.propositions)) return;
-    sendText({ action: 'select', pos }); // OBS décidera quoi en faire
+    sendText({ action: 'select', pos }); // OBS s'occupe de l'affichage
   };
   if (btnA) btnA.onclick = () => sendSelection(0);
   if (btnB) btnB.onclick = () => sendSelection(1);
