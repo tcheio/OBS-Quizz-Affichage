@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     '5 - questionFinale'
   ];
 
+  // 🔹 Fallback au cas où la catégorie n'a pas de handler déclaré
+  const noControls = () => ({ controls: {} });
+
   // Mapping "catégorie -> type de quiz"
   const registry = {
     '1 - questionsBasiques':     withPropositions,
@@ -79,10 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnB = document.getElementById('b');
   const btnC = document.getElementById('c');
   const btnD = document.getElementById('d');
-
-  // 🔸 Liens du bas : toujours visibles
-  const bottomLinks = document.getElementById('bottom-links');
-  if (bottomLinks) bottomLinks.style.display = 'flex';
 
   // Caché au départ
   if (selectionButtons) selectionButtons.style.display = 'none';

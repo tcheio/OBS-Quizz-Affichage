@@ -7,15 +7,87 @@ const letters = ["A", "B", "C", "D"];
 
 let currentQuestion = null;
 let thematiqueMode = null;      // null | 'rond' | 'carre'
-let thematiqueIndexes = null;   // mapping indices question -> positions affichées (rond/carré)
+let thematiqueIndexes = null;   // mapping indices source -> positions affichées (rond/carré)
 let modeFinale = false;
 let hideTimeout = null;
 let fadeoutTimeout = null;
 
-// NEW: position sélectionnée à l'écran (0..3 ou 0..1 pour rond)
+// Position sélectionnée à l'écran (0..3 ou 0..1 pour rond)
 let selectedPos = null;
 
-// --- Changement de thème CSS ---
+/* ====== SFX ====== */
+// ⚠️ Chemins relatifs à obs.html
+const sfx = {
+  select: new Audio('../sounds/select.mp3'),
+  success: new Audio('../sounds/success.mp3'),
+  error: new Audio('../sounds/error.mp3'),
+};
+Object.values(sfx).forEach(a => {
+  a.preload = 'auto';
+  a.volume = 1.0;
+});
+
+// Gestion déblocage autoplay
+let audioUnlocked = false;
+let audioUnlockUI = null;
+
+function createAudioUnlockUI() {
+  if (audioUnlockUI) return audioUnlockUI;
+  const btn = document.createElement('button');
+  btn.textContent = 'Activer le son';
+  btn.style.position = 'fixed';
+  btn.style.zIndex = '99999';
+  btn.style.left = '50%';
+  btn.style.top = '20px';
+  btn.style.transform = 'translateX(-50%)';
+  btn.style.padding = '10px 16px';
+  btn.style.border = '2px solid #b1f';
+  btn.style.borderRadius = '10px';
+  btn.style.background = '#180036cc';
+  btn.style.color = '#fff';
+  btn.style.fontSize = '16px';
+  btn.style.cursor = 'pointer';
+  btn.style.boxShadow = '0 4px 16px #0008';
+  btn.onclick = async () => {
+    // essaie de jouer un bip pour “déverrouiller”
+    try {
+      // petite lecture d’un son (select) pour “autoriser”
+      sfx.select.currentTime = 0;
+      await sfx.select.play();
+      audioUnlocked = true;
+      btn.remove();
+      audioUnlockUI = null;
+    } catch (e) {
+      // si toujours bloqué, on ne retire pas le bouton
+      console.warn('Audio toujours bloqué:', e);
+    }
+  };
+  document.body.appendChild(btn);
+  audioUnlockUI = btn;
+  return btn;
+}
+
+async function playSfx(name) {
+  const a = sfx[name];
+  if (!a) return;
+  try {
+    a.currentTime = 0;
+    const p = a.play();
+    if (p && typeof p.then === 'function') {
+      await p;
+    }
+    audioUnlocked = true; // si ça a joué, c’est débloqué
+  } catch (e) {
+    // Autoplay bloqué -> propose l’UI d’activation
+    if (!audioUnlocked) {
+      createAudioUnlockUI();
+    }
+    // Log utile en debug
+    console.warn(`Lecture audio "${name}" bloquée:`, e && e.name, e && e.message);
+  }
+}
+
+/* ====== THEME ====== */
 function applyTheme(themeName) {
   const link = document.getElementById('theme-css');
   if (!link) return;
@@ -81,14 +153,12 @@ function shuffle(array) {
 
 function clearAnswerClasses() {
   answersRow.querySelectorAll('.answer-block').forEach(b => {
-    b.classList.remove('selected', 'wrong', 'bonne', 'visible');
-    // on garde visible pour l'anim ensuite
-    b.classList.add('visible');
+    b.classList.remove('selected', 'wrong', 'bonne');
   });
 }
 
 function markSelected(pos) {
-  const blocks = answersRow.querySelectorAll('.answer-block');
+  const blocks = answersRow.querySelectorAll('.answer-block.visible');
   // Nettoie puis applique la sélection
   blocks.forEach((b, i) => {
     b.classList.toggle('selected', i === pos);
@@ -136,7 +206,7 @@ receiveText((msg) => {
   let data;
   try { data = JSON.parse(msg); }
   catch {
-    // message texte brut : affiche dans la boîte question (comportement existant)
+    // message texte brut : affiche dans la boîte question
     questionBox.textContent = msg;
     quizzContainer.classList[msg.trim() !== "" ? "add" : "remove"]("visible");
     resetDisplay();
@@ -151,10 +221,11 @@ receiveText((msg) => {
 
   // 1) Sélection reçue depuis l'admin (A/B/C/D => pos)
   if (data.action === 'select' && typeof data.pos === 'number') {
-    const blocks = answersRow.querySelectorAll('.answer-block');
+    const blocks = answersRow.querySelectorAll('.answer-block.visible');
     if (blocks.length > 0) {
       const pos = Math.max(0, Math.min(data.pos|0, blocks.length - 1));
-      markSelected(pos); // bleu clair
+      markSelected(pos);         // bleu clair (classe CSS .selected)
+      playSfx('select');         // 🔊 son de sélection
     }
     return;
   }
@@ -196,7 +267,7 @@ receiveText((msg) => {
     quizzContainer.classList.remove("fadeout");
     setTimeout(() => questionBox.classList.add("visible"), 70);
 
-    // prépare 4 blocs vides (affichage standard, rempli ensuite par showPropositions)
+    // prépare 4 blocs vides (deviennent visibles seulement via showPropositions/showCarre/showRond)
     answersRow.innerHTML = "";
     answersRow.className = "dynamic-4";
     for (let i = 0; i < 4; i++) {
@@ -204,6 +275,7 @@ receiveText((msg) => {
       block.className = "answer-block";
       block.innerHTML = `<span class="answer-label">${letters[i]}.</span><span class="answer-text"></span>`;
       answersRow.appendChild(block);
+      // Pas de .visible ici -> ils ne sont PAS affichés tant qu'on n'a pas reçu un show*
     }
 
     bonneSeule.textContent = "";
@@ -239,9 +311,10 @@ receiveText((msg) => {
 
   // 6) Validation
   if (data.action === 'valider' && currentQuestion) {
-    const blocks = answersRow.querySelectorAll('.answer-block');
+    // On se base sur les blocs *visibles*
+    const visibleBlocks = answersRow.querySelectorAll('.answer-block.visible');
 
-    // finale → on affiche la réponse seule
+    // 6a. Question finale → affiche la réponse seule
     if (modeFinale && currentQuestion.reponse) {
       answersRow.innerHTML = "";
       answersRow.className = "dynamic-1";
@@ -252,8 +325,8 @@ receiveText((msg) => {
       return;
     }
 
-    // aucune proposition affichée → bonne seule centrée
-    if (thematiqueMode === null && blocks.length === 0 && currentQuestion.propositions) {
+    // 6b. Aucune proposition affichée → bonne seule centrée
+    if (thematiqueMode === null && visibleBlocks.length === 0 && currentQuestion.propositions) {
       answersRow.innerHTML = "";
       answersRow.className = "dynamic-1";
       bonneSeule.textContent = currentQuestion.propositions[currentQuestion.bonneReponse];
@@ -263,45 +336,49 @@ receiveText((msg) => {
       return;
     }
 
-    // Cas "classique" (4 propositions visibles, pas de mode thématique)
-    if (!thematiqueMode && blocks.length === 4 && currentQuestion.propositions) {
-      // pos de la bonne dans l'affichage est la même que l'index de la proposition
+    // 6c. Mode classique (4 propositions visibles, pas de thématique)
+    if (!thematiqueMode && visibleBlocks.length === 4 && currentQuestion.propositions) {
       const goodPos = currentQuestion.bonneReponse;
 
       // nettoie d'abord
-      blocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
+      visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
 
       if (selectedPos == null) {
-        // pas de sélection → juste colorier la bonne
-        if (goodPos >= 0) blocks[goodPos]?.classList.add('bonne');
+        if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+        // Pas de sélection -> pas de son
       } else {
         if (selectedPos === goodPos) {
-          blocks[selectedPos]?.classList.add('bonne');         // vert
+          visibleBlocks[selectedPos]?.classList.add('bonne'); // vert
+          playSfx('success'); // 🔊 bonne réponse
         } else {
-          blocks[selectedPos]?.classList.add('wrong');         // rouge
-          blocks[goodPos]?.classList.add('bonne');             // vert
+          visibleBlocks[selectedPos]?.classList.add('wrong'); // rouge
+          visibleBlocks[goodPos]?.classList.add('bonne');     // vert
+          playSfx('error'); // 🔊 mauvaise réponse
         }
       }
       return;
     }
 
-    // Cas thématiques (rond/carré)
+    // 6d. Modes thématiques (rond/carré)
     if ((thematiqueMode === 'carre' || thematiqueMode === 'rond') && currentQuestion.propositions) {
-      // trouver la position affichée de la bonne réponse
+      // position affichée de la bonne réponse
       let goodPos = -1;
       thematiqueIndexes.forEach((qi, pos) => { if (qi === currentQuestion.bonneReponse) goodPos = pos; });
 
       // nettoie d'abord
-      blocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
+      visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
 
       if (selectedPos == null) {
-        if (goodPos >= 0) blocks[goodPos]?.classList.add('bonne');
+        if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+        // Pas de sélection -> pas de son
       } else {
         if (selectedPos === goodPos) {
-          blocks[selectedPos]?.classList.add('bonne');
+          visibleBlocks[selectedPos]?.classList.add('bonne');
+          playSfx('success');
         } else {
-          blocks[selectedPos]?.classList.add('wrong');
-          if (goodPos >= 0) blocks[goodPos]?.classList.add('bonne');
+          visibleBlocks[selectedPos]?.classList.add('wrong');
+          if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+          playSfx('error');
         }
       }
 
