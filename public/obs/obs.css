@@ -196,3 +196,19 @@ body {
   }
   .answer-block { width: 40vw; min-width: 180px; }
 }
+
+/* Sélection avant validation : bleu clair */
+.answer-block.selected {
+  background: #4da3ff !important;
+  border-color: #1f6fd1 !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+/* Mauvaise sélection à la validation : rouge */
+.answer-block.wrong {
+  background: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}

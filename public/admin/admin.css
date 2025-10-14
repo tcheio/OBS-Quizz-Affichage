@@ -102,3 +102,26 @@ body { font-family: Arial, sans-serif; background: #222; color: #eee; }
   color: #fff;
   background: #b1f;
 }
+
+
+/* Cacher les boutons A/B/C/D au départ */
+#selection-buttons {
+  display: none;
+  margin-top: 10px;
+}
+
+#selection-buttons button {
+  margin: 4px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff5cfc;
+  color: #fff;
+  font-size: 1em;
+  box-shadow: 1px 1px 8px #0008;
+  transition: background 0.2s;
+}
+#selection-buttons button:hover {
+  background: #ff2ee3;
+}

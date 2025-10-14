@@ -43,23 +43,23 @@ import { finale }           from './quizz/finale.js';
 // ==================== App ====================
 document.addEventListener('DOMContentLoaded', () => {
   // Catégories telles que dans /data
-const categories = [
-  '1 - question5Questions',
-  '2.1 - questionsThemeX',
-  '2.2 - questionsThemeY',
-  '3.1 - QuizzQuiveutGagnerM',
-  '4 - questionAuPlusRapide',
-  '5 - questionFinale'
-];
+  const categories = [
+    '1 - questionsBasiques',
+    '2.1 - questionsThemeX',
+    '2.2 - questionsThemeY',
+    '3.1 - QuizzQuiveutGagnerM',
+    '4 - questionAuPlusRapide',
+    '5 - questionFinale'
+  ];
 
   // Mapping "catégorie -> type de quiz"
   const registry = {
-    '1 - questionsBasiques':   withPropositions,
+    '1 - questionsBasiques':     withPropositions,
     '2.1 - questionsThemeX':     thematique,
     '2.2 - questionsThemeY':     thematique,
     '3.1 - QuizzQuiveutGagnerM': withPropositions,
-    '4 - questionAuPlusRapide': withPropositions,
-    '5 - questionFinale':       finale,
+    '4 - questionAuPlusRapide':  withPropositions,
+    '5 - questionFinale':        finale,
   };
 
   // Références DOM
@@ -72,6 +72,16 @@ const categories = [
   const btnRond            = document.getElementById('show-rond');
   const btnCarre           = document.getElementById('show-carre');
   const btnReset           = document.getElementById('reset-display');
+
+  // Boutons de sélection A/B/C/D (déjà présents dans ton HTML)
+  const selectionButtons   = document.getElementById('selection-buttons');
+  const btnA = document.getElementById('a');
+  const btnB = document.getElementById('b');
+  const btnC = document.getElementById('c');
+  const btnD = document.getElementById('d');
+
+  // Caché au départ
+  if (selectionButtons) selectionButtons.style.display = 'none';
 
   // ⚠️ Ajout minimal : liste déroulante de thème (optionnelle)
   const themeSelect = document.getElementById('theme-select');
@@ -97,6 +107,9 @@ const categories = [
     generalControls.style.display    = c.general    ? 'block'       : 'none';
     thematiqueControls.style.display = c.thematique ? 'block'       : 'none';
     btnShowProps.style.display       = c.showProps  ? 'inline-block': 'none';
+
+    // Re-cache la sélection à chaque changement d'état/chargement de question
+    if (selectionButtons) selectionButtons.style.display = 'none';
   }
 
   function setButtonsBindings() {
@@ -108,9 +121,13 @@ const categories = [
 
     if (!currentHandler) return;
 
-    // Bind uniquement si la méthode existe
+    // Affichage des propositions
     if (currentHandler.showProps) {
-      btnShowProps.onclick = () => { if (lastQuestionData) currentHandler.showProps(); };
+      btnShowProps.onclick = () => {
+        if (lastQuestionData) currentHandler.showProps();
+        // ➜ Affiche les boutons A/B/C/D uniquement quand on montre les propositions
+        if (selectionButtons) selectionButtons.style.display = 'block';
+      };
     }
     if (currentHandler.validate) {
       btnValidate.onclick = () => { if (lastQuestionData) currentHandler.validate(); };
@@ -122,6 +139,17 @@ const categories = [
       btnCarre.onclick = () => { if (lastQuestionData) currentHandler.carre(); };
     }
   }
+
+  // ➜ Envoi de la sélection A/B/C/D (A→0, B→1, C→2, D→3)
+  const sendSelection = (pos) => {
+    // On s'assure qu'une question avec propositions est chargée
+    if (!lastQuestionData || !Array.isArray(lastQuestionData.propositions)) return;
+    sendText({ action: 'select', pos }); // OBS décidera quoi en faire
+  };
+  if (btnA) btnA.onclick = () => sendSelection(0);
+  if (btnB) btnB.onclick = () => sendSelection(1);
+  if (btnC) btnC.onclick = () => sendSelection(2);
+  if (btnD) btnD.onclick = () => sendSelection(3);
 
   // Création des boutons catégorie
   categories.forEach(cat => {
@@ -142,7 +170,7 @@ const categories = [
             lastQuestionData = null;
             lastCategory = null;
             currentHandler = null;
-            applyControlsDisplay(); // tout masque
+            applyControlsDisplay(); // tout masque (+ re-cache sélection)
             setButtonsBindings();
             return;
           }
@@ -159,7 +187,7 @@ const categories = [
             const factory = registry[cat] || noControls;
             currentHandler = factory(handlerContext);
 
-            // Affiche/Masque l'UI selon le type
+            // Affiche/Masque l'UI selon le type (et re-cache sélection)
             applyControlsDisplay(currentHandler.controls);
             setButtonsBindings();
           }
@@ -180,7 +208,7 @@ const categories = [
       lastQuestionData = null;
       lastCategory = null;
       currentHandler = null;
-      applyControlsDisplay(); // masque tout
+      applyControlsDisplay(); // masque tout + re-cache sélection
       setButtonsBindings();
     };
   }
