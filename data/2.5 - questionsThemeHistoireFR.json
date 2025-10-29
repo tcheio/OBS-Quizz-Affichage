@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Qui était le premier roi des Francs ?",
+    "propositions": ["Clovis Ier", "Charlemagne", "Dagobert Ier", "Pépin le Bref"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel roi de France a fait construire le château de Versailles ?",
+    "propositions": ["François Ier", "Henri IV", "Louis XIII", "Louis XI"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui fut le chef du gouvernement provisoire à la Libération de la France en 1944 ?",
+    "propositions": ["Philippe Pétain", "Charles de Gaulle", "Georges Bidault", "Léon Blum"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel monument parisien a été inauguré en 1889 pour l’Exposition universelle ?",
+    "propositions": ["La Tour Eiffel", "L’Arc de Triomphe", "Le Panthéon", "Le Sacré-Cœur"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Lors de la Seconde Guerre mondiale, quelle bataille est considérée comme la plus grande défaite militaire française de 1940 ?",
+    "propositions": ["La bataille de Verdun", "La bataille de France", "La bataille de la Somme", "La bataille de Dunkerque"],
+    "bonneReponse": 1
+  }
+]

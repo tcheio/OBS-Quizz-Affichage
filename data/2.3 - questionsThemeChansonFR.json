@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Qui chante \"Je te promets\" ?",
+    "propositions": ["Florent Pagny", "Johnny Hallyday", "Patrick Bruel", "Jean-Jacques Goldman"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Qui a interprété la chanson \"Formidable\" en 2013 ?",
+    "propositions": ["Grand Corps Malade", "Stromae", "Orelsan", "Gims"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle chanteuse est à l’origine du tube \"Si j’étais là\" ?",
+    "propositions": ["Angèle", "Clara Luciani", "Hoshi", "Louane"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Parmi ces artistes, lequel n’a jamais remporté de Victoire de la Musique du Meilleur Artiste Masculin ?",
+    "propositions": ["Julien Doré", "Vianney", "Orelsan", "Kendji Girac"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel artiste a remporté l’Eurovision 1977 pour la France avec \"L’Oiseau et l’Enfant\" ?",
+    "propositions": ["Joe Dassin", "France Gall", "Marie Myriam", "Mireille Mathieu"],
+    "bonneReponse": 2
+  }
+]

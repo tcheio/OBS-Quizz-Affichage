@@ -11,9 +11,15 @@ app.use(express.static('public'));
 // Liste des catégories/fichiers
 const categories = [
   '1 - questionsBasiques',
-  '2.1 - questionsThemeX',
-  '2.2 - questionsThemeY',
-  '3.1 - QuizzQuiveutGagnerM',
+  '2.1 - questionsThemeTV',
+  '2.2 - questionsThemeCinema',
+  '2.3 - questionsThemeChansonFR',
+  '2.4 - questionsThemePolitique',
+  '2.5 - questionsThemeHistoireFR',
+  '2.6 - questionsThemeAnime2025',
+  '2.7 - questionsThemeCuisine',
+  '2.8 - questionsThemeSport',
+  '3.1 - placement',
   '4 - questionAuPlusRapide',
   '5 - questionFinale'
 ];

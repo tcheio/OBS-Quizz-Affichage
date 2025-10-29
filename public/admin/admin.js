@@ -45,11 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Catégories telles que dans /data
   const categories = [
     '1 - questionsBasiques',
-    '2.1 - questionsThemeX',
-    '2.2 - questionsThemeY',
-    '3.1 - QuizzQuiveutGagnerM',
-    '4 - questionAuPlusRapide',
-    '5 - questionFinale'
+  '2.1 - questionsThemeTV',
+  '2.2 - questionsThemeCinema',
+  '2.3 - questionsThemeChansonFR',
+  '2.4 - questionsThemePolitique',
+  '2.5 - questionsThemeHistoireFR',
+  '2.6 - questionsThemeAnime2025',
+  '2.7 - questionsThemeCuisine',
+  '2.8 - questionsThemeSport',
+  '3.1 - placement',
+  '4 - questionAuPlusRapide',
+  '5 - questionFinale'
   ];
 
   // 🔹 Fallback au cas où la catégorie n'a pas de handler déclaré
@@ -58,9 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mapping "catégorie -> type de quiz"
   const registry = {
     '1 - questionsBasiques':     withPropositions,
-    '2.1 - questionsThemeX':     thematique,
-    '2.2 - questionsThemeY':     thematique,
-    '3.1 - QuizzQuiveutGagnerM': withPropositions,
+    '2.1 - questionsThemeTV':     thematique,
+    '2.2 - questionsThemeCinema':     thematique,
+    '2.3 - questionsThemeChansonFR':     thematique,
+    '2.4 - questionsThemePolitique':     thematique,
+    '2.5 - questionsThemeHistoireFR':     thematique,
+    '2.6 - questionsThemeAnime2025':     thematique,
+    '2.7 - questionsThemeCuisine':     thematique,
+    '2.8 - questionsThemeSport':     thematique,
+    '3.1 - placement': withPropositions,
     '4 - questionAuPlusRapide':  withPropositions,
     '5 - questionFinale':        finale,
   };
@@ -182,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.textContent = cat.replace(/^.*?- /, '')
-                         .replace('question', '')
+                         .replace('questions', '')
                          .replace(/([A-Z])/g, ' $1')
                          .trim();
     btn.className = 'cat-btn';

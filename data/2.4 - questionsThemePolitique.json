@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Quel Premier ministre a instauré le service militaire obligatoire pour les femmes (jamais appliqué) dans la Constitution de 1946 ?",
+    "propositions": ["Léon Blum", "Félix Gouin", "Georges Bidault", "René Coty"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle femme politique fut la première présidente du Parlement européen ?",
+    "propositions": ["Simone Veil", "Michèle Alliot-Marie", "Édith Cresson", "Christiane Taubira"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel président de la République a lancé le Plan Calcul pour renforcer l’informatique française ?",
+    "propositions": ["Georges Pompidou", "Valéry Giscard d’Estaing", "François Mitterrand", "Charles de Gaulle"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel homme politique a été surnommé “le sphinx” en raison de sa discrétion et de son calme ?",
+    "propositions": ["François Mitterrand", "Jacques Chirac", "Raymond Barre", "Michel Rocard"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel ancien ministre a inspiré l’expression “responsable mais pas coupable” lors de l’affaire du sang contaminé ?",
+    "propositions": ["Michèle Alliot-Marie", "Édith Cresson", "Georgina Dufoix", "Roselyne Bachelot"],
+    "bonneReponse": 2
+  }
+]
