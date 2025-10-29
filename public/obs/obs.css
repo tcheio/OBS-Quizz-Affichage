@@ -212,3 +212,57 @@ body {
   color: #ffffff !important;
   text-shadow: none;
 }
+
+/* === Nouveaux layouts pour 1/2/4 réponses === */
+#answers-row.dynamic-1 { 
+  justify-content: center; 
+  gap: 38px;              /* même écart que les 4 réponses */
+  min-height: 88px;
+}
+
+/* === Bonne réponse seule – même style/anim qu’une .answer-block === */
+#bonne-seule {
+  /* taille et style calqués sur .answer-block */
+  width: 380px;
+  max-width: 480px;
+  height: 76px;
+
+  background: var(--c-good-bg);
+  color: var(--c-good-text);
+  border: 5px solid var(--c-good-border);
+  border-radius: 12px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5em;       /* idem .answer-block */
+  font-weight: bold;
+  text-shadow: none;
+
+  /* dans le flux (plus d'absolu) */
+  position: static;
+  left: auto;
+  top: auto;
+  transform: translateY(30px) scale(0.96);   /* même start que .answer-block */
+  opacity: 0;
+  visibility: hidden;
+
+  /* mêmes courbes/temps que .answer-block */
+  transition:
+    background 0.3s, color 0.3s, border 0.3s,
+    opacity 0.6s cubic-bezier(.46,1.48,.46,1),
+    transform 0.7s cubic-bezier(.46,1.48,.46,1),
+    visibility 0.3s;
+
+  /* légère ombre, tu peux la retirer si tu veux 100% identique */
+  box-shadow: 0 0 10px #0f0c;
+  z-index: 3;
+}
+
+#bonne-seule.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);         /* même fin que .answer-block.visible */
+}

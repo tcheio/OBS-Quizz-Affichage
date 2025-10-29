@@ -49,22 +49,25 @@ function createAudioUnlockUI() {
   btn.style.cursor = 'pointer';
   btn.style.boxShadow = '0 4px 16px #0008';
   btn.onclick = async () => {
-    // essaie de jouer un bip pour “déverrouiller”
     try {
-      // petite lecture d’un son (select) pour “autoriser”
       sfx.select.currentTime = 0;
       await sfx.select.play();
       audioUnlocked = true;
       btn.remove();
       audioUnlockUI = null;
     } catch (e) {
-      // si toujours bloqué, on ne retire pas le bouton
       console.warn('Audio toujours bloqué:', e);
     }
   };
   document.body.appendChild(btn);
   audioUnlockUI = btn;
   return btn;
+}
+
+function ensureBonneSeuleInDom() {
+  if (bonneSeule.parentNode !== answersRow) {
+    answersRow.appendChild(bonneSeule);
+  }
 }
 
 async function playSfx(name) {
@@ -76,13 +79,11 @@ async function playSfx(name) {
     if (p && typeof p.then === 'function') {
       await p;
     }
-    audioUnlocked = true; // si ça a joué, c’est débloqué
+    audioUnlocked = true;
   } catch (e) {
-    // Autoplay bloqué -> propose l’UI d’activation
     if (!audioUnlocked) {
       createAudioUnlockUI();
     }
-    // Log utile en debug
     console.warn(`Lecture audio "${name}" bloquée:`, e && e.name, e && e.message);
   }
 }
@@ -102,8 +103,8 @@ function resetDisplay() {
   questionBox.classList.remove("visible");
 
   answersRow.innerHTML = "";
-  answersRow.className = "";
-
+  answersRow.className = "dynamic-1";
+  ensureBonneSeuleInDom();
   bonneSeule.textContent = "";
   bonneSeule.className = "";
   bonneSeule.style.visibility = "hidden";
@@ -159,7 +160,6 @@ function clearAnswerClasses() {
 
 function markSelected(pos) {
   const blocks = answersRow.querySelectorAll('.answer-block.visible');
-  // Nettoie puis applique la sélection
   blocks.forEach((b, i) => {
     b.classList.toggle('selected', i === pos);
     b.classList.remove('wrong', 'bonne');
@@ -197,6 +197,7 @@ function renderPropositions(propositions, indexes) {
 receiveText((msg) => {
   clearTimeout(hideTimeout);
 
+  // Masquage explicite vide
   if (!msg || msg.trim() === "") {
     hideQuizContainer(true);
     currentQuestion = null;
@@ -204,33 +205,67 @@ receiveText((msg) => {
   }
 
   let data;
-  try { data = JSON.parse(msg); }
-  catch {
-    // message texte brut : affiche dans la boîte question
+  try {
+    data = JSON.parse(msg);
+  } catch {
+    // message texte brut : on l'affiche proprement (sans resetDisplay qui efface)
+    currentQuestion = null;
+    modeFinale = false;
+    thematiqueMode = null;
+    thematiqueIndexes = null;
+    selectedPos = null;
+
     questionBox.textContent = msg;
-    quizzContainer.classList[msg.trim() !== "" ? "add" : "remove"]("visible");
-    resetDisplay();
+    quizzContainer.classList.add("visible");
+    quizzContainer.classList.remove("fadeout");
+    setTimeout(() => questionBox.classList.add("visible"), 70);
+
+    answersRow.innerHTML = "";
+    answersRow.className = "";
+    bonneSeule.textContent = "";
+    bonneSeule.className = "";
+    bonneSeule.style.visibility = "hidden";
+    bonneSeule.style.opacity = 0;
     return;
   }
 
-  // 0) Changement de thème
+  /* 0) Changement de thème */
   if (data.action === 'setTheme') {
     applyTheme(data.theme);
     return;
   }
 
-  // 1) Sélection reçue depuis l'admin (A/B/C/D => pos)
-  if (data.action === 'select' && typeof data.pos === 'number') {
-    const blocks = answersRow.querySelectorAll('.answer-block.visible');
-    if (blocks.length > 0) {
-      const pos = Math.max(0, Math.min(data.pos|0, blocks.length - 1));
-      markSelected(pos);         // bleu clair (classe CSS .selected)
-      playSfx('select');         // 🔊 son de sélection
+  /* 0.b) Contexte de mode (ex: admin envoie {action:'mode', kind:'hidden'}) */
+  if (data.action === 'mode') {
+    // 'hidden' -> on garde la question visible, mais aucune proposition affichée
+    if (data.kind === 'hidden') {
+      thematiqueMode = null;
+      thematiqueIndexes = null;
+      selectedPos = null;
+
+      // Nettoie les propositions à l'écran (si jamais il y en avait)
+      answersRow.innerHTML = "";
+      answersRow.className = "";
+      bonneSeule.textContent = "";
+      bonneSeule.className = "";
+      bonneSeule.style.visibility = "hidden";
+      bonneSeule.style.opacity = 0;
     }
     return;
   }
 
-  // 2) Question finale (texte + réponse unique)
+  /* 1) Sélection (A/B/C/D) */
+  if (data.action === 'select' && typeof data.pos === 'number') {
+    const blocks = answersRow.querySelectorAll('.answer-block.visible');
+    if (blocks.length > 0) {
+      const pos = Math.max(0, Math.min(data.pos|0, blocks.length - 1));
+      markSelected(pos);
+      playSfx('select');
+    }
+    return;
+  }
+
+  /* 2) Question finale (texte + réponse unique) */
   if (data.texte && data.reponse && !data.propositions) {
     currentQuestion = data;
     modeFinale = true;
@@ -255,7 +290,7 @@ receiveText((msg) => {
     modeFinale = false;
   }
 
-  // 3) Nouvelle question à choix
+  /* 3) Nouvelle question à choix */
   if (data.texte && Array.isArray(data.propositions)) {
     currentQuestion = data;
     thematiqueMode = null;
@@ -267,7 +302,7 @@ receiveText((msg) => {
     quizzContainer.classList.remove("fadeout");
     setTimeout(() => questionBox.classList.add("visible"), 70);
 
-    // prépare 4 blocs vides (deviennent visibles seulement via showPropositions/showCarre/showRond)
+    // Prépare 4 blocs (non visibles tant qu'on n'a pas reçu un show*)
     answersRow.innerHTML = "";
     answersRow.className = "dynamic-4";
     for (let i = 0; i < 4; i++) {
@@ -275,7 +310,6 @@ receiveText((msg) => {
       block.className = "answer-block";
       block.innerHTML = `<span class="answer-label">${letters[i]}.</span><span class="answer-text"></span>`;
       answersRow.appendChild(block);
-      // Pas de .visible ici -> ils ne sont PAS affichés tant qu'on n'a pas reçu un show*
     }
 
     bonneSeule.textContent = "";
@@ -284,7 +318,7 @@ receiveText((msg) => {
     bonneSeule.style.opacity = 0;
   }
 
-  // 4) Modes thématiques
+  /* 4) Modes thématiques */
   if (data.action === 'showRond' && currentQuestion) {
     thematiqueMode = 'rond';
     const idxs = [currentQuestion.bonneReponse];
@@ -302,92 +336,92 @@ receiveText((msg) => {
     answersRow.className = "dynamic-4";
   }
 
-  // 5) Affichage standard des propositions (hors thématique)
+  /* 5) Affichage standard des propositions (hors thématique) */
   if (data.action === 'showPropositions' && currentQuestion && !thematiqueMode) {
-    thematiqueIndexes = [0,1,2,3];           // affichage dans l'ordre A/B/C/D
+    thematiqueIndexes = [0,1,2,3]; // ordre A/B/C/D
     renderPropositions(currentQuestion.propositions, thematiqueIndexes);
     answersRow.className = "dynamic-4";
   }
 
-  // 6) Validation
-  if (data.action === 'valider' && currentQuestion) {
-    // On se base sur les blocs *visibles*
-    const visibleBlocks = answersRow.querySelectorAll('.answer-block.visible');
+/* 6) Validation — accepte 'valider' (FR) et 'validate' (EN) */
+if ((data.action === 'valider' || data.action === 'validate') && currentQuestion) {
+  const visibleBlocks = answersRow.querySelectorAll('.answer-block.visible');
 
-    // 6a. Question finale → affiche la réponse seule
-    if (modeFinale && currentQuestion.reponse) {
-      answersRow.innerHTML = "";
-      answersRow.className = "dynamic-1";
-      bonneSeule.textContent = currentQuestion.reponse;
-      bonneSeule.className = "visible";
-      bonneSeule.style.visibility = "visible";
-      bonneSeule.style.opacity = 1;
-      return;
-    }
-
-    // 6b. Aucune proposition affichée → bonne seule centrée
-    if (thematiqueMode === null && visibleBlocks.length === 0 && currentQuestion.propositions) {
-      answersRow.innerHTML = "";
-      answersRow.className = "dynamic-1";
-      bonneSeule.textContent = currentQuestion.propositions[currentQuestion.bonneReponse];
-      bonneSeule.className = "visible";
-      bonneSeule.style.visibility = "visible";
-      bonneSeule.style.opacity = 1;
-      return;
-    }
-
-    // 6c. Mode classique (4 propositions visibles, pas de thématique)
-    if (!thematiqueMode && visibleBlocks.length === 4 && currentQuestion.propositions) {
-      const goodPos = currentQuestion.bonneReponse;
-
-      // nettoie d'abord
-      visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
-
-      if (selectedPos == null) {
-        if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
-        // Pas de sélection -> pas de son
-      } else {
-        if (selectedPos === goodPos) {
-          visibleBlocks[selectedPos]?.classList.add('bonne'); // vert
-          playSfx('success'); // 🔊 bonne réponse
-        } else {
-          visibleBlocks[selectedPos]?.classList.add('wrong'); // rouge
-          visibleBlocks[goodPos]?.classList.add('bonne');     // vert
-          playSfx('error'); // 🔊 mauvaise réponse
-        }
-      }
-      return;
-    }
-
-    // 6d. Modes thématiques (rond/carré)
-    if ((thematiqueMode === 'carre' || thematiqueMode === 'rond') && currentQuestion.propositions) {
-      // position affichée de la bonne réponse
-      let goodPos = -1;
-      thematiqueIndexes.forEach((qi, pos) => { if (qi === currentQuestion.bonneReponse) goodPos = pos; });
-
-      // nettoie d'abord
-      visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
-
-      if (selectedPos == null) {
-        if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
-        // Pas de sélection -> pas de son
-      } else {
-        if (selectedPos === goodPos) {
-          visibleBlocks[selectedPos]?.classList.add('bonne');
-          playSfx('success');
-        } else {
-          visibleBlocks[selectedPos]?.classList.add('wrong');
-          if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
-          playSfx('error');
-        }
-      }
-
-      // disparition auto après 10s (comportement existant)
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        hideQuizContainer(true);
-        currentQuestion = null;
-      }, 10000);
-    }
+  // 6a. Question finale → réponse seule
+  if (modeFinale && currentQuestion.reponse) {
+    answersRow.innerHTML = "";
+    answersRow.className = "dynamic-1";
+    ensureBonneSeuleInDom();
+    bonneSeule.textContent = currentQuestion.reponse;
+    bonneSeule.className = "visible";
+    bonneSeule.style.visibility = "visible";
+    bonneSeule.style.opacity = 1;
+    return;
   }
+
+  // 6b. Aucune proposition affichée → afficher la bonne seule, centrée
+  if (visibleBlocks.length === 0 && currentQuestion.propositions) {
+    answersRow.innerHTML = "";
+    answersRow.className = "dynamic-1";
+    ensureBonneSeuleInDom();
+    bonneSeule.textContent = currentQuestion.propositions[currentQuestion.bonneReponse];
+    bonneSeule.className = "visible";
+    bonneSeule.style.visibility = "visible";
+    bonneSeule.style.opacity = 1;
+    return;
+  }
+
+  // 6c. Mode classique (4 propositions visibles, pas de thématique)
+  if (!thematiqueMode && visibleBlocks.length === 4 && currentQuestion.propositions) {
+    const goodPos = currentQuestion.bonneReponse;
+
+    // nettoie d'abord
+    visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
+
+    if (selectedPos == null) {
+      if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+    } else {
+      if (selectedPos === goodPos) {
+        visibleBlocks[selectedPos]?.classList.add('bonne'); // vert
+        playSfx('success'); // sons conservés
+      } else {
+        visibleBlocks[selectedPos]?.classList.add('wrong'); // rouge
+        visibleBlocks[goodPos]?.classList.add('bonne');     // vert
+        playSfx('error');   // sons conservés
+      }
+    }
+    return;
+  }
+
+  // 6d. Modes thématiques (rond/carré)
+  if ((thematiqueMode === 'carre' || thematiqueMode === 'rond') && currentQuestion.propositions) {
+    // position affichée de la bonne
+    let goodPos = -1;
+    thematiqueIndexes.forEach((qi, pos) => { if (qi === currentQuestion.bonneReponse) goodPos = pos; });
+
+    // nettoie d'abord
+    visibleBlocks.forEach(b => b.classList.remove('selected','wrong','bonne'));
+
+    if (selectedPos == null) {
+      if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+    } else {
+      if (selectedPos === goodPos) {
+        visibleBlocks[selectedPos]?.classList.add('bonne');
+        playSfx('success'); // sons conservés
+      } else {
+        visibleBlocks[selectedPos]?.classList.add('wrong');
+        if (goodPos >= 0) visibleBlocks[goodPos]?.classList.add('bonne');
+        playSfx('error');   // sons conservés
+      }
+    }
+
+    // disparition auto après 10s (comportement existant)
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      hideQuizContainer(true);
+      currentQuestion = null;
+    }, 10000);
+  }
+}
+
 });

@@ -7,22 +7,38 @@
 
   <!-- CSS base (structure + variables) -->
   <link rel="stylesheet" href="./obs.css" />
+  <!-- Thème dynamique : le JS modifie ce href via l'id="theme-css" -->
   <link id="theme-css" rel="stylesheet" href="./themes/obs-violet.css" />
-
 </head>
 <body>
   <div id="quizz-container">
     <div id="question-box"></div>
 
+    <!--
+      answers-row contient soit les 4 propositions (mode classique/“carré”),
+      soit la réponse unique (bonne-seule) en mode final ou validation sans affichage.
+    -->
     <div id="answers-row" class="dynamic-4">
-      <div class="answer-block" id="ans-0"><span class="answer-label">A</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="ans-1"><span class="answer-label">B</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="ans-2"><span class="answer-label">C</span><span class="answer-text"></span></div>
-      <div class="answer-block" id="ans-3"><span class="answer-label">D</span><span class="answer-text"></span></div>
+      <!-- Ces 4 blocs sont là pour l’état initial ; le JS peut les vider/recréer selon le mode -->
+      <div class="answer-block" id="ans-0">
+        <span class="answer-label">A.</span><span class="answer-text"></span>
+      </div>
+      <div class="answer-block" id="ans-1">
+        <span class="answer-label">B.</span><span class="answer-text"></span>
+      </div>
+      <div class="answer-block" id="ans-2">
+        <span class="answer-label">C.</span><span class="answer-text"></span>
+      </div>
+      <div class="answer-block" id="ans-3">
+        <span class="answer-label">D.</span><span class="answer-text"></span>
+      </div>
+
+      <!-- Zone d’affichage de la bonne réponse seule -->
       <div id="bonne-seule"></div>
     </div>
   </div>
 
+  <!-- Important : laisser le script à la fin du body (il lit le DOM immédiatement) -->
   <script src="./obs.js"></script>
 </body>
 </html>

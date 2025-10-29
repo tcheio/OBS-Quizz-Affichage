@@ -45,17 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Catégories telles que dans /data
   const categories = [
     '1 - questionsBasiques',
-  '2.1 - questionsThemeTV',
-  '2.2 - questionsThemeCinema',
-  '2.3 - questionsThemeChansonFR',
-  '2.4 - questionsThemePolitique',
-  '2.5 - questionsThemeHistoireFR',
-  '2.6 - questionsThemeAnime2025',
-  '2.7 - questionsThemeCuisine',
-  '2.8 - questionsThemeSport',
-  '3.1 - placement',
-  '4 - questionAuPlusRapide',
-  '5 - questionFinale'
+    '2.1 - questionsThemeTV',
+    '2.2 - questionsThemeCinema',
+    '2.3 - questionsThemeChansonFR',
+    '2.4 - questionsThemePolitique',
+    '2.5 - questionsThemeHistoireFR',
+    '2.6 - questionsThemeAnime2025',
+    '2.7 - questionsThemeCuisine',
+    '2.8 - questionsThemeSport',
+    '3.1 - placement',
+    '4 - questionAuPlusRapide',
+    '5 - questionFinale'
   ];
 
   // 🔹 Fallback au cas où la catégorie n'a pas de handler déclaré
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '2.6 - questionsThemeAnime2025':     thematique,
     '2.7 - questionsThemeCuisine':     thematique,
     '2.8 - questionsThemeSport':     thematique,
-    '3.1 - placement': withPropositions,
+    '3.1 - placement':           withPropositions,
     '4 - questionAuPlusRapide':  withPropositions,
     '5 - questionFinale':        finale,
   };
@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastQuestionData = null;
   let lastCategory     = null;
   let currentHandler   = null; // handler du type actif
+  // Suivi du mode d'affichage courant: 'none' | 'props' | 'rond' | 'carre'
+  let displayState     = 'none';
 
   // Contexte partagé pour les handlers
   const handlerContext = { sendText };
@@ -140,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Re-cache la sélection à chaque changement d'état/chargement de question
     hideSelection();
+    // Quand on change d'état, on repart en "aucun mode d'affichage"
+    displayState = 'none';
   }
 
   function setButtonsBindings() {
@@ -157,17 +161,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lastQuestionData) currentHandler.showProps();
         // ➜ 4 choix visibles
         showSelection(4);
+        displayState = 'props';
+        console.log('[ADMIN] Mode défini via "Afficher les propositions" → displayState =', displayState);
       };
     }
     if (currentHandler.validate) {
-      btnValidate.onclick = () => { if (lastQuestionData) currentHandler.validate(); };
+  btnValidate.onclick = () => {
+    console.group('[ADMIN] Clic sur "Valider"');
+    console.log('→ hasQuestion:', !!lastQuestionData, 'category:', lastCategory);
+    console.log('→ displayState avant validation:', displayState);
+
+    if (!lastQuestionData) {
+      console.warn('✖ Abandon: aucune question chargée.');
+      console.groupEnd();
+      return;
     }
+
+    if (displayState === 'none') {
+      // ✅ Validation "sans affichage" : on demande directement la validation à l’overlay.
+      // L’overlay (obs.js) montrera la bonne réponse seule.
+      console.log('⚠ Aucun mode affiché → envoi direct {action:"validate"} à l’overlay.');
+      sendText({ action: 'validate' }); // (ou: { action: 'valider' })
+      console.groupEnd();
+      return;
+    }
+
+    // Modes props/rond/carré → on délègue au handler (comportement normal)
+    try {
+      currentHandler.validate();
+      console.log('✓ Appel currentHandler.validate() OK.');
+    } catch (e) {
+      console.error('✖ Exception pendant currentHandler.validate():', e);
+    }
+    console.groupEnd();
+  };
+}
+
     if (btnRond && currentHandler.rond) {
       btnRond.onclick = () => {
         if (!lastQuestionData) return;
         currentHandler.rond();
         // ➜ ROND = 2 choix visibles (A/B)
         showSelection(2);
+        displayState = 'rond';
+        console.log('[ADMIN] Mode défini via "Rond" → displayState =', displayState);
       };
     }
     if (btnCarre && currentHandler.carre) {
@@ -176,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentHandler.carre();
         // ➜ CARRÉ = 4 choix visibles (A/B/C/D)
         showSelection(4);
+        displayState = 'carre';
+        console.log('[ADMIN] Mode défini via "Carré" → displayState =', displayState);
       };
     }
   }
@@ -200,10 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.className = 'cat-btn';
 
     btn.onclick = () => {
+      console.group('[ADMIN] Demande de nouvelle question');
+      console.log('→ Catégorie demandée:', cat);
       fetch('/api/question/next/' + encodeURIComponent(cat))
         .then(r => r.json())
         .then(data => {
           if (data.finished) {
+            console.warn('✖ Plus de question disponible dans cette catégorie');
             preview.textContent = 'Plus de question disponible dans cette catégorie !';
             sendText('Plus de question disponible dans cette catégorie !');
             lastQuestionData = null;
@@ -211,28 +253,44 @@ document.addEventListener('DOMContentLoaded', () => {
             currentHandler = null;
             applyControlsDisplay(); // tout masque (+ re-cache sélection)
             setButtonsBindings();
+            console.groupEnd();
             return;
           }
 
           if (data && data.question && data.question.texte) {
-            preview.textContent = data.question.texte;
             lastQuestionData = data.question;
             lastCategory = cat;
+            preview.textContent = data.question.texte;
+            console.log('✓ Question reçue:', {
+              categorie: cat,
+              aPropositions: Array.isArray(data.question.propositions),
+              bonneReponse: data.question.bonneReponse,
+              id: data.question.id ?? '(sans id)',
+            });
 
             // Envoie la question brute vers OBS
             sendText(JSON.stringify(data.question));
+            console.log('→ Question envoyée à OBS via WebSocket.');
 
             // Instancie le handler correspondant
             const factory = registry[cat] || noControls;
             currentHandler = factory(handlerContext);
+            console.log('→ Handler instancié:', currentHandler ? 'OK' : 'NULL');
 
             // Affiche/Masque l'UI selon le type (et re-cache sélection)
             applyControlsDisplay(currentHandler.controls);
             setButtonsBindings();
+            // À la réception d'une nouvelle question, aucun mode choisi
+            displayState = 'none';
+            console.log('→ displayState réinitialisé =', displayState);
+          } else {
+            console.error('✖ Payload question inattendu:', data);
           }
+          console.groupEnd();
         })
         .catch(err => {
           console.error('Erreur fetch question:', err);
+          console.groupEnd();
         });
     };
 
@@ -242,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bouton reset affichage
   if (btnReset) {
     btnReset.onclick = () => {
+      console.log('[ADMIN] Reset affichage demandé.');
       sendText('');
       preview.textContent = '';
       lastQuestionData = null;
@@ -249,6 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
       currentHandler = null;
       applyControlsDisplay(); // masque tout + re-cache sélection
       setButtonsBindings();
+      displayState = 'none';
+      console.log('→ displayState =', displayState);
     };
   }
 
