@@ -266,3 +266,31 @@ body {
   visibility: visible;
   transform: translateY(0) scale(1);         /* même fin que .answer-block.visible */
 }
+
+/* === Chronos gauche/droite === */
+.chrono-display {
+  position: absolute;
+  top: 40px;
+  font-size: 3em;
+  font-weight: bold;
+  color: var(--c-text);
+  text-shadow: 2px 2px 10px var(--c-shadow), 0 0 10px var(--c-neon);
+  opacity: 0.9;
+  transition: opacity 0.4s;
+}
+#chrono-left { left: 60px; }
+#chrono-right { right: 60px; text-align: right; }
+
+#chrono-left, #chrono-right {
+  transition: color 0.3s, opacity 0.3s;
+}
+.chrono-timeout {
+  color: #ff3b3b;
+  animation: blink 1s infinite alternate;
+}
+@keyframes blink {
+  from { opacity: 1; }
+  to   { opacity: 0.3; }
+}
+
+

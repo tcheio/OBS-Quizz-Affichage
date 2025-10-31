@@ -325,4 +325,80 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
   }
+
+
+/* ==================== Gestion des 2 Chronos (dégressifs) ==================== */
+const chronoLeft = {
+  interval: null,
+  time: 60,  // 60 secondes = 1 minute
+  running: false,
+  duration: 60
+};
+const chronoRight = {
+  interval: null,
+  time: 60,
+  running: false,
+  duration: 60
+};
+
+// helper format mm:ss
+const formatTime = (t) => {
+  const m = Math.floor(t / 60);
+  const s = t % 60;
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+};
+
+// mise à jour (envoi à l’overlay)
+const updateOverlay = (side) => {
+  const c = side === 'left' ? chronoLeft : chronoRight;
+  sendText({ action: 'chronoUpdate', side, time: c.time, running: c.running });
+};
+
+const startChrono = (side) => {
+  const c = side === 'left' ? chronoLeft : chronoRight;
+  if (c.running) return;
+  c.running = true;
+
+  c.interval = setInterval(() => {
+    if (c.time > 0) {
+      c.time--;
+      updateOverlay(side);
+    } else {
+      // fin du chrono
+      clearInterval(c.interval);
+      c.running = false;
+      c.time = 0;
+      updateOverlay(side);
+      // petit bip facultatif :
+      // sendText({ action: 'chronoEnd', side });
+    }
+  }, 1000);
+  updateOverlay(side);
+};
+
+const pauseChrono = (side) => {
+  const c = side === 'left' ? chronoLeft : chronoRight;
+  if (!c.running) return;
+  c.running = false;
+  clearInterval(c.interval);
+  updateOverlay(side);
+};
+
+const resetChrono = (side) => {
+  const c = side === 'left' ? chronoLeft : chronoRight;
+  c.running = false;
+  clearInterval(c.interval);
+  c.time = c.duration; // remet à 60s
+  updateOverlay(side);
+};
+
+// boutons
+document.getElementById('chrono-left-start')?.addEventListener('click', () => startChrono('left'));
+document.getElementById('chrono-left-pause')?.addEventListener('click', () => pauseChrono('left'));
+document.getElementById('chrono-left-reset')?.addEventListener('click', () => resetChrono('left'));
+document.getElementById('chrono-right-start')?.addEventListener('click', () => startChrono('right'));
+document.getElementById('chrono-right-pause')?.addEventListener('click', () => pauseChrono('right'));
+document.getElementById('chrono-right-reset')?.addEventListener('click', () => resetChrono('right'));
+
+
 });

@@ -130,6 +130,17 @@ function hideQuizContainer(smooth = true) {
   }
 }
 
+/* === Chronos Overlay === */
+const chronoLeftEl = document.getElementById('chrono-left');
+const chronoRightEl = document.getElementById('chrono-right');
+
+function formatTime(t) {
+  const m = Math.floor(t / 60);
+  const s = t % 60;
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+
 function receiveText(callback) {
   socket.addEventListener('message', (event) => {
     if (event.data instanceof Blob) {
@@ -207,6 +218,23 @@ receiveText((msg) => {
   let data;
   try {
     data = JSON.parse(msg);
+
+      // === Chronos overlay (gauche/droite) ===
+  if (data && data.action === 'chronoUpdate') {
+  const targetId = data.side === 'left' ? 'chrono-left' : 'chrono-right';
+  const el = document.getElementById(targetId);
+  if (el) {
+    const t = Math.max(0, Number(data.time) || 0);
+    const m = String(Math.floor(t / 60)).padStart(2, '0');
+    const s = String(t % 60).padStart(2, '0');
+    el.textContent = `${m}:${s}`;
+    el.style.opacity = data.running ? '1' : '0.6';
+    el.classList.toggle('chrono-timeout', t === 0);
+  }
+  return;
+}
+
+
   } catch {
     // message texte brut : on l'affiche proprement (sans resetDisplay qui efface)
     currentQuestion = null;
