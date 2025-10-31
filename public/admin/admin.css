@@ -250,3 +250,11 @@ body{
   .sidebar{ min-height: auto; }
   .chronos{ grid-template-columns: 1fr; }
 }
+
+.btn-blue {
+  background: linear-gradient(180deg, #2980b9, #1c5986);
+  margin-bottom: 10px;
+}
+.btn-blue:hover {
+  filter: brightness(1.1);
+}

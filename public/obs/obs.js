@@ -219,6 +219,14 @@ receiveText((msg) => {
   try {
     data = JSON.parse(msg);
 
+    // === Toggle affichage des chronos ===
+    if (data && data.action === 'chronoToggleDisplay') {
+      const visible = !!data.visible;
+      document.getElementById('chrono-left')?.style.setProperty('display', visible ? 'block' : 'none');
+      document.getElementById('chrono-right')?.style.setProperty('display', visible ? 'block' : 'none');
+      return;
+    }
+
       // === Chronos overlay (gauche/droite) ===
   if (data && data.action === 'chronoUpdate') {
   const targetId = data.side === 'left' ? 'chrono-left' : 'chrono-right';

@@ -399,6 +399,14 @@ document.getElementById('chrono-left-reset')?.addEventListener('click', () => re
 document.getElementById('chrono-right-start')?.addEventListener('click', () => startChrono('right'));
 document.getElementById('chrono-right-pause')?.addEventListener('click', () => pauseChrono('right'));
 document.getElementById('chrono-right-reset')?.addEventListener('click', () => resetChrono('right'));
+// === Toggle affichage des chronos sur OBS ===
+let chronosVisible = true;
+
+document.getElementById('chrono-toggle-display')?.addEventListener('click', () => {
+  chronosVisible = !chronosVisible;
+  sendText({ action: 'chronoToggleDisplay', visible: chronosVisible });
+  console.log(`[ADMIN] Chronos ${chronosVisible ? 'affichés' : 'cachés'} sur OBS.`);
+});
 
 
 });
