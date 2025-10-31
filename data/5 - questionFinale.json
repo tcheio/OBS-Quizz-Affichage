@@ -1,402 +1,1132 @@
 [
   {
-    "texte": "Quel est le 28ème état membre de l’UE ?",
-    "propositions": ["", "", "Croatie", ""],
+    "texte": "Quelle ville a accueilli les Jeux Olympiques d’été en 1992 ?",
+    "propositions": [
+      "",
+      "",
+      "Barcelone",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel réalisateur est connu pour ses films 'Kill Bill' et 'Pulp Fiction' ?",
-    "propositions": ["", "", "Quentin Tarantino", ""],
+    "texte": "Qui a composé le Boléro en 1928 ?",
+    "propositions": [
+      "",
+      "",
+      "Maurice Ravel",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel groupe a chanté 'Bohemian Rhapsody' ?",
-    "propositions": ["Queen", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle est la spécialité culinaire préférée de Naruto ?",
-    "propositions": ["", "", "", "Rāmen"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel langage est utilisé pour interroger une base de données relationnelle ?",
-    "propositions": ["", "SQL", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel anime met en scène les aventures d'un détective rajeuni physiquement ?",
-    "propositions": ["Détective Conan", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle franchise de jeux vidéo d'horreur met en scène la société Umbrella Corporation ?",
-    "propositions": ["Resident Evil", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel président français a introduit le quinquennat par référendum ?",
-    "propositions": ["Jacques Chirac", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Dans 'Star Wars', qui est le père de Luke Skywalker ?",
-    "propositions": ["", "", "Dark Vador", ""],
+    "texte": "Dans Pokémon, quel est le type complet de Dracolosse ?",
+    "propositions": [
+      "",
+      "",
+      "Dragon / Vol",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Dans quel jeu vidéo combat-on des créatures nommées 'Creepers' ?",
-    "propositions": ["", "Minecraft", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Dans quel jeu vidéo incarne-t-on Link, héros sauvant la princesse Zelda ?",
-    "propositions": ["The Legend of Zelda", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel est le nom de famille de Light, le protagoniste de 'Death Note' ?",
-    "propositions": ["", "", "", "Yagami"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quelle est la capitale de l'Australie ?",
-    "propositions": ["", "Canberra", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel est le nom du monde virtuel dans 'Sword Art Online' ?",
-    "propositions": ["", "", "", "Aincrad"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le plus grand océan du monde ?",
-    "propositions": ["", "", "Océan Pacifique", ""],
+    "texte": "Quel pays est surnommé « le pays du soleil levant » ?",
+    "propositions": [
+      "",
+      "",
+      "Japon",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel est le nom du dragon principal de Daenerys dans 'Game of Thrones' ?",
-    "propositions": ["Drogon", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel est le prénom du personnage principal du film 'Retour vers le futur' ?",
-    "propositions": ["Marty", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel film met en scène des dinosaures ramenés à la vie dans un parc ?",
-    "propositions": ["", "Jurassic Park", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel personnage Marvel possède un bouclier en vibranium ?",
-    "propositions": ["", "", "Captain America", ""],
+    "texte": "Quel est le nom du marteau de Thor dans Marvel ?",
+    "propositions": [
+      "",
+      "",
+      "Mjölnir",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel continent abrite le plus grand nombre de pays reconnus internationalement ?",
-    "propositions": ["Afrique", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel est l'organe principal du système circulatoire ?",
-    "propositions": ["", "", "", "Cœur"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Qui a réalisé le film 'Titanic' ?",
-    "propositions": ["", "James Cameron", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel jeu en ligne oppose deux équipes sur une carte nommée 'Faille de l'invocateur' ?",
-    "propositions": ["League of Legends", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel acteur interprète Indiana Jones ?",
-    "propositions": ["", "Harrison Ford", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel série iconique du minecraft français réuni la coopteam sur une map minecraft à l'effigie de la Lune ?",
-    "propositions": ["Objectif Lune", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Dans 'My Hero Academia', quel est l'Alter du héros Izuku Midoriya ?",
-    "propositions": ["", "One For All", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Dans Pokémon, qui est l'éternel rival de Sacha Ketchum ?",
-    "propositions": ["", "", "Régis", ""],
+    "texte": "Qui est l’auteur de Notre-Dame de Paris ?",
+    "propositions": [
+      "",
+      "",
+      "Victor Hugo",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Dans 'SNK', comment appelle-t-on les créatures géantes ?",
-    "propositions": ["Titans", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel acteur incarne John Wick au cinéma ?",
-    "propositions": ["", "", "", "Keanu Reeves"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le nom de la ville fictive principale de la série GTA V ?",
-    "propositions": ["Los Santos", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle série Netflix adaptation de manga sortie en 2020 présente 2 jeunes téléportés dans un Japon dystopique où ils doivent jouer à des jeux de vie ou de mort ?",
-    "propositions": ["", "", "Alice in Bordeland", ""],
+    "texte": "Quel métal est symbolisé par Au dans le tableau périodique ?",
+    "propositions": [
+      "",
+      "",
+      "Or",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quelle actrice joue Hermione Granger dans 'Harry Potter' ?",
-    "propositions": ["Emma Watson", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Dans 'Naruto', quel est le nom du démon-renard scellé en Naruto ?",
-    "propositions": ["", "Kurama", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Qui est l'auteur du manga 'Dragon Ball' ?",
-    "propositions": ["", "", "Akira Toriyama", ""],
+    "texte": "Quel studio est chargé de l’animation de Demon Slayer ?",
+    "propositions": [
+      "",
+      "",
+      "Ufotable",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel super-héros est originaire de Krypton ?",
-    "propositions": ["Superman", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel pirate au chapeau de paille cherche le One Piece ?",
-    "propositions": ["", "", "Monkey D. Luffy", ""],
+    "texte": "Dans quel musée est exposé la Mona Lisa ?",
+    "propositions": [
+      "",
+      "",
+      "Musée du Louvre",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel personnage principal est joué par Benedict Cumberbatch dans une série britannique ?",
-    "propositions": ["Sherlock Holmes", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle est la formule chimique de l'eau ?",
-    "propositions": ["", "H₂O", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Combien de planètes composent le système solaire ?",
-    "propositions": ["", "", "", "8"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel désert est le plus grand du monde ?",
-    "propositions": ["", "", "Antarctique", ""],
+    "texte": "Qui est l’actuel Roi d’Angleterre ?",
+    "propositions": [
+      "",
+      "",
+      "Charles III",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel film a remporté l'Oscar du meilleur film en 1994 ?",
-    "propositions": ["", "", "", "Forrest Gump"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le nom du processus par lequel les cellules se divisent ?",
-    "propositions": ["Mitose", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel type de câble est devenu la norme en Europe depuis décembre 2024 ?",
-    "propositions": ["USB Type C", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Dans quelle série, on suit l’agent John Nolan qui rejoint la police de Los Angeles en tant que plus vieille nouvelle recrue ?",
-    "propositions": ["", "", "The Rookie", ""],
+    "texte": "Dans Le Roi Lion, qui est le père de Simba ?",
+    "propositions": [
+      "",
+      "",
+      "Mufasa",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel service de streaming est à l’origine un service de location de DVD ?",
-    "propositions": ["", "", "", "Netflix"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le nom du créateur original du Loup Garou UHC ?",
-    "propositions": ["Setrox", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel duo iconique jouait les services après-vente des émissions de la chaîne CANAL+ entre 2005 et 2012 ?",
-    "propositions": ["", "Omar Sy et Fred Testot", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Au tennis, quel type de jeu se joue lorsque le score d’un set est de 6 partout ?",
-    "propositions": ["", "", "Tie break ou Jeu décisif", ""],
+    "texte": "Quelle monnaie utilise-t-on au Royaume-Uni ?",
+    "propositions": [
+      "",
+      "",
+      "La livre sterling",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quelle partie du corps est observée par un ophtalmologue ?",
-    "propositions": ["Les yeux", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel titre de la saga Mario Kart est sorti le 29 mai 2014 ?",
-    "propositions": ["", "MK 8", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Au Monopoly, on a la gare de Lyon, Montparnasse et du Nord, quelle est la dernière ?",
-    "propositions": ["", "", "Saint Lazare", ""],
+    "texte": "Quelle est la plus grande planète du système solaire ?",
+    "propositions": [
+      "",
+      "",
+      "Jupiter",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Par qui était initialement présentée l’émission 'Qui veut gagner des millions' ?",
-    "propositions": ["", "Jean Pierre Foucault", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Dans Pokémon, comment s’appelle généralement le chemin qui mène à la Ligue Pokémon ?",
-    "propositions": ["Route Victoire", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle entité est en charge des résidences universitaires ?",
-    "propositions": ["", "", "", "CROUS ou CNOUS"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quelle application de communication a fermé ses portes ce mois-ci ?",
-    "propositions": ["", "", "SKYPE", ""],
+    "texte": "Qui a chanté « Papaoutai » ?",
+    "propositions": [
+      "",
+      "",
+      "Stromae",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel est le nom de l’entreprise de chemin de fer française ?",
-    "propositions": ["", "SNCF", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Lorsque l’on joue au jeu de carte du président, quelle carte est la plus forte ?",
-    "propositions": ["", "", "Le 2", ""],
+    "texte": "Quelle ville est la capitale du Canada ?",
+    "propositions": [
+      "",
+      "",
+      "Ottawa",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Qu’est-ce que la RGPD ?",
-    "propositions": ["", "Réglementation générale sur la protection des données perso", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quel président est à l’origine de la construction d’un mur entre les États-Unis et le Mexique ?",
-    "propositions": ["Trump", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle émission de télévision est une adaptation de Survivor ?",
-    "propositions": ["Koh-Lanta", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel est le nom du présentateur historique du JT de 13 heures de TF1, ayant pris sa retraite en 2020 ?",
-    "propositions": ["", "", "", "Jean-Pierre Pernaut"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le nom de la série diffusée sur TF1, se déroulant à Sète ?",
-    "propositions": ["", "", "Demain nous appartient", ""],
+    "texte": "Quel sport pratiquait Roger Federer ?",
+    "propositions": [
+      "",
+      "",
+      "Tennis",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel footballeur français a remporté le Ballon d'or en 2022 ?",
-    "propositions": ["Karim Benzema", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quel tournoi de tennis se déroule chaque année à Paris sur terre battue ?",
-    "propositions": ["", "Roland-Garros", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "En rugby, quel est le surnom de l'équipe nationale néo-zélandaise ?",
-    "propositions": ["", "", "All Blacks", ""],
+    "texte": "Quel peintre a découpé son oreille ?",
+    "propositions": [
+      "",
+      "",
+      "Van Gogh",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel jeu est considéré comme une fusion d’Ark et Pokémon ?",
-    "propositions": ["Pallword", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Quelle série non épisodique nous montre à chaque épisode des prédictions sur les dérives de la technologie ?",
-    "propositions": ["", "", "", "Black Mirror"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Selon l’OMS, quel est le temps minimum d’activité physique par jour ?",
-    "propositions": ["", "", "30 min", ""],
+    "texte": "Combien y a-t-il de continents ?",
+    "propositions": [
+      "",
+      "",
+      "7",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel médicament français a récemment été racheté par un fond américain ?",
-    "propositions": ["", "", "", "Doliprane"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel service de streaming fondé en 2022 s’appuie sur la monétisation plus avantageuse afin de concurrencer Twitch ?",
-    "propositions": ["Kick", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Dans quelle ville se trouve le Stade de France ?",
-    "propositions": ["", "Saint Denis", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Quelle est la console la plus vendue de Sega ?",
-    "propositions": ["", "", "", "Mega Drive"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel est le leader de l'hébergeur Cloud dans le monde ?",
-    "propositions": ["", "", "AWS", ""],
+    "texte": "Disney : quel animal est Dumbo ?",
+    "propositions": [
+      "",
+      "",
+      "Un éléphanteau",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel YouTubeur a effectué une préparation d’un an afin de monter l’Everest ?",
-    "propositions": ["", "", "", "Inoxtag"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Qui est le propriétaire du groupe Canal ?",
-    "propositions": ["", "Vincent Bolloré", "", ""],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "En quelle année YouTube a été racheté par Google ?",
-    "propositions": ["", "", "2006", ""],
+    "texte": "Quel ingrédient principal compose le guacamole ?",
+    "propositions": [
+      "",
+      "",
+      "Avocat",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Dans quelle ville se situe la banque centrale française ?",
-    "propositions": ["Paris", "", "", ""],
-    "bonneReponse": 0
-  },
-  {
-    "texte": "Lorsque l’on compose le 15, on entre en contact avec ?",
-    "propositions": ["", "", "", "SAMU"],
-    "bonneReponse": 3
-  },
-  {
-    "texte": "Quel YouTubeur est notamment connu pour ses tournois où il met en confrontation différentes œuvres ?",
-    "propositions": ["", "", "Sofyan", ""],
+    "texte": "Quelle est la monnaie du Japon ?",
+    "propositions": [
+      "",
+      "",
+      "Yen",
+      ""
+    ],
     "bonneReponse": 2
   },
   {
-    "texte": "Sous quel nom la chaîne YouTube de Mcfly et Carlito a initialement été créée ?",
-    "propositions": ["Le Fat Show", "", "", ""],
-    "bonneReponse": 0
+    "texte": "Quel pays a remporté la Coupe du Monde 2018 ?",
+    "propositions": [
+      "",
+      "",
+      "France",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel scientifique a découvert la loi de la gravitation ?",
+    "propositions": [
+      "",
+      "",
+      "Isaac Newton",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans Naruto, comment se nomme le démon en Naruto ?",
+    "propositions": [
+      "",
+      "",
+      "Kurama",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "En quelle année a eu lieu l’Attentat du 11 septembre ?",
+    "propositions": [
+      "",
+      "",
+      "2001",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a peint La Nuit étoilée ?",
+    "propositions": [
+      "",
+      "",
+      "Van Gogh",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a écrit L’Étranger ?",
+    "propositions": [
+      "",
+      "",
+      "Albert Camus",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est l’océan le plus vaste ?",
+    "propositions": [
+      "",
+      "",
+      "Pacifique",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans Mario, quelle couleur est Luigi ?",
+    "propositions": [
+      "",
+      "",
+      "Vert",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle star de pop chante « Bad Romance » ?",
+    "propositions": [
+      "",
+      "",
+      "Lady Gaga",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le plus long fleuve de France ?",
+    "propositions": [
+      "",
+      "",
+      "La Loire",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans One Piece, quel fruit a mangé Luffy ?",
+    "propositions": [
+      "",
+      "",
+      "Gomu Gomu no Mi",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui fut le premier président de la Ve République ?",
+    "propositions": [
+      "",
+      "",
+      "Charles de Gaulle",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle actrice incarne Hermione Granger ?",
+    "propositions": [
+      "",
+      "",
+      "Emma Watson",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle planète est surnommée la planète rouge ?",
+    "propositions": [
+      "",
+      "",
+      "Mars",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pays est le plus peuplé au monde en 2025 ?",
+    "propositions": [
+      "",
+      "",
+      "Inde",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel pays est né Beethoven ?",
+    "propositions": [
+      "",
+      "",
+      "Allemagne",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel fromage italien est souvent râpé sur les pâtes ?",
+    "propositions": [
+      "",
+      "",
+      "Parmesan",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le plus grand désert chaud du monde ?",
+    "propositions": [
+      "",
+      "",
+      "Sahara",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui est le créateur de Dragon Ball ?",
+    "propositions": [
+      "",
+      "",
+      "Akira Toriyama",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel animal symbolise la Chine ?",
+    "propositions": [
+      "",
+      "",
+      "Le dragon",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel célèbre tableau montre une femme au sourire énigmatique ?",
+    "propositions": [
+      "",
+      "",
+      "La Joconde",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle reine a eu pour devise « Je ne meurs pas, je m’endors » ?",
+    "propositions": [
+      "",
+      "",
+      "Marie Stuart",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quels fruits utilise-t-on pour faire un cidre ?",
+    "propositions": [
+      "",
+      "",
+      "Pommes",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel personnage de jeux vidéo est un hérisson bleu ?",
+    "propositions": [
+      "",
+      "",
+      "Sonic",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel pays a offert la Statue de la Liberté aux États-Unis ?",
+    "propositions": [
+      "",
+      "",
+      "La France",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le deuxième prénom de Messi ?",
+    "propositions": [
+      "",
+      "",
+      "Andrés",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel océan borde la côte ouest des États-Unis ?",
+    "propositions": [
+      "",
+      "",
+      "Pacifique",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le plus petit pays du monde ?",
+    "propositions": [
+      "",
+      "",
+      "Vatican",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la capitale de l’Australie ?",
+    "propositions": [
+      "",
+      "",
+      "Canberra",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel anime trouve-t-on le personnage Eren Jäger ?",
+    "propositions": [
+      "",
+      "",
+      "L’Attaque des Titans",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a découvert l’Amérique en 1492 ?",
+    "propositions": [
+      "",
+      "",
+      "Christophe Colomb",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la langue officielle du Brésil ?",
+    "propositions": [
+      "",
+      "",
+      "Portugais",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel film peut-on entendre la phrase « Je suis ton père » ?",
+    "propositions": [
+      "",
+      "",
+      "Star Wars",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel animal est le symbole des États-Unis ?",
+    "propositions": [
+      "",
+      "",
+      "L’aigle",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est l’aliment principal du sushi ?",
+    "propositions": [
+      "",
+      "",
+      "Riz",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le plus long fleuve d’Afrique ?",
+    "propositions": [
+      "",
+      "",
+      "Nil",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle ville est surnommée la “Ville Lumière” ?",
+    "propositions": [
+      "",
+      "",
+      "Paris",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel métal est utilisé pour fabriquer des canettes ?",
+    "propositions": [
+      "",
+      "",
+      "Aluminium",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle chanteuse a interprété “Rolling in the Deep” ?",
+    "propositions": [
+      "",
+      "",
+      "Adele",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle planète est la plus proche du Soleil ?",
+    "propositions": [
+      "",
+      "",
+      "Mercure",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle mer borde la côte sud de la France ?",
+    "propositions": [
+      "",
+      "",
+      "Méditerranée",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel écrivain a écrit Le Petit Prince ?",
+    "propositions": [
+      "",
+      "",
+      "Antoine de Saint-Exupéry",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel héros de Nintendo porte une casquette rouge ?",
+    "propositions": [
+      "",
+      "",
+      "Mario",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a dirigé le film Jurassic Park ?",
+    "propositions": [
+      "",
+      "",
+      "Steven Spielberg",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est l’animal terrestre le plus rapide ?",
+    "propositions": [
+      "",
+      "",
+      "Guépard",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a écrit Roméo et Juliette ?",
+    "propositions": [
+      "",
+      "",
+      "William Shakespeare",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle ville est la capitale de la Grèce ?",
+    "propositions": [
+      "",
+      "",
+      "Athènes",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la matière principale du verre ?",
+    "propositions": [
+      "",
+      "",
+      "Sable",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle chanteuse a popularisé la chanson “Single Ladies” ?",
+    "propositions": [
+      "",
+      "",
+      "Beyoncé",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la planète la plus grande du système solaire ?",
+    "propositions": [
+      "",
+      "",
+      "Jupiter",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle saga met en scène un magicien nommé Harry ?",
+    "propositions": [
+      "",
+      "",
+      "Harry Potter",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel est le nom du héros principal de The Witcher ?",
+    "propositions": [
+      "",
+      "",
+      "Geralt de Riv",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle ville italienne est célèbre pour ses canaux ?",
+    "propositions": [
+      "",
+      "",
+      "Venise",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui est connu pour avoir dit “Je pense, donc je suis” ?",
+    "propositions": [
+      "",
+      "",
+      "René Descartes",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a écrit Les Fleurs du mal ?",
+    "propositions": [
+      "",
+      "",
+      "Charles Baudelaire",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la capitale du Portugal ?",
+    "propositions": [
+      "",
+      "",
+      "Lisbonne",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel animal est appelé “le roi de la savane” ?",
+    "propositions": [
+      "",
+      "",
+      "Lion",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel sport peut-on marquer un “dunk” ?",
+    "propositions": [
+      "",
+      "",
+      "Basketball",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel aliment est à la base du couscous ?",
+    "propositions": [
+      "",
+      "",
+      "Semoule",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a réalisé Titanic ?",
+    "propositions": [
+      "",
+      "",
+      "James Cameron",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle planète possède les anneaux les plus visibles ?",
+    "propositions": [
+      "",
+      "",
+      "Saturne",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la couleur du sang des poulpes ?",
+    "propositions": [
+      "",
+      "",
+      "Bleue",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle actrice incarne Black Widow dans Marvel ?",
+    "propositions": [
+      "",
+      "",
+      "Scarlett Johansson",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel fleuve traverse Paris ?",
+    "propositions": [
+      "",
+      "",
+      "La Seine",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle boisson est obtenue par fermentation du raisin ?",
+    "propositions": [
+      "",
+      "",
+      "Vin",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a peint Le Cri ?",
+    "propositions": [
+      "",
+      "",
+      "Edvard Munch",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel animal est célèbre pour sa lenteur ?",
+    "propositions": [
+      "",
+      "",
+      "La tortue",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel compositeur allemand est devenu sourd à la fin de sa vie ?",
+    "propositions": [
+      "",
+      "",
+      "Beethoven",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle discipline sportive utilise un sabre ?",
+    "propositions": [
+      "",
+      "",
+      "Escrime",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel anime le héros s’appelle Izuku Midoriya ?",
+    "propositions": [
+      "",
+      "",
+      "My Hero Academia",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle spécialité italienne est composée de pâte, sauce et fromage ?",
+    "propositions": [
+      "",
+      "",
+      "Lasagnes",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui est l’actuel président des États-Unis ?",
+    "propositions": [
+      "",
+      "",
+      "TRUMP",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "En 1964, quelle ville sicilienne Henri Salvador aimerait-il revoir ?",
+    "propositions": [
+      "",
+      "",
+      "Syracuse",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "D'après l'expression, quel poisson aurait bouché le port de Marseille ?",
+    "propositions": [
+      "",
+      "",
+      "La sardine",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel acteur est enchaîné à Gérard Lanvin dans Les Spécialistes ?",
+    "propositions": [
+      "",
+      "",
+      "Bernard Giraudeau",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel contraire de beau est l'anagramme de \"chôme\" ?",
+    "propositions": [
+      "",
+      "",
+      "Moche",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quelle partie du corps se trouve l'os sphénoïde ?",
+    "propositions": [
+      "",
+      "",
+      "La tête (crâne)",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle est la capitale de l'Autriche ?",
+    "propositions": [
+      "",
+      "",
+      "Vienne",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel film d'aventure réunit en 1984 Kathleen Turner et Michael Douglas ?",
+    "propositions": [
+      "",
+      "",
+      "À la poursuite du diamant vert",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quand on a un destin heureux, on dit qu'on est né sous une bonne... ?",
+    "propositions": [
+      "",
+      "",
+      "Étoile",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "À quel écrivain doit-on le roman Lord Jim ?",
+    "propositions": [
+      "",
+      "",
+      "Joseph Conrad",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Par définition, que ne possède pas une personne imberbe ?",
+    "propositions": [
+      "",
+      "",
+      "De barbe",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Sous l'Ancien Régime, qu'appelait-on la Paulette ?",
+    "propositions": [
+      "",
+      "",
+      "Un impôt sur les charges publiques",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle unité est utilisée aux États-Unis pour l’essence dans les stations-services ?",
+    "propositions": [
+      "",
+      "",
+      "Le gallon",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "De quel doigt de la main le Petit Poucet tient-il son nom ?",
+    "propositions": [
+      "",
+      "",
+      "Du pouce",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "À quel auteur du XVIe siècle doit-on l’œuvre poétique Les Tragiques ?",
+    "propositions": [
+      "",
+      "",
+      "Agrippa d’Aubigné",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "En quel animal sont traditionnellement représentées les tirelires ?",
+    "propositions": [
+      "",
+      "",
+      "Cochon",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel jeu de cartes à collectionner le Lotus noir est-il la carte emblématique ?",
+    "propositions": [
+      "",
+      "",
+      "Magic: The Gathering",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Une personne qui subit les moqueries des autres est un souffre-... ?",
+    "propositions": [
+      "",
+      "",
+      "Souffre-douleur",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle Gauloise du village d’Astérix est la fille de Plantaquatix ?",
+    "propositions": [
+      "",
+      "",
+      "Falbala",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui interprète la Bête dans La Belle et la Bête de Jean Cocteau ?",
+    "propositions": [
+      "",
+      "",
+      "Jean Marais",
+      ""
+    ],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle troupe d’humoristes était composée notamment de John Cleese et Terry Gilliam ?",
+    "propositions": [
+      "",
+      "",
+      "Les Monty Python",
+      ""
+    ],
+    "bonneReponse": 2
   }
 ]
