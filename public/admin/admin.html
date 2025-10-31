@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Admin - Choix Catégorie Question</title>
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-  <label>Style :
-  <select id="theme-select">
-    <option value="violet">Violet</option>
-    <option value="orange">Orange</option>
-  </select>
-</label>
-  <h2 style="text-align:center;">Envoyer une question (par catégorie) sur OBS</h2>
-  <center><div id="categories"></div></center>
-  <div id="question-preview"></div>
-  <div id="general-controls">
-    <button id="show-propositions">Afficher les propositions</button>
-    <div id="selection-buttons">
-      <button id="a">A</button>
-      <button id="b">B</button>
-      <button id="c">C</button>
-      <button id="d">D</button>
+  <!-- Barre du haut -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <strong>Quizz Admin</strong>
     </div>
-    <button id="validate">Valider</button>
-  <div id="thematique-controls">
-    <button id="show-rond">Rond (2 choix)</button>
-    <button id="show-carre">Carré (4 choix)</button>
-  </div>
-  <button id="reset-display">Reset affichage OBS</button>
-  </div>
-  
-  <section id="chrono-controls">
-  <h3>⏱ Gestion des Chronos</h3>
-  <div class="chrono-block">
-    <span>Chrono Gauche</span>
-    <button id="chrono-left-start">Start</button>
-    <button id="chrono-left-pause">Pause</button>
-    <button id="chrono-left-reset">Reset</button>
-  </div>
-  <div class="chrono-block">
-    <span>Chrono Droit</span>
-    <button id="chrono-right-start">Start</button>
-    <button id="chrono-right-pause">Pause</button>
-    <button id="chrono-right-reset">Reset</button>
-  </div>
-</section>
 
-  <div id="bottom-links">
-    <a href="/obs/obs.html" target="_blank">Ouvrir OBS Overlay</a>
-    <a href="#" id="copy-obs-link">Copier le lien OBS</a>
-  </div>
-  
+    <div class="toolbar">
+      <label class="theme-picker">
+        <span>Style :</span>
+        <select id="theme-select">
+          <option value="violet">Violet</option>
+          <option value="orange">Orange</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <!-- Layout principal -->
+  <main class="app">
+    <!-- Colonne gauche : catégories -->
+    <aside class="sidebar">
+      <h2 class="panel-title">Envoyer une question sur OBS</h2>
+      <div id="categories" class="categories-grid"></div>
+    </aside>
+
+    <!-- Colonne droite : aperçu + contrôles + chronos -->
+    <section class="main">
+      <!-- Bloc aperçu question + contrôles -->
+      <section class="panel">
+        <header class="panel-header">
+          <h3>Aperçu & Contrôles</h3>
+        </header>
+
+        <div id="question-preview" class="question-preview"></div>
+
+        <div id="general-controls" class="controls">
+          <div class="controls-row">
+            <button id="show-propositions" class="btn btn-green">Afficher les propositions</button>
+            <div id="selection-buttons" class="selection-buttons">
+              <button id="a" class="btn btn-pill">A</button>
+              <button id="b" class="btn btn-pill">B</button>
+              <button id="c" class="btn btn-pill">C</button>
+              <button id="d" class="btn btn-pill">D</button>
+            </div>
+            <button id="validate" class="btn btn-yellow">Valider</button>
+          </div>
+
+          <div id="thematique-controls" class="controls-row">
+            <button id="show-rond" class="btn btn-purple">Rond (2 choix)</button>
+            <button id="show-carre" class="btn btn-cyan">Carré (4 choix)</button>
+          </div>
+
+          <div class="controls-row center">
+            <button id="reset-display" class="btn btn-danger">Reset affichage OBS</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bloc chronos -->
+      <section class="panel">
+        <header class="panel-header">
+          <h3>⏱ Gestion des Chronos</h3>
+        </header>
+        <div id="chrono-controls" class="chronos">
+          <div class="chrono-block">
+            <div class="chrono-title">Chrono Gauche</div>
+            <div class="chrono-actions">
+              <button id="chrono-left-start" class="btn btn-outline">Start</button>
+              <button id="chrono-left-pause" class="btn btn-outline">Pause</button>
+              <button id="chrono-left-reset" class="btn btn-outline">Reset</button>
+            </div>
+          </div>
+
+          <div class="chrono-block">
+            <div class="chrono-title">Chrono Droit</div>
+            <div class="chrono-actions">
+              <button id="chrono-right-start" class="btn btn-outline">Start</button>
+              <button id="chrono-right-pause" class="btn btn-outline">Pause</button>
+              <button id="chrono-right-reset" class="btn btn-outline">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Liens bas de page -->
+  <footer id="bottom-links" class="bottom-links">
+    <a href="/obs/obs.html" target="_blank" class="btn-link">Ouvrir OBS Overlay</a>
+    <a href="#" id="copy-obs-link" class="btn-link">Copier le lien OBS</a>
+  </footer>
+
+  <!-- JS (inchangé) -->
   <script type="module" src="./admin.js"></script>
 </body>
 </html>
