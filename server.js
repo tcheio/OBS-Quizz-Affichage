@@ -8,16 +8,20 @@ const port = 3000;
 
 app.use(express.static('public'));
 
-// Liste des catégories/fichiers (mets ici tes noms SANS extension)
+// Liste des catégories/fichiers
 const categories = [
-  '1 - question5Questions',
-  '2 - questionGenerale',
-  '3 - questionThématique',
+  '1 - questionsBasiques',
+  '2.1 - questionsThemeTV',
+  '2.2 - questionsThemeCinema',
+  '2.3 - questionsThemeChansonFR',
+  '2.4 - questionsThemePolitique',
+  '2.5 - questionsThemeHistoireFR',
+  '2.6 - questionsThemeAnime2025',
+  '2.7 - questionsThemeCuisine',
+  '2.8 - questionsThemeSport',
+  '3.1 - placement',
   '4 - questionAuPlusRapide',
-  '5 - questionIdentification',
-  '6 - questionClassement',
-  '7 - questionAuPlusLoin',
-  '8 - questionFinale'
+  '5 - questionFinale'
 ];
 
 // Charge les questions par catégorie en mémoire

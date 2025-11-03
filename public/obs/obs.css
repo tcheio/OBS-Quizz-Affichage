@@ -1,8 +1,26 @@
+:root {
+  /* Police générale (modifiable à chaud) */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Palette (définie par les thèmes) */
+  --c-bg-card: #21042b;
+  --c-border:  #d500f9;
+  --c-text:    #ffffff;
+  --c-neon:    #dd00ff;
+  --c-shadow:  #000000;
+
+  /* Bonne réponse */
+  --c-good-bg:     #2ecc40;
+  --c-good-border: #27ae60;
+  --c-good-text:   #222222;
+}
+
 html, body {
   width: 100vw; height: 100vh;
   margin: 0; padding: 0;
   background: transparent;
   overflow: hidden;
+  font-family: var(--font-family);
 }
 body {
   width: 100vw; height: 100vh;
@@ -10,6 +28,8 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
+
+/* Container global */
 #quizz-container {
   width: 1720px;
   display: none;
@@ -30,7 +50,6 @@ body {
   transform: translateY(0);
   pointer-events: none;
 }
-
 #quizz-container.fadeout {
   opacity: 0;
   transform: translateY(60px) scale(0.98);
@@ -39,21 +58,22 @@ body {
     transform 0.7s cubic-bezier(.46,1.48,.46,1);
 }
 
+/* Question */
 #question-box {
   width: 1680px;
   height: 130px;
-  background: #21042b;
-  border: 6px solid #d500f9;
+  background: var(--c-bg-card);
+  border: 6px solid var(--c-border);
   border-radius: 14px;
   margin-bottom: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.3em;
-  color: #fff;
+  color: var(--c-text);
   font-weight: bold;
   text-align: center;
-  text-shadow: 2px 2px 8px #000, 0 0 12px #d0f;
+  text-shadow: 2px 2px 8px var(--c-shadow), 0 0 12px var(--c-neon);
   box-sizing: border-box;
   overflow: hidden;
   word-break: break-word;
@@ -66,6 +86,8 @@ body {
   transform: translateY(0) scale(1);
   transition-delay: 0.10s;
 }
+
+/* Réponses */
 #answers-row {
   width: 100%;
   display: flex;
@@ -80,14 +102,14 @@ body {
   width: 380px;
   max-width: 480px;
   height: 76px;
-  background: #21042b;
-  border: 5px solid #d500f9;
+  background: var(--c-bg-card);
+  border: 5px solid var(--c-border);
   border-radius: 12px;
   display: flex;
   align-items: center;
   font-size: 1.5em;
   font-weight: bold;
-  color: #fff;
+  color: var(--c-text);
   position: relative;
   box-sizing: border-box;
   transition:
@@ -95,53 +117,53 @@ body {
     opacity 0.6s cubic-bezier(.46,1.48,.46,1),
     transform 0.7s cubic-bezier(.46,1.48,.46,1),
     visibility 0.3s;
-  text-shadow: 2px 2px 6px #000, 0 0 6px #d0f;
+  text-shadow: 2px 2px 6px var(--c-shadow), 0 0 6px var(--c-neon);
   justify-content: flex-start;
   visibility: hidden;
   opacity: 0;
   transform: translateY(30px) scale(0.96);
 }
-.answer-block.visible {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
+.answer-block.visible { visibility: visible; opacity: 1; transform: translateY(0) scale(1); }
+
 .answer-block.bonne {
-  background: #2ecc40 !important;
-  color: #222 !important;
-  border-color: #27ae60 !important;
+  background: var(--c-good-bg) !important;
+  color: var(--c-good-text) !important;
+  border-color: var(--c-good-border) !important;
   text-shadow: none;
 }
+
 .answer-label {
   font-size: 1.2em;
   margin-left: 20px;
   margin-right: 15px;
-  font-family: 'Arial Black', Arial, sans-serif;
-  color: #fff;
+  color: var(--c-text);
   letter-spacing: 2px;
   flex-shrink: 0;
   width: 36px;
   text-align: left;
   display: inline-block;
-  text-shadow: 2px 2px 6px #000, 0 0 6px #d0f;
+  text-shadow: 2px 2px 6px var(--c-shadow), 0 0 6px var(--c-neon);
 }
+
 .answer-text {
   flex: 1 1 auto;
   word-break: break-word;
   text-align: left;
   padding-right: 10px;
 }
+
 /* Centrage dynamique si 2 ou 4 réponses */
-#answers-row.dynamic-2 { justify-content: center; gap: 120px;}
-#answers-row.dynamic-4 { justify-content: center; gap: 38px;}
-/* Bonne réponse seule : centrée dans la row */
+#answers-row.dynamic-2 { justify-content: center; gap: 120px; }
+#answers-row.dynamic-4 { justify-content: center; gap: 38px; }
+
+/* Bonne réponse seule : centrée dans la row */
 #bonne-seule {
   min-width: 380px;
   max-width: 640px;
   height: 80px;
-  background: #2ecc40;
-  color: #222;
-  border: 6px solid #27ae60;
+  background: var(--c-good-bg);
+  color: var(--c-good-text);
+  border: 6px solid var(--c-good-border);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -165,6 +187,8 @@ body {
   visibility: visible;
   transform: translate(-50%, 0) scale(1.01);
 }
+
+/* Responsive */
 @media (max-width: 1800px) {
   #quizz-container, #answers-row, #question-box {
     width: 96vw;
@@ -172,3 +196,101 @@ body {
   }
   .answer-block { width: 40vw; min-width: 180px; }
 }
+
+/* Sélection avant validation : bleu clair */
+.answer-block.selected {
+  background: #4da3ff !important;
+  border-color: #1f6fd1 !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+/* Mauvaise sélection à la validation : rouge */
+.answer-block.wrong {
+  background: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+/* === Nouveaux layouts pour 1/2/4 réponses === */
+#answers-row.dynamic-1 { 
+  justify-content: center; 
+  gap: 38px;              /* même écart que les 4 réponses */
+  min-height: 88px;
+}
+
+/* === Bonne réponse seule – même style/anim qu’une .answer-block === */
+#bonne-seule {
+  /* taille et style calqués sur .answer-block */
+  width: 380px;
+  max-width: 480px;
+  height: 76px;
+
+  background: var(--c-good-bg);
+  color: var(--c-good-text);
+  border: 5px solid var(--c-good-border);
+  border-radius: 12px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5em;       /* idem .answer-block */
+  font-weight: bold;
+  text-shadow: none;
+
+  /* dans le flux (plus d'absolu) */
+  position: static;
+  left: auto;
+  top: auto;
+  transform: translateY(30px) scale(0.96);   /* même start que .answer-block */
+  opacity: 0;
+  visibility: hidden;
+
+  /* mêmes courbes/temps que .answer-block */
+  transition:
+    background 0.3s, color 0.3s, border 0.3s,
+    opacity 0.6s cubic-bezier(.46,1.48,.46,1),
+    transform 0.7s cubic-bezier(.46,1.48,.46,1),
+    visibility 0.3s;
+
+  /* légère ombre, tu peux la retirer si tu veux 100% identique */
+  box-shadow: 0 0 10px #0f0c;
+  z-index: 3;
+}
+
+#bonne-seule.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);         /* même fin que .answer-block.visible */
+}
+
+/* === Chronos gauche/droite === */
+.chrono-display {
+  position: absolute;
+  top: 40px;
+  font-size: 3em;
+  font-weight: bold;
+  color: var(--c-text);
+  text-shadow: 2px 2px 10px var(--c-shadow), 0 0 10px var(--c-neon);
+  opacity: 0.9;
+  transition: opacity 0.4s;
+}
+#chrono-left { left: 60px; }
+#chrono-right { right: 60px; text-align: right; }
+
+#chrono-left, #chrono-right {
+  transition: color 0.3s, opacity 0.3s;
+}
+.chrono-timeout {
+  color: #ff3b3b;
+  animation: blink 1s infinite alternate;
+}
+@keyframes blink {
+  from { opacity: 1; }
+  to   { opacity: 0.3; }
+}
+
+

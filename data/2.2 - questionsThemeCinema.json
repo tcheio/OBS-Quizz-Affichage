@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Quel acteur incarne Jack Dawson dans Titanic ?",
+    "propositions": ["Leonardo DiCaprio", "Brad Pitt", "Matt Damon", "Tom Cruise"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel film a remporté l’Oscar du Meilleur Film en 1998 ?",
+    "propositions": ["Titanic", "Le Patient anglais", "Shakespeare in Love", "Forrest Gump"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Qui a réalisé le film \"Inception\" sorti en 2010 ?",
+    "propositions": ["Steven Spielberg", "Christopher Nolan", "Ridley Scott", "James Cameron"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Le Seigneur des Anneaux, quel acteur interprète Frodon Sacquet ?",
+    "propositions": ["Orlando Bloom", "Elijah Wood", "Dominic Monaghan", "Sean Astin"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Parmi ces réalisateurs, lequel n’a jamais remporté l’Oscar du Meilleur Réalisateur ?",
+    "propositions": ["Martin Scorsese", "Quentin Tarantino", "Steven Spielberg", "James Cameron"],
+    "bonneReponse": 1
+  }
+]

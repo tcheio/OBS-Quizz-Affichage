@@ -1,72 +1,217 @@
 [
   {
-    "texte": "Quel est l’orthographe exact du mot C#########",
-    "propositions": ["Chariaut", "Charriot", "Chariot", "Charriau"],
+    "texte": "Quand on décuple un nombre, par combien le multiplie-t-on ?",
+    "propositions": ["2", "10", "20", "80"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "À quel endroit prend-on sa température par voie axillaire ?",
+    "propositions": ["Oreille", "Bouche", "Aisselle", "Rectum"],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel YouTubeur a récemment sorti un jeu de société qui a fait l’objet d’un rappel produit au vu d’un problème de classification (=problème d’âge mini)",
-    "propositions": ["Squeezie", "Michou", "Cyprien", "Amine"],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Lequel de ses réseaux sociaux n’appartient pas au groupe Meta, la société mère de Facebook",
-    "propositions": ["Snapchat", "Whatsapp", "Instagram", "Threads"],
+    "texte": "Durant quelle période de l'histoire se déroule le film \"L'Armée des ombres\" ?",
+    "propositions": ["Seconde Guerre mondiale", "Première Guerre mondiale", "Guerre d’Algérie", "Guerre froide"],
     "bonneReponse": 0
   },
   {
-    "texte": "En quelle année, le premier Macintosh est-il sorti",
-    "propositions": ["1983", "1984", "1985", "1986"],
-    "bonneReponse": 1
-  },
-  {
-    "texte": "Pour lequel de ses animé, la chanteuse EVE n’a t’elle jamais interprété d’opening",
-    "propositions": ["MHA", "JJK", "Bubble", "Trigun Stampede"],
+    "texte": "Quel ministère remet les médailles de l'Ordre des Arts et des Lettres ?",
+    "propositions": ["Ministère de l’Éducation Nationale", "Ministère de l’Intérieur", "Ministère des Affaires étrangères", "Ministère de la Culture"],
     "bonneReponse": 3
   },
   {
-    "texte": "Lequel de ses jeux vidéos a remporté le plus de récompense au Game Award en une édition",
-    "propositions": ["Astrobot", "God of War: Ragnarock", "The Last Of Us", "Death Stranding"],
-    "bonneReponse": 2
-  },
-  {
-    "texte": "De quel mouvement artistique, Claude Monet était-il un artiste clés",
-    "propositions": ["Impressionnisme", "Cubisme", "Romantisme", "Réalisme"],
+    "texte": "D'après sa chanson, sur quel réseau social Max Boublil a-t-il rencontré \"ta mère\" ?",
+    "propositions": ["Facebook", "Tinder", "Instagram", "Badoo"],
     "bonneReponse": 0
   },
   {
-    "texte": "Laquelle de ses séries DC ne fait pas partie de L’arrowverse (Univers de toutes les séries créer par la CW)",
-    "propositions": ["Black Lightning", "Legend of Tomorrow", "Peacemaker", "Supergirl"],
+    "texte": "Quel objet effilé et piquant est plus long chez la tricoteuse que chez la couturière ?",
+    "propositions": ["L’épingle", "Le poinçon", "L’aiguille", "Le crochet"],
     "bonneReponse": 2
   },
   {
-    "texte": "Quel était le temps moyen d’écran des 18-24 ans en 2024",
-    "propositions": ["4H10", "4H40", "5H", "5H17"],
+    "texte": "Quelle institution créée en 1795 réunit cinq académies, dont la prestigieuse Académie française ?",
+    "propositions": ["Le Collège de France", "L’Institut de France", "L’Académie des Beaux-Arts", "Le Conseil d’État"],
     "bonneReponse": 1
   },
   {
-    "texte": "Lequel de ses joueurs de foot qui avait annoncé sa retraite à la fin de la saison 2024, est le gardien titulaire actuel du FC Barcelone",
-    "propositions": ["Wojciech Szczęsny", "Marc-André Ter Stegen", "Diego Kochen", "Iñaki Peña"],
+    "texte": "Dans la série \"Friends\", avec qui Ross a-t-il eu Ben, son premier enfant ?",
+    "propositions": ["Carol Willick", "Rachel Green", "Emily Waltham", "Janice Litman"],
     "bonneReponse": 0
   },
   {
-    "texte": "Laquelle de ses séries dérivés des Expert, n’existe pas",
-    "propositions": ["Les Experts : Miami", "Les Experts : Manhattan", "Les Experts : Cyber", "Les Experts : Los Angeles"],
+    "texte": "Comment appelle-t-on le petit de l'autruche ?",
+    "propositions": ["L’autruchot", "Le strutche", "Le chicot", "Le poussin"],
     "bonneReponse": 3
   },
   {
-    "texte": "Donner le nombre de musiques sortie sur Spotify par Pouka à la date du 20 mai 2025 (Album et EP Seulement)",
-    "propositions": ["78", "89", "100", "112"],
-    "bonneReponse": 1
+    "texte": "Quel magazine hebdomadaire a été fondé en 1984 par Jean-François Kahn ?",
+    "propositions": ["Marianne", "Le Point", "L’Événement du jeudi", "Le Nouvel Observateur"],
+    "bonneReponse": 2
   },
   {
-    "texte": "Parmi ces propositions, laquelle correspond à La danse des cavaliers",
-    "propositions": ["Une manoeuvre aux Echecs", "Un rite de passage au Moyen Age", "Une jeu pour enfant", "Un pas de danse"],
+    "texte": "Quand il est pressé, quel est le mode de locomotion habituel de Zorro ?",
+    "propositions": ["À cheval", "En voiture", "En bateau", "En montgolfière"],
     "bonneReponse": 0
   },
   {
-    "texte": "Quel a été la première limite de caractères sur un post X anciennement Twitter",
-    "propositions": ["120", "140", "200", "280"],
+    "texte": "À quelle femme écrivain doit-on le roman “Sido” ?",
+    "propositions": ["George Sand", "Colette", "Simone de Beauvoir", "Marguerite Yourcenar"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans la chanson “Il pleut, il pleut, bergère”, que doit rentrer la bergère ?",
+    "propositions": ["Ses vaches", "Ses blancs moutons", "Son troupeau de chèvres", "Ses agneaux"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "En février 2024, quel château a retrouvé son char d’Apollon au centre du bassin qui surplombe les jardins ?",
+    "propositions": ["Château de Fontainebleau", "Château de Chantilly", "Château de Versailles", "Château de Vaux-le-Vicomte"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel sport pratique celui qui est récompensé par le Soulier d'Or ?",
+    "propositions": ["Tennis", "Rugby", "Football", "Basket-ball"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel animal est la bergeronnette ?",
+    "propositions": ["Une mouette", "Un écureuil", "Un oiseau", "Une chauve-souris"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel massif montagneux s’appelle “Monte Bianco” en italien ?",
+    "propositions": ["Les Alpes grées", "Le massif du Mont Blanc", "Le massif des Dolomites", "Le massif des Apennins"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel bateau à fond plat est utilisé pour le transport fluvial ?",
+    "propositions": ["Le gouvernail", "Le clipper", "La barge", "Le catamaran"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel pays se trouve l’État de Victoria ?",
+    "propositions": ["Canada", "Nouvelle-Zélande", "Australie", "Afrique du Sud"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "De quelle couleur est le cercle au centre du drapeau brésilien ?",
+    "propositions": ["Rouge", "Bleu", "Vert", "Bleu-ciel"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Comment s’appelle le nid des aigles ?",
+    "propositions": ["La sablière", "Le dortoir", "L’aigle-nière", "Le gîte"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Que devient une jarre quand on remplace les deux “R” par deux “T” ?",
+    "propositions": ["Jatte", "Jatte ?", "Jitte", "Jatteau"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "À quel philosophe doit-on l’allégorie de la caverne ?",
+    "propositions": ["Aristote", "Kant", "Platon", "Descartes"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "En 2020, dans quel pays Pierre Gasly a-t-il remporté son premier Grand Prix de Formule 1 ?",
+    "propositions": ["Espagne", "Italie", "Belgique", "Italie"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel écrivain américain maître de l’épouvante est l’auteur de “Carrie” et de “Shining” ?",
+    "propositions": ["H. P. Lovecraft", "Edgar Allan Poe", "Stephen King", "Ray Bradbury"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel terme désigne un vaste plateau calcaire dans le sud-ouest de la France ?",
+    "propositions": ["Le moun", "Le causse", "Le gravier", "Le causseau"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Comment appelle-t-on la fine bande de métal fixée sous les patins à glace ?",
+    "propositions": ["Le ruban", "L’arrière-rail", "Le cerclage", "La lame"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quel océan baigne les côtes du Venezuela ?",
+    "propositions": ["Océan Indien", "Océan Atlantique", "Océan Pacifique", "Océan Austral"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Au jeu “pierre-papier-ciseaux”, qu’est-ce qui est représenté par une main à plat ?",
+    "propositions": ["Ciseaux", "Papier", "Pierre", "L’eau (variante)"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel compositeur autrichien mort à 31 ans laisse plus de 1 000 compositions derrière lui ?",
+    "propositions": ["Mozart", "Mahler", "Schubert", "Haydn"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel écrivain a été élu président de l’Académie Goncourt en mai 2024 ?",
+    "propositions": ["Bernard Werber", "Tahsin Öz", "Pierre Assouline", "Amélie Nothomb"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle actrice révélée dans “E.T.” joue dans la version cinéma de “Drôles de dames” ?",
+    "propositions": ["Cameron Diaz", "Drew Barrymore", "Lucy Liu", "Natalie Portman"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle soupe donne son titre à un film avec Louis de Funès ?",
+    "propositions": ["La chorba", "La Soupe aux choux", "Le pot-au-feu", "La bouillabaisse"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel personnage de la famille Ewing dans “Dallas” Larry Hagman interprète-t-il ?",
+    "propositions": ["Bobby Ewing", "J. R. Ewing", "Cliff Barnes", "Gary Ewing"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quelle émission télé a pour sous-titre « Quelle célébrité se cache derrière ce masque ? » ?",
+    "propositions": ["Danse avec les stars", "Mask Singer", "La Chanson Secrète", "Drag Race France"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel roi de France le chevalier Du Guesclin servait-il à la fin de sa vie ?",
+    "propositions": ["Louis XI", "Philippe VI", "Charles V", "Charles VII"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "À l’origine, à quelle activité sont destinés les vêtements sportswear ?",
+    "propositions": ["Le travail en usine", "La pratique du sport", "Le jardinage", "La randonnée militaire"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel était le prénom du frère styliste de Donatella Versace ?",
+    "propositions": ["Giorgio", "Roberto", "Gianni", "Enzo"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Selon une ancienne règle du jeu de dames, qu’est-ce qui “n’est pas jouer” ?",
+    "propositions": ["Reculer", "Manger", "Toucher une pièce", "Couronner"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quelle plante comestible voisine de l’artichaut est très cultivée dans la région de Lyon ?",
+    "propositions": ["Asperge", "Cardon", "Fenouil", "Céléri-branche"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Comment appelle-t-on une période de mille ans ?",
+    "propositions": ["Un centenaire", "Une ère", "Un millénaire", "Une décade"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel artiste plasticien japonais est considéré comme le digne successeur d’Andy Warhol ?",
+    "propositions": ["Takeshi Kitano", "Takashi Murakami", "Yoshitomo Nara", "Hiroshi Sugimoto"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "À quel chanteur doit-on le tube « La Fille au bas nylon » ?",
+    "propositions": ["Eddy Mitchell", "Julio Iglesias", "Claude François", "Hervé Vilard"],
     "bonneReponse": 1
   }
 ]

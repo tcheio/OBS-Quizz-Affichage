@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Quel anime revient en 2025 pour sa saison 2, et est basé sur un jeu vidéo du type “hack-and-slash” ?",
+    "propositions": ["Devil May Cry", "Kaiju No. 8 saison 2", "The Summer Hikaru Died", "Dandadan saison 2"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel anime de romance-scolaire est sorti en 2025, et raconte l’histoire d’un garçon de lycée travaillant dans la boulangerie familiale qui rencontre une fille issue d’un lycée prestigieux ?",
+    "propositions": ["The Fragrant Flower Blooms With Dignity", "My Happy Marriage saison 2", "Honey Lemon Soda", "Gachiakuta"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel anime tout nouveau en 2025 est une série originale produite pour célébrer l’anniversaire d’un studio, et se déroule dans un monde post-apocalyptique où un homme se réveille après deux cents ans ?",
+    "propositions": ["Dusk Beyond the End of the World", "Future Kid Takara", "Sakamoto Days", "Aquarion: Myth of Emotions"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel film d’animation de 2025 est réalisé par Mamoru Hosoda et suit une princesse capable de voyager dans le temps et l’espace, lancé en novembre au Japon ?",
+    "propositions": ["Scarlet", "Belle II", "Akira – Rebirth", "Spirited Away 2"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Parmi ces animes, lequel est une adaptation de light-novel ou manga très attendue pour 2025 et est dans le genre “champion/monstre” ?",
+    "propositions": ["Kaiju No. 8 saison 2", "Dandadan saison 2", "The Apothecary Diaries saison 2", "My Happy Marriage saison 2"],
+    "bonneReponse": 0
+  }
+]

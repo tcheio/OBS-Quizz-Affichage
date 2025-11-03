@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Quel ustensile utilise-t-on pour fouetter des œufs en omelette ?",
+    "propositions": ["Fouet", "Spatule", "Louche", "Écumoire"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel ingrédient doit-on ajouter pour faire monter une pâte à gâteau au four ?",
+    "propositions": ["Levure chimique", "Sel", "Sucre glace", "Huile d’olive"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quelle cuisson consiste à plonger un aliment dans de l’eau bouillante puis à le refroidir immédiatement ?",
+    "propositions": ["Blanchir", "Pocher", "Saisir", "Braiser"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Quel terme désigne une découpe de légumes en petits dés réguliers ?",
+    "propositions": ["Mirepoix", "Brunoise", "Émincé", "Julienne"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel procédé consiste à cuire lentement un plat dans un récipient fermé afin de concentrer les saveurs ?",
+    "propositions": ["Griller", "Rôtir", "Braiser", "Flamber"],
+    "bonneReponse": 2
+  }
+]

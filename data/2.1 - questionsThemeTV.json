@@ -1,0 +1,32 @@
+[
+  {
+    "texte": "Quel maître de midi est aujourd’hui celui qui est resté le plus longtemps ?",
+    "propositions": ["Bruno (252)", "Paul (153)", "Xavier (76)", "Émilien (647)"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "De quelle émission s'est inspiré Koh-Lanta ?",
+    "propositions": ["Survivor", "Running Wild", "You vs Wild", "Wild Fang"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Qui est le présentateur de l’émission In Ze Boite ?",
+    "propositions": ["Jordan Faggianell", "Joan Faggianelli", "Joan Faggianelly", "Joan Faggianelli"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Laquelle de ces émissions n’a jamais été présentée par Olivier Minne ?",
+    "propositions": ["Téléthon", "Fort Boyard Belgique", "Taratata", "Tahiti Quest"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Parmi ces 4 présentateurs, lequel a été le moins longtemps à la présentation des Z’amours ?",
+    "propositions": [
+      "Jean-Luc Reichmann",
+      "Patrice Laffont",
+      "Tex",
+      "Bruno Guillon"
+    ],
+    "bonneReponse": 1
+  }
+]

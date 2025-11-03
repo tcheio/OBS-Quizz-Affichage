@@ -1,0 +1,27 @@
+[
+  {
+    "texte": "Quel est le nom du sélectionneur de l’équipe de France de football ?",
+    "propositions": ["Laurent Blanc", "Zinedine Zidane", "Didier Deschamps", "Michel Platini"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Dans quel sport le terme “ace” est-il couramment utilisé ?",
+    "propositions": ["Basketball", "Natation", "Tennis", "Rugby"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel club de football est surnommé “Les Red Devils” ?",
+    "propositions": ["Arsenal", "FC Barcelone", "Liverpool", "Manchester United"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Parmi ces sports, lequel ne se joue pas avec une raquette ?",
+    "propositions": ["Squash", "Paddle", "Pelote basque", "Speedminton"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Quel cycliste a remporté le Tour de France 2024 ?",
+    "propositions": ["Jonas Vingegaard", "Tadej Pogačar", "Primož Roglič", "Egan Bernal"],
+    "bonneReponse": 1
+  }
+]

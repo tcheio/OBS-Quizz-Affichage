@@ -1,0 +1,42 @@
+[
+  {
+    "texte": "À la WWE (catch), en combien de temps a duré le match le plus court ?",
+    "propositions": ["3,17 secondes", "1,8 secondes", "3,5 secondes", "2 secondes"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans Kingdom Hearts, quel monde de Disney n’est jamais apparu dans la licence ?",
+    "propositions": ["Pocahontas", "Le Roi Lion", "Winnie l’Ourson", "Pirates des Caraïbes"],
+    "bonneReponse": 0
+  },
+  {
+    "texte": "Dans la musique « Ryan and Dave » de Rare Americans, quel lien unit Ryan et Dave ?",
+    "propositions": ["Frères", "Cousins", "Meilleurs amis", "De simples personnes qui se rencontrent"],
+    "bonneReponse": 1
+  },
+  {
+    "texte": "Dans League of Legends, lesquels ne sont pas frère et sœur ?",
+    "propositions": ["Kayle et Morgana", "Renekton et Nasus", "Garen et Lux", "Kai'Sa et Kassadin"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "Quelle est la première ville à avoir prêté ses rues au jeu du Monopoly ?",
+    "propositions": ["Paris", "Madrid", "Atlantic City", "New York"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Quel mollusque marin projette un liquide noir appelé « sépia » pour se cacher ?",
+    "propositions": ["L’huître", "La pieuvre", "La murène", "La seiche"],
+    "bonneReponse": 3
+  },
+  {
+    "texte": "À l’origine, à qui faisait référence l’expression « Mener en bateau » ?",
+    "propositions": ["Un capitaine", "Un pirate", "Un saltimbanque", "Un magicien"],
+    "bonneReponse": 2
+  },
+  {
+    "texte": "Si à Barcelone on parle le catalan, quel espagnol parle-t-on à Madrid ?",
+    "propositions": ["Le castillan", "Le madrilène", "Le murcien", "Le castalan"],
+    "bonneReponse": 0
+  }
+]
